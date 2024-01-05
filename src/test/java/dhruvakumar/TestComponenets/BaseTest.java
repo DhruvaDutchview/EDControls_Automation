@@ -131,7 +131,7 @@ public class BaseTest {
 
 	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
-		System.out.println("Test is Done");
+		System.out.println("Test is Done thank you");
 		driver.quit();
 	}
 }
