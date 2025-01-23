@@ -34,7 +34,7 @@ import dhruvakumar.pageobjects.ProductCatalog;
 
 public class SubmitOrderTest extends BaseTest {
 
-	  String productName="ZARA COAT 3";
+	  String productName="IPHONE 13 PRO";
 	  String filePath=System.getProperty("user.dir")+"\\src\\test\\java\\dhruvakumar\\data\\PurchaseOrder.json";
 
 	  @Test(dataProvider = "getData")
@@ -74,7 +74,7 @@ public class SubmitOrderTest extends BaseTest {
      }
 
      @DataProvider
-     public Object[][] getData() throws FileNotFoundException, IOException, ParseException
+     public Object[][] getData() throws IOException, ParseException
      {
     	 
     	 

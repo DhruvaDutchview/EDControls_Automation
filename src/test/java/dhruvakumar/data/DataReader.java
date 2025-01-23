@@ -19,7 +19,7 @@ import com.google.gson.JsonParser;
 
 public class DataReader {
 
-	public List<HashMap<String, String>> getJsonDataToMap(String filePath) throws FileNotFoundException, IOException, ParseException
+	public List<HashMap<String, String>> getJsonDataToMap(String filePath) throws IOException, ParseException
 	{
 		//reading the jsonfile
 		

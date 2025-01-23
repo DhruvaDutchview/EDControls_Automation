@@ -30,12 +30,12 @@ public class ErrorValidationTest extends BaseTest {
 	  @Test
 	  public void productErrorValidation() throws IOException
 	  {
-		String productName="ZARA COAT 3";
+		String productName="IPHONE 13 PRO";
 		ProductCatalog productCatalog=landingPage.loginApplication("dhkr@gmail.com", "Dhruvad@17");
 		List<WebElement> products = productCatalog.getProductList();
 		productCatalog.addProductToCart(productName);
 		CartPage cartPage=productCatalog.goToCartPage();
-		Boolean match=cartPage.verifyProductdiaplay("ZARA COAT 3");
+		Boolean match=cartPage.verifyProductdiaplay("IPHONE 13 PRO");
 		Assert.assertTrue(match);
 	   
 	  }
