@@ -5,11 +5,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Properties;
+import org.apache.commons.io.FileUtils;
+import dhruvakumar.data;
 
 import dhruvakumar.ReusableFunctions.ReusableFunction;
 
 
-public class LandingPage extends ReusableFunction {
+public class LandingPage extends ReusableFunction,BaseTest  {
 
 	WebDriver driver;
 	public LandingPage(WebDriver driver)
@@ -23,16 +33,16 @@ public class LandingPage extends ReusableFunction {
 //	WebElement userPassword = driver.findElement(By.id("userPassword"));
 	
 	//pageFactory
-	@FindBy(id="userEmail")
+	@FindBy(id="user-name")
 	WebElement userEmail;
 	
-	@FindBy(id="userPassword")
+	@FindBy(id="passwd")
 	WebElement userPassword;
 	
-	@FindBy(id="login")
+	@FindBy(id="butn-login")
 	WebElement login;
 	
-	@FindBy(css="[class*='flyInOut']")
+	/*@FindBy(css="[class*='flyInOut']")
 	WebElement errorMessage;
 	
 	
@@ -41,19 +51,26 @@ public class LandingPage extends ReusableFunction {
 		waitForWebElementAppear(errorMessage);
 		return errorMessage.getText();
 		
-	}
-	public ProductCatalog loginApplication(String email,String password)
+	}*/
+	Properties prop = new Properties();
+
+	FileInputStream fis = new FileInputStream(
+			System.getProperty("user.dir") + "/src/test/java/dhruvakumar/data/PurchaseOrder.json");
+		prop.load(fis);
+	String browserName = System.getProperty("browser") != null ? System.getProperty("browser") : prop.getProperty("browser");*/
+	public void loginApplication(String email,String password)
 	{
 		userEmail.sendKeys(email);
 		userPassword.sendKeys(password);
 		login.click();
-		ProductCatalog productCatalog = new ProductCatalog(driver);
-		return productCatalog;
+		//ProductCatalog productCatalog = new ProductCatalog(driver);
+		//return productCatalog;
 	}
 	
 	public void goTo()
 	{
-		driver.get("https://rahulshettyacademy.com/client");
+		//driver.get("https://rahulshettyacademy.com/client");
+		driver.get("https://dev.edcontrols.com/#/auth?view=login");
 	
 	}
 

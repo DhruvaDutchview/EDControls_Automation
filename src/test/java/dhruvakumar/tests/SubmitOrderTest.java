@@ -35,15 +35,17 @@ import dhruvakumar.pageobjects.ProductCatalog;
 public class SubmitOrderTest extends BaseTest {
 
 	  String productName="IPHONE 13 PRO";
-	  String filePath=System.getProperty("user.dir")+"\\src\\test\\java\\dhruvakumar\\data\\PurchaseOrder.json";
+	String filePath = System.getProperty("user.dir") + "/src/test/java/dhruvakumar/data/PurchaseOrder.json";
 
-	  @Test(dataProvider = "getData")
+	@Test
 	  public void submitOrder(HashMap<String, String> input) throws IOException
 	  {
-		
-		  ProductCatalog productCatalog=landingPage.loginApplication(input.get("email"), input.get("password"));
 
-		// Products Page(POM:- Product Catalog)
+		  landingPage.loginApplication(input.get("email"), input.get("password"));
+
+		//  ProductCatalog productCatalog=landingPage.loginApplication(input.get("email"), input.get("password"));
+
+		/*// Products Page(POM:- Product Catalog)
 		List<WebElement> products = productCatalog.getProductList();
 		productCatalog.addProductToCart(input.get("productName"));
 		CartPage cartPage=productCatalog.goToCartPage();
@@ -92,7 +94,7 @@ public class SubmitOrderTest extends BaseTest {
     	 List<HashMap<String, String>> data= getJsonDataToMap(filePath);
     	 return new Object [][] {{data.get(0)},{data.get(1)}};
     	 
-    	 
+    	 */
      }
  
 
