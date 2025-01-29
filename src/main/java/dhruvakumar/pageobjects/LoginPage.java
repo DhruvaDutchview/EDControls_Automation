@@ -1,21 +1,14 @@
 package dhruvakumar.pageobjects;
 
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
-import dhruvakumar.ReusableFunctions.ReusableFunction;
+import dhruvakumar.reusableFunctions.ReusableFunction;
 
 public class LoginPage extends ReusableFunction  {
 
@@ -61,6 +54,7 @@ public class LoginPage extends ReusableFunction  {
 		userEmail.sendKeys(userName);
 		userPassword.sendKeys(password);
 		login.click();
+		System.out.println("user logged in");
 	}
 
 	

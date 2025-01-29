@@ -1,4 +1,4 @@
-package dhruvakumar.ReusableFunctions;
+package dhruvakumar.reusableFunctions;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,49 +10,40 @@ import java.util.Properties;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dhruvakumar.pageobjects.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.PageFactoryFinder;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import dhruvakumar.pageobjects.CartPage;
-import dhruvakumar.pageobjects.OrderPage;
+public class ReusableFunction extends BaseTest {
 
-public class ReusableFunction {
-
-	WebDriver driver;
+	final WebDriver driver;
 	
 	public ReusableFunction(WebDriver driver) 
 	{
+		super(driver);
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
 
 	//Method to read JSON File
-	public JsonNode readJsonFile () {
+	public static JsonNode readJsonFile () {
 		try {
 			String filePath = System.getProperty("user.dir") + "/src/main/java/dhruvakumar/Resources/GlobalData.json";
 			ObjectMapper objectMapper = new ObjectMapper();
-			JsonNode jsonNode = objectMapper.readTree(new File(filePath));
-
-			// Extract browserName,email, password, and URL
-			String browserName = jsonNode.get(0).get("browserName").asText();
-			String email = jsonNode.get(1).get("email").asText();
-			String password = jsonNode.get(1).get("password").asText();
-			String url = jsonNode.get(2).get("url").asText();
-			return jsonNode;
-		} catch (IOException e) {
+			return objectMapper.readTree(new File(filePath));
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 
 	// Method to read properties file and return values as a Map
-	public Map<String, String> readPropertiesFile() {
+	public static Map<String, String> readPropertiesFile() {
 		Map<String, String> propertiesMap = new HashMap<>();
 		try {
 			String filePath = System.getProperty("user.dir") + "/src/main/java/dhruvakumar/Resources/GlobalData.properties";
@@ -72,12 +63,6 @@ public class ReusableFunction {
 		return propertiesMap;
 	}
 
-	@FindBy(css="button[routerlink='/dashboard/cart']")
-	WebElement cartHeader;
-	
-	@FindBy(css="button[routerlink='/dashboard/myorders']")
-	WebElement orderHeader;
-	
 	public void waitForElementAppear(By findBy)
 	{
 	 WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -99,21 +84,6 @@ public class ReusableFunction {
 
 	
 	}
-	
-	public CartPage goToCartPage()
-	{
-		cartHeader.click();
-		CartPage cartPage=new CartPage(driver);
-		return cartPage;
 
-	}
-	
-	public OrderPage goToOrderPage()
-	{
-		orderHeader.click();
-		OrderPage orderPage=new OrderPage(driver);
-		return orderPage;
-
-	}
 	
 }
