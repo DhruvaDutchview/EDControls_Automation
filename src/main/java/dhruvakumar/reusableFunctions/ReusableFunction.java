@@ -6,21 +6,24 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Properties;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dhruvakumar.pageobjects.BaseTest;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ReusableFunction extends BaseTest {
 
-	final WebDriver driver;
+	static WebDriver driver;
 	
 	public ReusableFunction(WebDriver driver) 
 	{
@@ -70,11 +73,19 @@ public class ReusableFunction extends BaseTest {
 	
 	}
 	
-	public void waitForWebElementAppear(WebElement ele)
+	public static void waitForWebElementAppear(WebElement ele)
 	{
-	 WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(5));
-	 wait.until(ExpectedConditions.visibilityOf(ele));
-	
+	// WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+	 //wait.until(ExpectedConditions.visibilityOf(ele));
+	// wait.until(ExpectedConditions.elementToBeClickable(ele));
+		FluentWait<WebDriver> wait = new FluentWait<>(driver)
+				.withTimeout(Duration.ofSeconds(20)) // Maximum wait time
+				.pollingEvery(Duration.ofSeconds(5)) // Polling interval
+				.ignoring(NoSuchElementException.class); // Ignore NoSuchElementException
+
+		// Wait for a specific element to be visible
+		WebElement element = wait.until(ExpectedConditions.visibilityOf(ele));
+
 	}
 	
 	public void waitForElementDisAppear(WebElement element)
@@ -85,5 +96,29 @@ public class ReusableFunction extends BaseTest {
 	
 	}
 
-	
+	public static String[] trimmingText (WebElement element){
+		String elementText = element.getText();
+		elementText = elementText.replace("\n", " "); // Replace \n with a space, or "" if unnecessary
+		String array[] = elementText.split(" ");
+		return array;
+	}
+
+	public static void navigateToProject () throws Exception {
+		JsonNode jsonNode = readJsonFile ();
+		String projectName = jsonNode.get(3).get("projectName").asText();
+		System.out.println("Login is Successfully");
+		WebElement projectSearch = driver.findElement(By.xpath("//input[@id='search']"));
+		ReusableFunction.waitForWebElementAppear(projectSearch);
+		projectSearch.sendKeys(projectName);
+		projectSearch.sendKeys(Keys.ENTER);
+		Thread.sleep(3000);
+		WebElement projectElement = driver.findElement(By.xpath("//p[@class='name']"));
+		String projectText = projectElement.getText();
+		System.out.println(projectText);
+		projectElement.click();
+		if (projectText.equalsIgnoreCase("Smart City - Bengaluru"))
+		{
+			System.err.println("we are inside "+ projectText+" successfully");
+		}
+	}
 }
