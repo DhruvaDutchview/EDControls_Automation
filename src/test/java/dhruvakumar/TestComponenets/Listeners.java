@@ -1,7 +1,6 @@
 package dhruvakumar.TestComponenets;
 
-import java.io.IOException;
-
+import dhruvakumar.pageobjects.BaseTest;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -18,7 +17,11 @@ public class Listeners extends BaseTest implements ITestListener {
 	ExtentReports extent = ExtentReporterNG.getReportObject();
 	ExtentTest test;
 	ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
-	
+
+	public Listeners(WebDriver driver) {
+		super(driver);
+	}
+
 	@Override
 	public void onTestStart(ITestResult result) {
 		// TODO Auto-generated method stub

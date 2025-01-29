@@ -1,0 +1,15 @@
+[
+ {
+  "browserName" : "chrome"
+ },
+{
+ "email" : "savanth@mailinator.com",
+ "password" : "savanth12345"
+},
+ {
+  "url" : "https://dev.edcontrols.com/#/auth?view=login"
+ }
+
+
+
+]

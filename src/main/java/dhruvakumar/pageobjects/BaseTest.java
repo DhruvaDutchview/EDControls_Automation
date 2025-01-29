@@ -1,4 +1,4 @@
-package dhruvakumar.TestComponenets;
+package dhruvakumar.pageobjects;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,8 +7,10 @@ import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
+import dhruvakumar.ReusableFunctions.ReusableFunction;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
@@ -24,24 +26,20 @@ import org.testng.annotations.BeforeMethod;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import dhruvakumar.pageobjects.LandingPage;
+import dhruvakumar.pageobjects.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class BaseTest {
-
+public class BaseTest extends ReusableFunction {
 	public WebDriver driver;
-	public LandingPage landingPage;
+	public LoginPage loginPage;
+
+	public BaseTest(WebDriver driver) {
+		super(driver);
+	}
 
 	public WebDriver initializeDriver() throws IOException {
-
-		// Properties class
-/*		Properties prop = new Properties();
-
-		FileInputStream fis = new FileInputStream(
-				System.getProperty("user.dir") + "\\src\\main\\java\\dhruvakumar\\Resources\\GlobalData.properties");
-		prop.load(fis);
-		String browserName = System.getProperty("browser") != null ? System.getProperty("browser") : prop.getProperty("browser");*/
-        String browserName = "chrome";
+		Map<String, String> data = readPropertiesFile();
+        String browserName = data.get("browserName");
 		if (browserName.contains("chrome")) {
 			ChromeOptions options = new ChromeOptions();
 			WebDriverManager.chromedriver().setup();
@@ -68,22 +66,6 @@ public class BaseTest {
 		return driver;
 	}
 
-	public List<HashMap<String, String>> getJsonDataToMap(String filePath) throws IOException {
-		// reading the json file
-
-		File file = new File(filePath);
-		String jsonContent = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
-
-		// String to HashMap using JacksonDataBind
-		ObjectMapper mapper = new ObjectMapper();
-		List<HashMap<String, String>> data = mapper.readValue(jsonContent,
-				new TypeReference<List<HashMap<String, String>>>() {
-				});
-
-		return data;
-
-	}
-
 	public String getScreenshot(String testCaseName, WebDriver driver) throws Exception {
 
 		TakesScreenshot ts = (TakesScreenshot) driver;
@@ -95,12 +77,11 @@ public class BaseTest {
 	}
 
 	@BeforeMethod(alwaysRun = true)
-	public LandingPage launchApplication() throws IOException {
+	public void launchApplication() throws IOException {
 		driver = initializeDriver();
-		landingPage = new LandingPage(driver);
-		landingPage.goTo();
-		return landingPage;
-
+		loginPage = new LoginPage(driver);
+		loginPage.loginApplication();
+	    //return loginPage;
 	}
 
 	@AfterMethod(alwaysRun = true)

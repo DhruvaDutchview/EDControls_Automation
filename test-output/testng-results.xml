@@ -75,12 +75,12 @@ at java.base/java.lang.Thread.run(Thread.java:833)
       </class> <!-- dhruvakumar.tests.ErrorValidationTest -->
     </test> <!-- Error Validation Test -->
     <test started-at="2024-01-05T18:47:54 IST" name="Submit Order Test" finished-at="2024-01-05T18:48:31 IST" duration-ms="37149">
-      <class name="dhruvakumar.tests.SubmitOrderTest">
-        <test-method is-config="true" signature="lanuchApplication()[pri:0, instance:dhruvakumar.tests.SubmitOrderTest@4ed5eb72]" started-at="2024-01-05T18:47:55 IST" name="lanuchApplication" finished-at="2024-01-05T18:48:00 IST" duration-ms="5256" status="PASS">
+      <class name="dhruvakumar.tests.TicketModule">
+        <test-method is-config="true" signature="lanuchApplication()[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:47:55 IST" name="lanuchApplication" finished-at="2024-01-05T18:48:00 IST" duration-ms="5256" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- lanuchApplication -->
-        <test-method signature="submitOrder(java.util.HashMap)[pri:0, instance:dhruvakumar.tests.SubmitOrderTest@4ed5eb72]" started-at="2024-01-05T18:48:00 IST" name="submitOrder" data-provider="getData" finished-at="2024-01-05T18:48:05 IST" duration-ms="4628" status="PASS">
+        <test-method signature="submitOrder(java.util.HashMap)[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:00 IST" name="submitOrder" data-provider="getData" finished-at="2024-01-05T18:48:05 IST" duration-ms="4628" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -91,15 +91,15 @@ at java.base/java.lang.Thread.run(Thread.java:833)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- submitOrder -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:dhruvakumar.tests.SubmitOrderTest@4ed5eb72]" started-at="2024-01-05T18:48:05 IST" name="tearDown" finished-at="2024-01-05T18:48:05 IST" duration-ms="206" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:05 IST" name="tearDown" finished-at="2024-01-05T18:48:05 IST" duration-ms="206" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="lanuchApplication()[pri:0, instance:dhruvakumar.tests.SubmitOrderTest@4ed5eb72]" started-at="2024-01-05T18:48:05 IST" name="lanuchApplication" finished-at="2024-01-05T18:48:09 IST" duration-ms="4191" status="PASS">
+        <test-method is-config="true" signature="lanuchApplication()[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:05 IST" name="lanuchApplication" finished-at="2024-01-05T18:48:09 IST" duration-ms="4191" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- lanuchApplication -->
-        <test-method signature="submitOrder(java.util.HashMap)[pri:0, instance:dhruvakumar.tests.SubmitOrderTest@4ed5eb72]" started-at="2024-01-05T18:48:09 IST" name="submitOrder" data-provider="getData" finished-at="2024-01-05T18:48:25 IST" duration-ms="15916" status="PASS">
+        <test-method signature="submitOrder(java.util.HashMap)[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:09 IST" name="submitOrder" data-provider="getData" finished-at="2024-01-05T18:48:25 IST" duration-ms="15916" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -110,23 +110,23 @@ at java.base/java.lang.Thread.run(Thread.java:833)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- submitOrder -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:dhruvakumar.tests.SubmitOrderTest@4ed5eb72]" started-at="2024-01-05T18:48:25 IST" name="tearDown" finished-at="2024-01-05T18:48:26 IST" duration-ms="310" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:25 IST" name="tearDown" finished-at="2024-01-05T18:48:26 IST" duration-ms="310" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="lanuchApplication()[pri:0, instance:dhruvakumar.tests.SubmitOrderTest@4ed5eb72]" started-at="2024-01-05T18:48:26 IST" name="lanuchApplication" finished-at="2024-01-05T18:48:30 IST" duration-ms="4016" status="PASS">
+        <test-method is-config="true" signature="lanuchApplication()[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:26 IST" name="lanuchApplication" finished-at="2024-01-05T18:48:30 IST" duration-ms="4016" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- lanuchApplication -->
-        <test-method signature="OrderHistoryTest()[pri:0, instance:dhruvakumar.tests.SubmitOrderTest@4ed5eb72]" started-at="2024-01-05T18:48:30 IST" name="OrderHistoryTest" finished-at="2024-01-05T18:48:31 IST" depends-on-methods="dhruvakumar.tests.SubmitOrderTest.submitOrder" duration-ms="1621" status="PASS">
+        <test-method signature="OrderHistoryTest()[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:30 IST" name="OrderHistoryTest" finished-at="2024-01-05T18:48:31 IST" depends-on-methods="dhruvakumar.tests.TicketModule.submitOrder" duration-ms="1621" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- OrderHistoryTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:dhruvakumar.tests.SubmitOrderTest@4ed5eb72]" started-at="2024-01-05T18:48:31 IST" name="tearDown" finished-at="2024-01-05T18:48:31 IST" duration-ms="203" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:31 IST" name="tearDown" finished-at="2024-01-05T18:48:31 IST" duration-ms="203" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- dhruvakumar.tests.SubmitOrderTest -->
+      </class> <!-- dhruvakumar.tests.TicketModule -->
     </test> <!-- Submit Order Test -->
   </suite> <!-- E-Commerce App -->
 </testng-results>

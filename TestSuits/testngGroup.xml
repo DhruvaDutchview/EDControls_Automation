@@ -8,7 +8,7 @@
 	</groups>
 	<test thread-count="5" name="Submit Order Test">
 		<classes>
-			<class name="dhruvakumar.tests.SubmitOrderTest" />
+			<class name="dhruvakumar.tests.TicketModule" />
 		</classes>
 	</test> <!--
 	Test -->
