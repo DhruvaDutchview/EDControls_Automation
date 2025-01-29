@@ -86,6 +86,6 @@ public class BaseTest {
 	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
 		System.out.println("Test is done");
-		driver.quit();
+	//	driver.quit();
 	}
 }

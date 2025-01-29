@@ -3,6 +3,7 @@ package dhruvakumar.tests;
 import java.time.Duration;
 import java.util.List;
 
+import dhruvakumar.pageobjects.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +15,11 @@ import org.testng.Assert;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class StandAloneClass {
+public class StandAloneClass extends BaseTest {
+
+    public StandAloneClass(WebDriver driver) {
+        super(driver);
+    }
 
     public static void main(String[] args) throws InterruptedException {
         // Set up WebDriver
