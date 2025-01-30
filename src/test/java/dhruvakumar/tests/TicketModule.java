@@ -23,14 +23,14 @@ public class TicketModule extends BaseTest {
 		ReusableFunction.waitForWebElementAppear(ticketElement);
 		Thread.sleep(3000);
         String array[] = ReusableFunction.trimmingText(ticketElement);
-		String currentTicketCount = array[1];
-		System.err.println(currentTicketCount);
+		String currentTicketCount = array[4];
+		System.out.println(currentTicketCount);
 		Thread.sleep(2000);
 		List<WebElement> ticketsList = driver.findElements(By.xpath("//div[@id='ticket-list'] //div[@class='ticket-item'] //h4"));
 		for (WebElement tickets : ticketsList)
 		{
 			String ticketName = tickets.getText();
-		    if (ticketName.contains("Test 102"))
+		    if (ticketName.contains("Test him"))
 			{
 				System.out.println("Ticket Name: " +ticketName);
 				tickets.click();

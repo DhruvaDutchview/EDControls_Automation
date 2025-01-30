@@ -66,13 +66,11 @@ public class BaseTest {
 	}
 
 	public String getScreenshot(String testCaseName, WebDriver driver) throws Exception {
-
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File source = ts.getScreenshotAs(OutputType.FILE);
-		File file = new File(System.getProperty("user.dir") + "//reports//" + testCaseName + ".png");
-		FileUtils.copyFile(source, file);
-		return System.getProperty("user.dir") + "//reports//" + testCaseName + ".png";
-
+		String destinationPath = System.getProperty("user.dir") + "//reports//" + testCaseName + ".png";
+		FileUtils.copyFile(source, new File(destinationPath));
+		return destinationPath;
 	}
 
 	@BeforeMethod(alwaysRun = true)

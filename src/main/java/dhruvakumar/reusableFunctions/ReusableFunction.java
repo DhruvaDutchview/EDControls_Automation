@@ -4,10 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Properties;
+import java.util.*;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -106,19 +103,22 @@ public class ReusableFunction extends BaseTest {
 	public static void navigateToProject () throws Exception {
 		JsonNode jsonNode = readJsonFile ();
 		String projectName = jsonNode.get(3).get("projectName").asText();
-		System.out.println("Login is Successfully");
 		WebElement projectSearch = driver.findElement(By.xpath("//input[@id='search']"));
 		ReusableFunction.waitForWebElementAppear(projectSearch);
 		projectSearch.sendKeys(projectName);
 		projectSearch.sendKeys(Keys.ENTER);
 		Thread.sleep(3000);
-		WebElement projectElement = driver.findElement(By.xpath("//p[@class='name']"));
-		String projectText = projectElement.getText();
-		System.out.println(projectText);
-		projectElement.click();
-		if (projectText.equalsIgnoreCase("Smart City - Bengaluru"))
+		List<WebElement> projectsList = driver.findElements(By.xpath("//p[@class='name']"));
+		for (WebElement  project : projectsList)
 		{
-			System.err.println("we are inside "+ projectText+" successfully");
+			String projectText = project.getText();
+			if (projectText.equalsIgnoreCase(projectName))
+			{
+				System.out.println(projectText);
+				project.click();
+				System.err.println("we are inside "+ projectName+" successfully");
+			}
 		}
+
 	}
 }
