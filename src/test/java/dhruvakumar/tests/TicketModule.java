@@ -37,6 +37,10 @@ public class TicketModule extends BaseTest {
 				break;
 			}
 		}
+	   WebElement ticketDescription = driver.findElement(By.xpath("//div[@id='td-description']"));
+	   ReusableFunction.waitForWebElementAppear(ticketDescription);
+	   ticketDescription.click();
+       ticketDescription.findElement(By.xpath("//div[@dir='ltr']//p")).sendKeys("Automation description");
 	}
 }
 
