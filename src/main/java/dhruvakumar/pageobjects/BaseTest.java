@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.time.Duration;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import dhruvakumar.Resources.DataReader;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
@@ -21,11 +22,10 @@ import org.testng.annotations.BeforeMethod;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-import static dhruvakumar.reusableFunctions.ReusableFunction.readJsonFile;
-
 public class BaseTest {
-	public WebDriver driver;
+	public static WebDriver driver;
 	public LoginPage loginPage;
+	DataReader dataReader = new DataReader(driver);
 
 	public BaseTest(WebDriver driver)
 	{
@@ -35,16 +35,13 @@ public class BaseTest {
 
 	//initialization the driver
 	public WebDriver initializeDriver() throws IOException {
-		//Map<String, String> data = ReusableFunction.readPropertiesFile();
-		JsonNode jsonNode =	readJsonFile();
+		//Map<String, String> data = dataReader.readPropertiesFile();
+		JsonNode jsonNode =	dataReader.readJsonFile();
 		String browserName = jsonNode.get(0).get("browserName").asText();
-      //  String browserName = data.get("browserName");
+
 		if (browserName.contains("chrome")) {
 			ChromeOptions options = new ChromeOptions();
 			WebDriverManager.chromedriver().setup();
-		/*	if (browserName.contains("headless")) {
-				options.addArguments("headless");
-			}*/
 			driver = new ChromeDriver(options);
 			driver.manage().window().setSize(new Dimension(1440, 900));
 

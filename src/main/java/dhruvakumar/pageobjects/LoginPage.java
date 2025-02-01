@@ -1,6 +1,7 @@
 package dhruvakumar.pageobjects;
 
 
+import dhruvakumar.Resources.DataReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,7 +13,9 @@ import dhruvakumar.reusableFunctions.ReusableFunction;
 
 public class LoginPage extends ReusableFunction  {
 
-	WebDriver driver;
+	static WebDriver driver;
+	static DataReader dataReader = new DataReader(driver);
+
 	public LoginPage(WebDriver driver) {
 		super(driver);
 		this.driver=driver;
@@ -22,11 +25,11 @@ public class LoginPage extends ReusableFunction  {
 	public void goTo()
 	{
 		//calling json file and getting values
-	    //JsonNode jsonNode = readJsonFile();
+	    //JsonNode jsonNode = dataReader.readJsonFile();
 	    //String url = jsonNode.get(1).get("url").asText();
 
 		//calling Properties file and getting values
-		Map<String, String> data= readPropertiesFile();
+		Map<String, String> data= dataReader.readPropertiesFile();
 		String url = data.get("url");
 		driver.get(url);
 	}
@@ -43,11 +46,11 @@ public class LoginPage extends ReusableFunction  {
 	{
 		goTo();
 
-		/*JsonNode jsonNode = readJsonFile();
+		/*JsonNode jsonNode = dataReader.readJsonFile();
 		String userName = jsonNode.get(0).get("email").asText();
 		String password = jsonNode.get(0).get("password").asText();*/
 
-		Map<String, String> data= readPropertiesFile();
+		Map<String, String> data= dataReader.readPropertiesFile();
 		String userName = data.get("email");
 		String password = data.get("password");
 
