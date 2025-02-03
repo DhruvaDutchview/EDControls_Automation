@@ -79,7 +79,7 @@ public class TicketModule extends BaseTest {
 		String toastMessage = ReusableFunction.checkingToastMessage();
 		System.err.println(toastMessage);
 		Thread.sleep(2000);
-		DataReader.newTicketJSON();
+	//	DataReader.newTicketJSON();
 
 	}
 	/*@Test

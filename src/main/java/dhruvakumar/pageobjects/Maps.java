@@ -37,8 +37,9 @@ public class Maps extends BaseTest {
                         System.out.println(mapsText);
                         maps.findElement(By.xpath("//figure[@class='map-thumbImage']")).click();
                     }
-                break;
+                    break;
                 }
+                break;
             }
 
         }

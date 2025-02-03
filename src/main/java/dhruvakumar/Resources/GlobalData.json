@@ -3,8 +3,8 @@
   "browserName" : "chrome"
  },
 {
- "email" : "savanth@mailinator.com",
- "password" : "savanth12345"
+ "email" : "sujith@mailinator.com",
+ "password" : "123456789012"
 },
  {
   "url" : "https://dev.edcontrols.com/#/auth?view=login"
