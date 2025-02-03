@@ -1,6 +1,7 @@
 package dhruvakumar.TestComponenets;
 
-import dhruvakumar.pageobjects.BaseTest;
+import dhruvakumar.PageObjects.BaseTest;
+import dhruvakumar.ReusableFunctions.ReusableMethods;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -52,7 +53,7 @@ public class Listeners extends BaseTest implements ITestListener {
 		}
 
 		try {
-			filPath = getScreenshot(result.getMethod().getMethodName(), driver);
+			filPath = ReusableMethods.getScreenshot(result.getMethod().getMethodName(), driver);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

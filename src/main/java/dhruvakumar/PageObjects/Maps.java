@@ -1,6 +1,6 @@
-package dhruvakumar.pageobjects;
+package dhruvakumar.PageObjects;
 
-import dhruvakumar.reusableFunctions.ReusableFunction;
+import dhruvakumar.ReusableFunctions.ReusableMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +16,7 @@ public class Maps extends BaseTest {
     public static void navigateToMap() throws Exception
     {
         WebElement ticketLeftPanel = driver.findElement(By.xpath("//div[@class='ticket-filters']"));
-        ReusableFunction.waitForWebElementAppear(ticketLeftPanel);
+        ReusableMethods.waitForWebElementAppear(ticketLeftPanel);
         List<WebElement> mapGroupsList = ticketLeftPanel.findElements(By.xpath("//div[contains(@class,'MuiPaper-root MuiAccordion-root filter-inner-accordian')]"));
         //System.out.println(mapGroupsList.size());
         Thread.sleep(2000);

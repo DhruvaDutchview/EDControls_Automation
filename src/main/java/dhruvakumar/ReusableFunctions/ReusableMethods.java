@@ -1,22 +1,23 @@
-package dhruvakumar.reusableFunctions;
+package dhruvakumar.ReusableFunctions;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.*;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import dhruvakumar.Resources.DataReader;
-import dhruvakumar.pageobjects.BaseTest;
+import dhruvakumar.PageObjects.BaseTest;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ReusableFunction extends BaseTest {
+public class ReusableMethods extends BaseTest {
 
 	static WebDriver driver;
 	static DataReader dataReader = new DataReader(driver);
 
-	public ReusableFunction(WebDriver driver) 
+	public ReusableMethods(WebDriver driver)
 	{
 		super(driver);
 		this.driver=driver;
@@ -29,6 +30,11 @@ public class ReusableFunction extends BaseTest {
 	 WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(5));
 	 wait.until(ExpectedConditions.visibilityOfElementLocated(findBy));
 	
+	}
+
+	public static WebElement waitForElementToBeVisible(By locator) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Adjust timeout as needed
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
 	// Waiting for web element to visible/appear
@@ -49,7 +55,7 @@ public class ReusableFunction extends BaseTest {
 
 	public static String checkingToastMessage()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));
 		// wait.until(ExpectedConditions.elementToBeClickable(ele));
 	/*	FluentWait<WebDriver> wait = new FluentWait<>(driver)
 				.withTimeout(Duration.ofSeconds(20)) // Maximum wait time
@@ -84,11 +90,19 @@ public class ReusableFunction extends BaseTest {
 		return array;
 	}
 
+   // Taking screenshot
+	public static String getScreenshot(String testCaseName, WebDriver driver) throws Exception {
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File source = ts.getScreenshotAs(OutputType.FILE);
+		String destinationPath = System.getProperty("user.dir") + "//reports//" + testCaseName + ".png";
+		FileUtils.copyFile(source, new File(destinationPath));
+		return destinationPath;
+	}
+
 	public static void navigateToProject () throws Exception {
-		JsonNode jsonNode = dataReader.readJsonFile();
-		String projectName = jsonNode.get(3).get("projectName").asText();
+		String projectName = dataReader.readJsonFile("projectName");
 		WebElement projectSearch = driver.findElement(By.xpath("//input[@id='search']"));
-		ReusableFunction.waitForWebElementAppear(projectSearch);
+		ReusableMethods.waitForWebElementAppear(projectSearch);
 		projectSearch.sendKeys(projectName);
 		projectSearch.sendKeys(Keys.ENTER);
 		Thread.sleep(3000);
