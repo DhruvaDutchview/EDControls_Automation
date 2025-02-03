@@ -1,6 +1,7 @@
 package dhruvakumar.TestComponenets;
 
-import dhruvakumar.pageobjects.BaseTest;
+import dhruvakumar.PageObjects.BaseTest;
+import dhruvakumar.ReusableFunctions.ReusableMethods;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -18,6 +19,9 @@ public class Listeners extends BaseTest implements ITestListener {
 	ExtentTest test;
 	ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
 
+	public Listeners() {
+		super(null); // Temporary, driver will be initialized in BaseTest
+	}
 	public Listeners(WebDriver driver) {
 		super(driver);
 	}
@@ -31,8 +35,7 @@ public class Listeners extends BaseTest implements ITestListener {
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
-		// TODO Auto-generated method stub
-		extentTest.get().log(Status.PASS, "Test Passed");		
+		extentTest.get().log(Status.PASS, "Test Passed Successfully");
 	
 	}
 
@@ -48,17 +51,17 @@ public class Listeners extends BaseTest implements ITestListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		try {
-			filPath = getScreenshot(result.getMethod().getMethodName(), driver);
+			filPath = ReusableMethods.getScreenshot(result.getMethod().getMethodName(), driver);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		extentTest.get().addScreenCaptureFromPath(filPath, result.getMethod().getMethodName());
 		//Screenshot
-		
-		
+
+
 	}
 
 	@Override

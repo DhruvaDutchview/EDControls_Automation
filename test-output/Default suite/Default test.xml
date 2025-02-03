@@ -3,7 +3,7 @@
 <testsuite ignored="1" hostname="DESKTOP-FVFDV2E" failures="1" tests="1" name="Default test" time="0.051" errors="0" timestamp="2024-01-05T17:01:26 IST">
   <testcase classname="dhruvakumar.tests.TicketModule" name="submitOrder" time="0.0">
     <failure type="java.lang.RuntimeException" message="java.lang.ClassCastException: class org.json.simple.JSONArray cannot be cast to class org.json.simple.JSONObject (org.json.simple.JSONArray and org.json.simple.JSONObject are in unnamed module of loader &amp;apos;app&amp;apos;)">
-      <![CDATA[java.lang.RuntimeException: java.lang.ClassCastException: class org.json.simple.JSONArray cannot be cast to class org.json.simple.JSONObject (org.json.simple.JSONArray and org.json.simple.JSONObject are in unnamed module of loader 'app')
+        <![CDATA[java.lang.RuntimeException: java.lang.ClassCastException: class org.json.simple.JSONArray cannot be cast to class org.json.simple.JSONObject (org.json.simple.JSONArray and org.json.simple.JSONObject are in unnamed module of loader 'app')
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:57)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:157)
 at org.testng.internal.Parameters.handleParameters(Parameters.java:803)
@@ -31,7 +31,7 @@ at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 Caused by: java.lang.ClassCastException: class org.json.simple.JSONArray cannot be cast to class org.json.simple.JSONObject (org.json.simple.JSONArray and org.json.simple.JSONObject are in unnamed module of loader 'app')
-at dhruvakumar.pageobjects.BaseTest.getJsonDataToMap(BaseTest.java:76)
+at dhruvakumar.PageObjects.BaseTest.getJsonDataToMap(BaseTest.java:76)
 at dhruvakumar.tests.TicketModule.getData(SubmitOrderTest.java:83)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
