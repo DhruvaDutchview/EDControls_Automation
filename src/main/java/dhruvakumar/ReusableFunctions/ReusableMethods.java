@@ -53,6 +53,21 @@ public class ReusableMethods extends BaseTest {
 		return element;
 	}
 
+	public static WebElement waitForWebElementToClickable(WebElement ele)
+	{
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(ele));
+		// wait.until(ExpectedConditions.elementToBeClickable(ele));
+	/*	FluentWait<WebDriver> wait = new FluentWait<>(driver)
+				.withTimeout(Duration.ofSeconds(20)) // Maximum wait time
+				.pollingEvery(Duration.ofSeconds(5)) // Polling interval
+				.ignoring(NoSuchElementException.class); // Ignore NoSuchElementException
+
+		WebElement element = wait.until(ExpectedConditions.visibilityOf(ele));
+     */
+		return element;
+	}
+
 	public static String checkingToastMessage()
 	{
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));

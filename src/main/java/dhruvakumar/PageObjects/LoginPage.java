@@ -26,10 +26,11 @@ public class LoginPage extends ReusableMethods {
 		//calling json file and getting values
 	    //JsonNode jsonNode = dataReader.readJsonFile();
 	    //String url = jsonNode.get(1).get("url").asText();
+		String url = dataReader.readJsonFile("url");
 
-		//calling Properties file and getting values
+		/*//calling Properties file and getting values
 		Map<String, String> data= dataReader.readPropertiesFile();
-		String url = data.get("url");
+		String url = data.get("url");*/
 		driver.get(url);
 	}
 
