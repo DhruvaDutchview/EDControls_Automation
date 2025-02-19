@@ -1,4 +1,4 @@
-package dhruvakumar.PageObjects;
+package dhruvakumar.BaseClasses;
 
 import org.openqa.selenium.support.events.WebDriverListener;
 import org.openqa.selenium.*;
@@ -44,9 +44,7 @@ public class HighlightListener extends BaseTest implements WebDriverListener  {
     private boolean shouldExcludeHighlight(WebElement element) {
         String classAttribute = element.getAttribute("id");
         if (classAttribute != null) {
-            if (classAttribute.contains("map-container") || classAttribute.contains("leaflet-container")) {
-                return true;
-            }
+            return classAttribute.contains("map-container") || classAttribute.contains("leaflet-container");
         }
         return false;
     }

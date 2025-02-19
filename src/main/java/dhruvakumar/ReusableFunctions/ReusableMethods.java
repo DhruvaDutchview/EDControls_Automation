@@ -5,7 +5,7 @@ import java.time.Duration;
 import java.util.*;
 
 import dhruvakumar.Resources.DataReader;
-import dhruvakumar.PageObjects.BaseTest;
+import dhruvakumar.BaseClasses.BaseTest;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
@@ -20,7 +20,7 @@ public class ReusableMethods extends BaseTest {
 	public ReusableMethods(WebDriver driver)
 	{
 		super(driver);
-		this.driver=driver;
+		ReusableMethods.driver =driver;
 		PageFactory.initElements(driver, this);
 	}
 
@@ -53,19 +53,10 @@ public class ReusableMethods extends BaseTest {
 		return element;
 	}
 
-	public static WebElement waitForWebElementToClickable(WebElement ele)
+	public static void waitForWebElementToClickable(WebElement ele)
 	{
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(ele));
-		// wait.until(ExpectedConditions.elementToBeClickable(ele));
-	/*	FluentWait<WebDriver> wait = new FluentWait<>(driver)
-				.withTimeout(Duration.ofSeconds(20)) // Maximum wait time
-				.pollingEvery(Duration.ofSeconds(5)) // Polling interval
-				.ignoring(NoSuchElementException.class); // Ignore NoSuchElementException
-
-		WebElement element = wait.until(ExpectedConditions.visibilityOf(ele));
-     */
-		return element;
+		wait.until(ExpectedConditions.elementToBeClickable(ele));
 	}
 
 	public static String checkingToastMessage()
@@ -101,7 +92,7 @@ public class ReusableMethods extends BaseTest {
 	public static String[] trimmingText (WebElement element){
 		String elementText = element.getText();
 		elementText = elementText.replace("\n", " "); // Replace \n with a space, or "" if unnecessary
-		String array[] = elementText.split(" ");
+		String[] array = elementText.split(" ");
 		return array;
 	}
 
@@ -114,24 +105,5 @@ public class ReusableMethods extends BaseTest {
 		return destinationPath;
 	}
 
-	public static void navigateToProject () throws Exception {
-		String projectName = dataReader.readJsonFile("projectName");
-		WebElement projectSearch = driver.findElement(By.xpath("//input[@id='search']"));
-		ReusableMethods.waitForWebElementAppear(projectSearch);
-		projectSearch.sendKeys(projectName);
-		projectSearch.sendKeys(Keys.ENTER);
-		Thread.sleep(3000);
-		List<WebElement> projectsList = driver.findElements(By.xpath("//p[@class='name']"));
-		for (WebElement  project : projectsList)
-		{
-			String projectText = project.getText();
-			if (projectText.equalsIgnoreCase(projectName))
-			{
-				System.out.println(projectText);
-				project.click();
-				System.err.println("we are inside "+ projectName+" successfully");
-			}
-		}
 
-	}
 }

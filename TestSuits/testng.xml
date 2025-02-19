@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite thread-count="7" name="Tickets Module">
 	<listeners>
-		<listener class-name="dhruvakumar.TestComponenets.Listeners"></listener>
+		<listener class-name="dhruvakumar.testComponents.Listeners"></listener>
 	</listeners>
 	<test thread-count="5" name="Ticket Test">
 		<classes>

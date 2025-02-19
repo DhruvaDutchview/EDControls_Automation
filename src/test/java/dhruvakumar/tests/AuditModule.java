@@ -1,9 +1,12 @@
 package dhruvakumar.tests;
 
-import dhruvakumar.PageObjects.BaseTest;
+import dhruvakumar.BaseClasses.BaseTest;
+import dhruvakumar.EdFragments.AuditContainer;
+import dhruvakumar.EdFragments.ProjectContainer;
 import dhruvakumar.ReusableFunctions.ReusableMethods;
-import dhruvakumar.ReusableFunctions.TemplateContainer;
+import dhruvakumar.EdFragments.TemplateContainer;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
@@ -21,17 +24,36 @@ public class AuditModule extends BaseTest {
 
     @Test
     public void createAreaAudit() throws Exception {
-        ReusableMethods.navigateToProject();
-        Thread.sleep(2000);
+        ProjectContainer.navigateToProject();
+        Thread.sleep(1000);
         WebElement auditHeader = driver.findElement(By.id("ed-audits"));
         ReusableMethods.waitForWebElementToClickable(auditHeader);
         auditHeader.click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         TemplateContainer.selectAreaAuditTemplate();
-        Thread.sleep(2000);
+        AuditContainer.createAuditInitialization("area");
 
+        // Add Responsible and informed
+        WebElement addResponsibele =  driver.findElement(By.id("ad-responsible"));
+        addResponsibele.sendKeys("responsibledev@mailinator.com");
+        addResponsibele.sendKeys(Keys.ENTER);
+        Thread.sleep(2000);
+        driver.findElement(By.id("ad-save-edit")).click();
+        Thread.sleep(1000);
     }
 
+
+  @Test
+    public void CreateObjectAudit() throws Exception {
+      ProjectContainer.navigateToProject();
+      Thread.sleep(2000);
+      WebElement auditHeader = driver.findElement(By.id("ed-audits"));
+      ReusableMethods.waitForWebElementToClickable(auditHeader);
+      auditHeader.click();
+      TemplateContainer.selectObjectAuditTemplate();
+      Thread.sleep(1000);
+      AuditContainer.createAuditInitialization("object");
+  }
 
 
 }

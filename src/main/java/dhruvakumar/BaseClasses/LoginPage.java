@@ -1,4 +1,4 @@
-package dhruvakumar.PageObjects;
+package dhruvakumar.BaseClasses;
 
 
 import dhruvakumar.Resources.DataReader;
@@ -8,8 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.Map;
-
 public class LoginPage extends ReusableMethods {
 
 	static WebDriver driver;
@@ -17,7 +15,7 @@ public class LoginPage extends ReusableMethods {
 
 	public LoginPage(WebDriver driver) {
 		super(driver);
-		this.driver=driver;
+		LoginPage.driver =driver;
 		PageFactory.initElements(driver, this);
 	}
 
@@ -26,7 +24,7 @@ public class LoginPage extends ReusableMethods {
 		//calling json file and getting values
 	    //JsonNode jsonNode = dataReader.readJsonFile();
 	    //String url = jsonNode.get(1).get("url").asText();
-		String url = dataReader.readJsonFile("url");
+		String url = DataReader.readJsonFile("url");
 
 		/*//calling Properties file and getting values
 		Map<String, String> data= dataReader.readPropertiesFile();
@@ -46,8 +44,8 @@ public class LoginPage extends ReusableMethods {
 	{
 		goTo();
 
-		String userName = dataReader.readJsonFile("email");
-		String password = dataReader.readJsonFile("password");
+		String userName = DataReader.readJsonFile("email");
+		String password = DataReader.readJsonFile("password");
 
 		/*Map<String, String> data= dataReader.readPropertiesFile();
 		String userName = data.get("email");

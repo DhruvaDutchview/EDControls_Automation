@@ -1,14 +1,10 @@
-package dhruvakumar.PageObjects;
+package dhruvakumar.BaseClasses;
 
-import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 
 import dhruvakumar.Resources.DataReader;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -16,8 +12,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.decorators.WebDriverDecorator;
-import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -29,14 +23,14 @@ public class BaseTest {
     DataReader dataReader = new DataReader(driver);
 
     public BaseTest(WebDriver driver) {
-        this.driver = driver;
+        BaseTest.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
     //initialization the driver
     public WebDriver initializeDriver() throws IOException {
         //Map<String, String> data = dataReader.readPropertiesFile();
-        String browserName = dataReader.readJsonFile("browserName");
+        String browserName = DataReader.readJsonFile("browserName");
         if (browserName.contains("chrome")) {
             ChromeOptions options = new ChromeOptions();
             WebDriverManager.chromedriver().setup();
@@ -54,16 +48,28 @@ public class BaseTest {
         } else {
             System.out.println("Browser is not initialized");
         }
+
+        // Clear cache and cookies after launching the browser
+        clearCacheAndCookies();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         // Wrap the driver with the highlighting listener
-     //   driver = new EventFiringDecorator<>(new HighlightListener(driver)).decorate(driver);
-
+        //  driver = new EventFiringDecorator<>(new HighlightListener(driver)).decorate(driver);
 
         return driver;
     }
 
+    public static void clearCacheAndCookies() {
+        try {
+            driver.manage().deleteAllCookies(); // Deletes all cookies
+            driver.get("chrome://settings/clearBrowserData"); // Opens cache clearing settings
+
+            System.out.println("Cleared Cache and Cookies successfully.");
+        } catch (Exception e) {
+            System.out.println("Failed to clear cache and cookies: " + e.getMessage());
+        }
+    }
 
     @BeforeMethod(alwaysRun = true)
     public void launchApplication() throws IOException {
@@ -73,9 +79,11 @@ public class BaseTest {
     }
 
     @AfterMethod(alwaysRun = true)
-    public void tearDown() {
+    public void tearDown() throws Exception {
         System.out.println("Test is done");
-    //    driver.quit();
+        Thread.sleep(1000);
+      //  clearCacheAndCookies();
+     //   driver.close();
     }
 
 }

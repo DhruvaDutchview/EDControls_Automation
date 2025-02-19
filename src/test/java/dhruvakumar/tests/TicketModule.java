@@ -1,12 +1,12 @@
 package dhruvakumar.tests;
 
-import dhruvakumar.PageObjects.BaseTest;
-import dhruvakumar.PageObjects.Maps;
+import dhruvakumar.BaseClasses.BaseTest;
+import dhruvakumar.EdFragments.MapContainer;
+import dhruvakumar.EdFragments.ProjectContainer;
 import dhruvakumar.ReusableFunctions.ReusableMethods;
 import org.openqa.selenium.*;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
 import java.util.List;
 
 public class TicketModule extends BaseTest {
@@ -20,23 +20,25 @@ public class TicketModule extends BaseTest {
 
     @Test
     public void createTicket() throws Exception {
-        ReusableMethods.navigateToProject();
-        Maps.navigateToMap();
+        ProjectContainer.navigateToProject();
+        MapContainer.navigateToMap();
         WebElement mapContainer = driver.findElement(By.xpath("//div[@id='map-container']"));
+
         WebElement map = ReusableMethods.waitForWebElementAppear(mapContainer);
-        if (map.isDisplayed() == true) {
+        if (map.isDisplayed()) {
             WebElement clickTicket = driver.findElement(By.xpath("//div[contains(@class,'leaflet-container')]"));
             clickTicket.click();
         } else {
-            System.out.println("map is not clicked");
+            System.err.println("map is not clicked");
         }
         Thread.sleep(1000);
+
         WebElement newTicketContainerDialog = ReusableMethods.waitForElementToBeVisible(By.xpath("//div[@class='ticket-new']"));
         WebElement newTicketContainer = ReusableMethods.waitForWebElementAppear(newTicketContainerDialog);
-        if (newTicketContainer.isDisplayed() == true) {
+        if (newTicketContainer.isDisplayed()) {
             System.out.println("New Ticket container is displayed");
         } else {
-            System.out.println("New Ticket container is not displayed");
+            System.err.println("New Ticket container is not displayed");
         }
         Thread.sleep(1000);
         driver.findElement(By.id("tn-title")).sendKeys("Automation Ticket");
@@ -55,13 +57,13 @@ public class TicketModule extends BaseTest {
         Thread.sleep(1000);
         WebElement calenderContainer = driver.findElement(By.xpath("//div[@class='react-calendar']"));
         WebElement calender = ReusableMethods.waitForWebElementAppear(calenderContainer);
-        if (calender.isDisplayed() == true) {
+        if (calender.isDisplayed()) {
             WebElement daysContainer = driver.findElement(By.xpath("//div[@class='react-calendar'] //div[@class='react-calendar__month-view__days']"));
             List<WebElement> days = daysContainer.findElements(By.xpath("//button[contains(@class, 'react-calendar__month-view__days__day')]"));
             for (WebElement day : days) {
                 if (day.getDomAttribute("disabled") == null) {
                     String dayName = day.getText();
-                    if (dayName.contains("12")) {
+                    if (dayName.contains("25")) {
                         day.click();
                         break;
                     }
@@ -70,7 +72,7 @@ public class TicketModule extends BaseTest {
         }
 
         Thread.sleep(2000);
-        // Enable/Disable the Mandatory proof option
+        // Enable/Disable the Mandatory proof toggle
         WebElement proofMandatoryElement = driver.findElement(By.xpath("//label[contains(@class,'ticket_proof')]"));
         WebElement proofMandatory = proofMandatoryElement.findElement(By.xpath("//span[contains(@class,'MuiSwitch-switchBase')]"));
         String toggleText = proofMandatory.getDomAttribute("class");

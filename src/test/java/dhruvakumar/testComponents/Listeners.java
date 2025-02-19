@@ -1,6 +1,6 @@
-package dhruvakumar.TestComponenets;
+package dhruvakumar.testComponents;
 
-import dhruvakumar.PageObjects.BaseTest;
+import dhruvakumar.BaseClasses.BaseTest;
 import dhruvakumar.ReusableFunctions.ReusableMethods;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
