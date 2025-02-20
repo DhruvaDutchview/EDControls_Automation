@@ -1,8 +1,8 @@
-package dhruvakumar.EdFragments;
+package EdControlsMain.EdFragments;
 
-import dhruvakumar.BaseClasses.BaseTest;
-import dhruvakumar.Resources.DataReader;
-import dhruvakumar.ReusableFunctions.ReusableMethods;
+import EdControlsMain.BaseClasses.BaseTest;
+import EdControlsMain.Resources.DataReader;
+import EdControlsMain.ReusableFunctions.ReusableMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -22,7 +22,7 @@ public class ProjectContainer extends BaseTest {
         ReusableMethods.waitForWebElementAppear(projectSearch);
         projectSearch.sendKeys(projectName);
         projectSearch.sendKeys(Keys.ENTER);
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         List<WebElement> projectsList = driver.findElements(By.xpath("//p[@class='name']"));
         for (WebElement  project : projectsList)
         {

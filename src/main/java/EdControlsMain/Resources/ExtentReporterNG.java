@@ -1,4 +1,4 @@
-package dhruvakumar.Resources;
+package EdControlsMain.Resources;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;

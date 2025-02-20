@@ -1,7 +1,7 @@
-package dhruvakumar.EdFragments;
+package EdControlsMain.EdFragments;
 
-import dhruvakumar.BaseClasses.BaseTest;
-import dhruvakumar.ReusableFunctions.ReusableMethods;
+import EdControlsMain.BaseClasses.BaseTest;
+import EdControlsMain.ReusableFunctions.ReusableMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,13 +26,13 @@ public class AuditContainer extends BaseTest {
         {
             if (auditCount.contains("0"))
             {
-                createAuditFromSkeleton();
+                createAuditFromSkeleton(auditType);
                 Thread.sleep(2000);
                 WebElement checkCreateAuditInitialized = driver.findElement(By.xpath("//div[@class='audit-one']"));
                 ReusableMethods.waitForWebElementAppear(checkCreateAuditInitialized);
             }
             else {
-                CreateAuditFromList();
+                CreateAuditFromList(auditType);
                 Thread.sleep(2000);
                 WebElement checkCreateAuditInitialized = driver.findElement(By.xpath("//div[@class='audit-one']"));
                 ReusableMethods.waitForWebElementAppear(checkCreateAuditInitialized);
@@ -42,16 +42,16 @@ public class AuditContainer extends BaseTest {
             if (auditCount.contains("0"))
             {
                 Thread.sleep(2000);
-                createAuditFromSkeleton();
+                createAuditFromSkeleton(auditType);
                 Thread.sleep(2000);
-                WebElement checkCreateAuditInitialized = driver.findElement(By.xpath("//div[@class='audit-one']"));
-                ReusableMethods.waitForWebElementAppear(checkCreateAuditInitialized);
+             //   WebElement checkCreateAuditInitialized = driver.findElement(By.xpath("//div[@class='audit-one']"));
+              //  ReusableMethods.waitForWebElementAppear(checkCreateAuditInitialized);
             }
             else {
-                CreateAuditFromList();
+                CreateAuditFromList(auditType);
                 Thread.sleep(2000);
-                WebElement checkCreateAuditInitialized = driver.findElement(By.xpath("//div[@class='audit-one']"));
-                ReusableMethods.waitForWebElementAppear(checkCreateAuditInitialized);
+             //   WebElement checkCreateAuditInitialized = driver.findElement(By.xpath("//div[@class='audit-one']"));
+             //   ReusableMethods.waitForWebElementAppear(checkCreateAuditInitialized);
             }
         }
         else{
@@ -60,26 +60,38 @@ public class AuditContainer extends BaseTest {
 
     }
 
-    public static void createAuditFromSkeleton() throws Exception {
+    public static void createAuditFromSkeleton(String auditType) throws Exception {
             Thread.sleep(2000);
             WebElement startAuditButton = driver.findElement(By.id("start-audit"));
             ReusableMethods.waitForWebElementToClickable(startAuditButton);
             startAuditButton.click();
             Thread.sleep(1000);
-            WebElement createAuditButton = driver.findElement(By.xpath("//span[@class='btn-label' and text()='Create Single Audit']"));
-            createAuditButton.click();
-            Thread.sleep(1000);
+            if (auditType.contains("area")){
+                WebElement createAuditButton = driver.findElement(By.xpath("//span[@class='btn-label' and text()='Create Single Audit']"));
+                createAuditButton.click();
+                Thread.sleep(1000);
+            }
+            else{
+                System.out.println("Object audit does not support bowquote");
+            }
+
     }
 
-    public static void CreateAuditFromList() throws Exception {
+    public static void CreateAuditFromList(String auditType) throws Exception {
         Thread.sleep(2000);
         WebElement startAuditButton2 = driver.findElement(By.id("add-audit"));
         ReusableMethods.waitForWebElementAppear(startAuditButton2);
         startAuditButton2.click();
         Thread.sleep(1000);
-        WebElement createAuditButton = driver.findElement(By.xpath("//span[@class='btn-label' and text()='Create Single Audit']"));
-        createAuditButton.click();
-        Thread.sleep(1000);
+        if (auditType.contains("area"))
+        {
+            WebElement createAuditButton = driver.findElement(By.xpath("//span[@class='btn-label' and text()='Create Single Audit']"));
+            createAuditButton.click();
+            Thread.sleep(1000);
+        }
+        else{
+            System.out.println("Object audit does not support bowquote");
+        }
     }
 
 

@@ -1,11 +1,10 @@
-package dhruvakumar.ReusableFunctions;
+package EdControlsMain.ReusableFunctions;
 
 import java.io.File;
 import java.time.Duration;
-import java.util.*;
 
-import dhruvakumar.Resources.DataReader;
-import dhruvakumar.BaseClasses.BaseTest;
+import EdControlsMain.Resources.DataReader;
+import EdControlsMain.BaseClasses.BaseTest;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;

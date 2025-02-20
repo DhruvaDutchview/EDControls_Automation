@@ -1,6 +1,6 @@
-package dhruvakumar.ReusableFunctions;
+package EdControlsMain.ReusableFunctions;
 
-import dhruvakumar.BaseClasses.BaseTest;
+import EdControlsMain.BaseClasses.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,25 +13,25 @@ public class DateFragment extends BaseTest {
     public DateFragment(WebDriver driver) {
         super(driver);
     }
-    public void datePicker()
+    public static void datePicker(WebElement dueDateContainer)
     {
         // Get today's date and calculate the target date (7 days later)
         LocalDate today = LocalDate.now();
         LocalDate targetDate = today.plusDays(7);
         String expectedMonthYear = targetDate.format(DateTimeFormatter.ofPattern("MMMM yyyy"));
         String expectedDay = String.valueOf(targetDate.getDayOfMonth());
-
+        System.out.println("Expected date:"+expectedDay);
         // Iterate through months to reach the target month
         while (true) {
-            String displayedMonthYear = driver.findElement(By.className("month-year-class")).getText(); // Update locator
+            String displayedMonthYear =dueDateContainer.findElement(By.xpath(" //button[@class='react-calendar__navigation__label']")).getText(); // Update locator
             if (displayedMonthYear.equals(expectedMonthYear)) {
                 break;
             }
-            driver.findElement(By.className("next-month-button")).click(); // Update locator
+            driver.findElement(By.xpath("//button[contains(@class,'react-calendar__navigation__next-button')]")).click(); // Update locator
         }
 
         // Get all date elements
-        List<WebElement> dates = driver.findElements(By.className("day-class")); // Update locator
+        List<WebElement> dates = driver.findElements(By.xpath("//button[contains(@class, 'react-calendar__month-view__days__day')]")); // Update locator
 
         for (WebElement date : dates) {
             String day = date.getText();

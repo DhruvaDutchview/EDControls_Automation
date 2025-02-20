@@ -1,4 +1,4 @@
-package dhruvakumar.Resources;
+package EdControlsMain.Resources;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,7 +24,7 @@ public class DataReader {
     //Method to read JSON File
     public static String readJsonFile(String key) {
         try {
-            String filePath = System.getProperty("user.dir") + "/src/main/java/dhruvakumar/Resources/GlobalData.json";
+            String filePath = System.getProperty("user.dir") + "/src/main/java/EdControlsMain/Resources/GlobalData.json";
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode jsonArray = objectMapper.readTree(new File(filePath));
 
@@ -45,7 +45,7 @@ public class DataReader {
     public static Map<String, String> readPropertiesFile() {
         Map<String, String> propertiesMap = new HashMap<>();
         try {
-            String filePath = System.getProperty("user.dir") + "/src/main/java/dhruvakumar/Resources/GlobalData.properties";
+            String filePath = System.getProperty("user.dir") + "/src/main/java/EdControlsMain/Resources/GlobalData.properties";
             FileInputStream fileInput = new FileInputStream(filePath);
             Properties prop = new Properties();
             prop.load(fileInput);

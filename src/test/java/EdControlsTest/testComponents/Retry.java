@@ -1,4 +1,4 @@
-package dhruvakumar.testComponents;
+package EdControlsTest.testComponents;
 
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;

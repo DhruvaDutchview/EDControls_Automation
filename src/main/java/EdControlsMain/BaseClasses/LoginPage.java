@@ -1,8 +1,8 @@
-package dhruvakumar.BaseClasses;
+package EdControlsMain.BaseClasses;
 
 
-import dhruvakumar.Resources.DataReader;
-import dhruvakumar.ReusableFunctions.ReusableMethods;
+import EdControlsMain.Resources.DataReader;
+import EdControlsMain.ReusableFunctions.ReusableMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

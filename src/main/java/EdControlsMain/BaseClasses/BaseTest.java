@@ -1,9 +1,9 @@
-package dhruvakumar.BaseClasses;
+package EdControlsMain.BaseClasses;
 
 import java.io.IOException;
 import java.time.Duration;
 
-import dhruvakumar.Resources.DataReader;
+import EdControlsMain.Resources.DataReader;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -50,7 +50,7 @@ public class BaseTest {
         }
 
         // Clear cache and cookies after launching the browser
-        clearCacheAndCookies();
+        //clearCacheAndCookies();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
@@ -81,9 +81,9 @@ public class BaseTest {
     @AfterMethod(alwaysRun = true)
     public void tearDown() throws Exception {
         System.out.println("Test is done");
-        Thread.sleep(1000);
+        Thread.sleep(3000);
       //  clearCacheAndCookies();
-     //   driver.close();
+        //  driver.quit();
     }
 
 }

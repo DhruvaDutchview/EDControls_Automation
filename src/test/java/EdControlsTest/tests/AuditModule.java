@@ -1,15 +1,17 @@
-package dhruvakumar.tests;
+package EdControlsTest.tests;
 
-import dhruvakumar.BaseClasses.BaseTest;
-import dhruvakumar.EdFragments.AuditContainer;
-import dhruvakumar.EdFragments.ProjectContainer;
-import dhruvakumar.ReusableFunctions.ReusableMethods;
-import dhruvakumar.EdFragments.TemplateContainer;
+import EdControlsMain.BaseClasses.BaseTest;
+import EdControlsMain.EdFragments.AuditContainer;
+import EdControlsMain.EdFragments.ProjectContainer;
+import EdControlsMain.ReusableFunctions.ReusableMethods;
+import EdControlsMain.EdFragments.TemplateContainer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 
 public class AuditModule extends BaseTest {
@@ -25,7 +27,7 @@ public class AuditModule extends BaseTest {
     @Test
     public void createAreaAudit() throws Exception {
         ProjectContainer.navigateToProject();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         WebElement auditHeader = driver.findElement(By.id("ed-audits"));
         ReusableMethods.waitForWebElementToClickable(auditHeader);
         auditHeader.click();
@@ -53,6 +55,16 @@ public class AuditModule extends BaseTest {
       TemplateContainer.selectObjectAuditTemplate();
       Thread.sleep(1000);
       AuditContainer.createAuditInitialization("object");
+      WebElement ticketSearch = driver.findElement(By.cssSelector("input[placeholder='Search']"));
+      ReusableMethods.waitForWebElementAppear(ticketSearch);
+      ticketSearch.sendKeys("Automation Ticket");
+      WebElement ele = driver.findElement(By.xpath("//div[contains(@class,'auditTicket')] //div[@class='infinite-scroll-component ']"));
+      List<WebElement> ticketList = ele.findElements(By.xpath("/div[@class='ticket-item']"));
+      for (WebElement tickets : ticketList)
+      {
+          System.out.println(tickets.getText());
+      }
+
   }
 
 

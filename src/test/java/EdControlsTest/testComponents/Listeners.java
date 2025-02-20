@@ -1,7 +1,7 @@
-package dhruvakumar.testComponents;
+package EdControlsTest.testComponents;
 
-import dhruvakumar.BaseClasses.BaseTest;
-import dhruvakumar.ReusableFunctions.ReusableMethods;
+import EdControlsMain.BaseClasses.BaseTest;
+import EdControlsMain.ReusableFunctions.ReusableMethods;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -11,7 +11,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
-import dhruvakumar.Resources.ExtentReporterNG;
+import EdControlsMain.Resources.ExtentReporterNG;
 
 public class Listeners extends BaseTest implements ITestListener {
 

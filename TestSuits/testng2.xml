@@ -6,7 +6,7 @@
 	</listeners>
 	<test thread-count="5" name="Ticket Test">
 		<classes>
-			<class name="EdControlsTest.tests.TicketModule" />
+			<class name="EdControlsTest.tests.AuditModule" />
 		</classes>
 	</test>
 
