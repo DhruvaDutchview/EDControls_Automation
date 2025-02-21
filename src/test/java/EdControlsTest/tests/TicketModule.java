@@ -123,6 +123,7 @@ public class TicketModule extends BaseTest {
         dueDateElement.click();
         WebElement dateContainer = driver.findElement(By.xpath("//div[@class='react-calendar']"));
         ReusableMethods.waitForWebElementAppear(dateContainer);
+        Thread.sleep(2000);
         DateFragment.datePicker(dateContainer);
         Thread.sleep(2000);
         driver.findElement(By.id("td-save")).click();
