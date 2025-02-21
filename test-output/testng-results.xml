@@ -5,29 +5,29 @@
   <suite started-at="2024-01-05T18:47:54 IST" name="E-Commerce App" finished-at="2024-01-05T18:48:31 IST" duration-ms="37150">
     <groups>
       <group name="ErrorHandling">
-        <method signature="ErrorValidationTest.loginErrorValidation()[pri:0, instance:dhruvakumar.tests.ErrorValidationTest@3f270e0a]" name="loginErrorValidation" class="dhruvakumar.tests.ErrorValidationTest"/>
+        <method signature="ErrorValidationTest.loginErrorValidation()[pri:0, instance:EdControlsMain.tests.ErrorValidationTest@3f270e0a]" name="loginErrorValidation" class="EdControlsMain.tests.ErrorValidationTest"/>
       </group> <!-- ErrorHandling -->
     </groups>
     <test started-at="2024-01-05T18:47:54 IST" name="Error Validation Test" finished-at="2024-01-05T18:48:10 IST" duration-ms="15797">
-      <class name="dhruvakumar.tests.ErrorValidationTest">
-        <test-method is-config="true" signature="lanuchApplication()[pri:0, instance:dhruvakumar.tests.ErrorValidationTest@3f270e0a]" started-at="2024-01-05T18:47:55 IST" name="lanuchApplication" finished-at="2024-01-05T18:48:00 IST" duration-ms="5631" status="PASS">
+      <class name="EdControlsMain.tests.ErrorValidationTest">
+        <test-method is-config="true" signature="lanuchApplication()[pri:0, instance:EdControlsMain.tests.ErrorValidationTest@3f270e0a]" started-at="2024-01-05T18:47:55 IST" name="lanuchApplication" finished-at="2024-01-05T18:48:00 IST" duration-ms="5631" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- lanuchApplication -->
-        <test-method signature="loginErrorValidation()[pri:0, instance:dhruvakumar.tests.ErrorValidationTest@3f270e0a]" started-at="2024-01-05T18:48:00 IST" name="loginErrorValidation" finished-at="2024-01-05T18:48:01 IST" duration-ms="875" status="FAIL">
+        <test-method signature="loginErrorValidation()[pri:0, instance:EdControlsMain.tests.ErrorValidationTest@3f270e0a]" started-at="2024-01-05T18:48:00 IST" name="loginErrorValidation" finished-at="2024-01-05T18:48:01 IST" duration-ms="875" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[expected [Incorrect email or password.] but found [Incsorrect email or password.]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [Incorrect email or password.] but found [Incsorrect email or password.]
+                <![CDATA[java.lang.AssertionError: expected [Incorrect email or password.] but found [Incsorrect email or password.]
 at org.testng.Assert.fail(Assert.java:111)
 at org.testng.Assert.failNotEquals(Assert.java:1578)
 at org.testng.Assert.assertEqualsImpl(Assert.java:150)
 at org.testng.Assert.assertEquals(Assert.java:132)
 at org.testng.Assert.assertEquals(Assert.java:656)
 at org.testng.Assert.assertEquals(Assert.java:666)
-at dhruvakumar.tests.ErrorValidationTest.loginErrorValidation(ErrorValidationTest.java:23)
+at EdControlsMain.tests.ErrorValidationTest.loginErrorValidation(ErrorValidationTest.java:23)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -56,31 +56,31 @@ at java.base/java.lang.Thread.run(Thread.java:833)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginErrorValidation -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:dhruvakumar.tests.ErrorValidationTest@3f270e0a]" started-at="2024-01-05T18:48:02 IST" name="tearDown" finished-at="2024-01-05T18:48:02 IST" duration-ms="294" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:EdControlsMain.tests.ErrorValidationTest@3f270e0a]" started-at="2024-01-05T18:48:02 IST" name="tearDown" finished-at="2024-01-05T18:48:02 IST" duration-ms="294" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="lanuchApplication()[pri:0, instance:dhruvakumar.tests.ErrorValidationTest@3f270e0a]" started-at="2024-01-05T18:48:02 IST" name="lanuchApplication" finished-at="2024-01-05T18:48:07 IST" duration-ms="5221" status="PASS">
+        <test-method is-config="true" signature="lanuchApplication()[pri:0, instance:EdControlsMain.tests.ErrorValidationTest@3f270e0a]" started-at="2024-01-05T18:48:02 IST" name="lanuchApplication" finished-at="2024-01-05T18:48:07 IST" duration-ms="5221" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- lanuchApplication -->
-        <test-method signature="productErrorValidation()[pri:0, instance:dhruvakumar.tests.ErrorValidationTest@3f270e0a]" started-at="2024-01-05T18:48:07 IST" name="productErrorValidation" finished-at="2024-01-05T18:48:10 IST" duration-ms="2902" status="PASS">
+        <test-method signature="productErrorValidation()[pri:0, instance:EdControlsMain.tests.ErrorValidationTest@3f270e0a]" started-at="2024-01-05T18:48:07 IST" name="productErrorValidation" finished-at="2024-01-05T18:48:10 IST" duration-ms="2902" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- productErrorValidation -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:dhruvakumar.tests.ErrorValidationTest@3f270e0a]" started-at="2024-01-05T18:48:10 IST" name="tearDown" finished-at="2024-01-05T18:48:10 IST" duration-ms="184" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:EdControlsMain.tests.ErrorValidationTest@3f270e0a]" started-at="2024-01-05T18:48:10 IST" name="tearDown" finished-at="2024-01-05T18:48:10 IST" duration-ms="184" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- dhruvakumar.tests.ErrorValidationTest -->
+      </class> <!-- EdControlsMain.tests.ErrorValidationTest -->
     </test> <!-- Error Validation Test -->
     <test started-at="2024-01-05T18:47:54 IST" name="Submit Order Test" finished-at="2024-01-05T18:48:31 IST" duration-ms="37149">
-      <class name="dhruvakumar.tests.TicketModule">
-        <test-method is-config="true" signature="lanuchApplication()[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:47:55 IST" name="lanuchApplication" finished-at="2024-01-05T18:48:00 IST" duration-ms="5256" status="PASS">
+      <class name="EdControlsMain.tests.TicketModule">
+        <test-method is-config="true" signature="lanuchApplication()[pri:0, instance:EdControlsMain.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:47:55 IST" name="lanuchApplication" finished-at="2024-01-05T18:48:00 IST" duration-ms="5256" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- lanuchApplication -->
-        <test-method signature="submitOrder(java.util.HashMap)[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:00 IST" name="submitOrder" data-provider="getData" finished-at="2024-01-05T18:48:05 IST" duration-ms="4628" status="PASS">
+        <test-method signature="submitOrder(java.util.HashMap)[pri:0, instance:EdControlsMain.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:00 IST" name="submitOrder" data-provider="getData" finished-at="2024-01-05T18:48:05 IST" duration-ms="4628" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -91,15 +91,15 @@ at java.base/java.lang.Thread.run(Thread.java:833)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- submitOrder -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:05 IST" name="tearDown" finished-at="2024-01-05T18:48:05 IST" duration-ms="206" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:EdControlsMain.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:05 IST" name="tearDown" finished-at="2024-01-05T18:48:05 IST" duration-ms="206" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="lanuchApplication()[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:05 IST" name="lanuchApplication" finished-at="2024-01-05T18:48:09 IST" duration-ms="4191" status="PASS">
+        <test-method is-config="true" signature="lanuchApplication()[pri:0, instance:EdControlsMain.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:05 IST" name="lanuchApplication" finished-at="2024-01-05T18:48:09 IST" duration-ms="4191" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- lanuchApplication -->
-        <test-method signature="submitOrder(java.util.HashMap)[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:09 IST" name="submitOrder" data-provider="getData" finished-at="2024-01-05T18:48:25 IST" duration-ms="15916" status="PASS">
+        <test-method signature="submitOrder(java.util.HashMap)[pri:0, instance:EdControlsMain.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:09 IST" name="submitOrder" data-provider="getData" finished-at="2024-01-05T18:48:25 IST" duration-ms="15916" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -110,23 +110,23 @@ at java.base/java.lang.Thread.run(Thread.java:833)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- submitOrder -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:25 IST" name="tearDown" finished-at="2024-01-05T18:48:26 IST" duration-ms="310" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:EdControlsMain.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:25 IST" name="tearDown" finished-at="2024-01-05T18:48:26 IST" duration-ms="310" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="lanuchApplication()[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:26 IST" name="lanuchApplication" finished-at="2024-01-05T18:48:30 IST" duration-ms="4016" status="PASS">
+        <test-method is-config="true" signature="lanuchApplication()[pri:0, instance:EdControlsMain.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:26 IST" name="lanuchApplication" finished-at="2024-01-05T18:48:30 IST" duration-ms="4016" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- lanuchApplication -->
-        <test-method signature="OrderHistoryTest()[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:30 IST" name="OrderHistoryTest" finished-at="2024-01-05T18:48:31 IST" depends-on-methods="dhruvakumar.tests.TicketModule.submitOrder" duration-ms="1621" status="PASS">
+        <test-method signature="OrderHistoryTest()[pri:0, instance:EdControlsMain.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:30 IST" name="OrderHistoryTest" finished-at="2024-01-05T18:48:31 IST" depends-on-methods="EdControlsMain.tests.TicketModule.submitOrder" duration-ms="1621" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- OrderHistoryTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:dhruvakumar.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:31 IST" name="tearDown" finished-at="2024-01-05T18:48:31 IST" duration-ms="203" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:EdControlsMain.tests.TicketModule@4ed5eb72]" started-at="2024-01-05T18:48:31 IST" name="tearDown" finished-at="2024-01-05T18:48:31 IST" duration-ms="203" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- dhruvakumar.tests.TicketModule -->
+      </class> <!-- EdControlsMain.tests.TicketModule -->
     </test> <!-- Submit Order Test -->
   </suite> <!-- E-Commerce App -->
 </testng-results>
