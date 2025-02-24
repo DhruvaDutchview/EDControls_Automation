@@ -17,12 +17,11 @@ public class ProjectContainer extends BaseTest {
     }
 
     public static void navigateToProject () throws Exception {
-        String projectName = DataReader.readJsonFile("projectName");
+        String projectName = DataReader.getValueFromJsonFile("projectName");
         WebElement projectSearch = driver.findElement(By.xpath("//input[@id='search']"));
         ReusableMethods.waitForWebElementAppear(projectSearch);
         projectSearch.sendKeys(projectName);
         projectSearch.sendKeys(Keys.ENTER);
-        Thread.sleep(2000);
         List<WebElement> projectsList = driver.findElements(By.xpath("//p[@class='name']"));
         for (WebElement  project : projectsList)
         {

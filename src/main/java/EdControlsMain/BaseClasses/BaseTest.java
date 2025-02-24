@@ -30,7 +30,7 @@ public class BaseTest {
     //initialization the driver
     public WebDriver initializeDriver() throws IOException {
         //Map<String, String> data = dataReader.readPropertiesFile();
-        String browserName = DataReader.readJsonFile("browserName");
+        String browserName = DataReader.getValueFromJsonFile("browserName");
         if (browserName.contains("chrome")) {
             ChromeOptions options = new ChromeOptions();
             WebDriverManager.chromedriver().setup();

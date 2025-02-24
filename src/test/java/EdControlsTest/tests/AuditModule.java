@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -36,13 +37,21 @@ public class AuditModule extends BaseTest {
         TemplateContainer.selectAreaAuditTemplate();
         AuditContainer.createAuditInitialization("area");
 
-        // Add Responsible and informed
+        // Adding Responsible and informed
         WebElement addResponsibele =  driver.findElement(By.id("ad-responsible"));
         addResponsibele.sendKeys("responsibledev@mailinator.com");
         addResponsibele.sendKeys(Keys.ENTER);
         Thread.sleep(2000);
         driver.findElement(By.id("ad-save-edit")).click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
+        String toastMessage = ReusableMethods.checkingToastMessage();
+        Assert.assertEquals("Saved successfully",toastMessage);
+        System.err.println(toastMessage);
+        Boolean bolean = ReusableMethods.waitForElementDisAppear(By.xpath("//div[@class='MuiAlert-message']"));
+        if (bolean==true){
+            Integer auditCount = ReusableMethods.getCount(auditHeader);
+            System.out.println("After audit created: "+auditCount);
+        }
     }
 
 
@@ -86,8 +95,9 @@ public class AuditModule extends BaseTest {
       Thread.sleep(2000);
       driver.findElement(By.id("ad-save-edit")).click();
       Thread.sleep(1000);
-
-
+      String toastMessage = ReusableMethods.checkingToastMessage();
+      Assert.assertEquals(toastMessage,"Saved successfully");
+      System.err.println(toastMessage);
   }
 
 

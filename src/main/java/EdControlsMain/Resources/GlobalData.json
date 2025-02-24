@@ -1,18 +1,16 @@
 [
  {
-  "browserName" : "chrome"
- },
-{
- "email" : "sujith@mailinator.com",
- "password" : "123456789012"
-},
- {
-  "url" : "https://dev.edcontrols.com/#/auth?view=login"
+  "browserName" : "chrome",
+  "email" : "sujith@mailinator.com",
+  "password" : "123456789012"
  },
  {
+  "devURL" : "https://dev.edcontrols.com/#/auth?view=login",
   "projectName" : "Automation Project - Dhruv"
+ },
+ {
+  "TicketResponsible" : "responsibledev@mailinator.com",
+  "TicketConsulted" : "consuldev@mailinator.com",
+  "TicketInformed" : "infodev@mailinator.com"
  }
-
-
-
 ]

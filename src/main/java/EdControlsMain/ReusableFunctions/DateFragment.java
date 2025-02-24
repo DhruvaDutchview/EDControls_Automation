@@ -2,6 +2,7 @@ package EdControlsMain.ReusableFunctions;
 
 import EdControlsMain.BaseClasses.BaseTest;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -13,11 +14,10 @@ public class DateFragment extends BaseTest {
     public DateFragment(WebDriver driver) {
         super(driver);
     }
-    public static void datePicker(WebElement dueDateContainer)
-    {
+    public static void datePicker(WebElement dueDateContainer) throws InterruptedException {
         // Get today's date and calculate the target date (7 days later)
         LocalDate today = LocalDate.now();
-        LocalDate targetDate = today.plusDays(7);
+        LocalDate targetDate = today.plusDays(12);
         String expectedMonthYear = targetDate.format(DateTimeFormatter.ofPattern("MMMM yyyy"));
         String expectedDay = String.valueOf(targetDate.getDayOfMonth());
         System.out.println("Expected date:"+expectedDay);
@@ -43,6 +43,9 @@ public class DateFragment extends BaseTest {
 
             // Click on the expected date
             if (day.equals(expectedDay) && !date.getAttribute("class").contains("disabled")) {
+                Thread.sleep(2000);
+             //   JavascriptExecutor js = (JavascriptExecutor) driver;
+            //    js.executeScript("arguments[0].click();", date);
                 date.click();
                 System.out.println("Selected date: " + targetDate);
                 break;
