@@ -16,15 +16,15 @@ public class AuditContainer extends BaseTest {
     public static void createAuditInitialization(String auditType) throws Exception {
         WebElement auditHeader = driver.findElement(By.id("ed-audits"));
         ReusableMethods.waitForWebElementToClickable(auditHeader);
-        //  String auditHeaderText = auditHeader.getText();
-        //li[@id='ed-audits']//span[contains(text(),'0')]
         Thread.sleep(2000);
-        String auditCount = driver.findElement(By.xpath("//li[@id='ed-audits']//span")).getText();
-        System.out.println(auditCount);
+        WebElement element = driver.findElement(By.xpath("//li[@id='ed-audits']//span"));
+        Integer auditCount  = ReusableMethods.getCount(element);
+        System.out.println("Before audit created: "+auditCount);
         Thread.sleep(2000);
+
         if (auditType.contains("area"))
         {
-            if (auditCount.contains("0"))
+            if (auditCount==0)
             {
                 createAuditFromSkeleton(auditType);
                 Thread.sleep(2000);
@@ -39,11 +39,10 @@ public class AuditContainer extends BaseTest {
             }
         }
         else if (auditType.contains("object")) {
-            if (auditCount.contains("0"))
+            if (auditCount==0)
             {
                 Thread.sleep(2000);
                 createAuditFromSkeleton(auditType);
-                Thread.sleep(2000);
              //   WebElement checkCreateAuditInitialized = driver.findElement(By.xpath("//div[@class='audit-one']"));
               //  ReusableMethods.waitForWebElementAppear(checkCreateAuditInitialized);
             }

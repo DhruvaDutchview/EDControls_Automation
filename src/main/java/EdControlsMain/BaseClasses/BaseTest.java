@@ -30,7 +30,7 @@ public class BaseTest {
     //initialization the driver
     public WebDriver initializeDriver() throws IOException {
         //Map<String, String> data = dataReader.readPropertiesFile();
-        String browserName = DataReader.readJsonFile("browserName");
+        String browserName = DataReader.getValueFromJsonFile("browserName");
         if (browserName.contains("chrome")) {
             ChromeOptions options = new ChromeOptions();
             WebDriverManager.chromedriver().setup();
@@ -82,8 +82,8 @@ public class BaseTest {
     public void tearDown() throws Exception {
         System.out.println("Test is done");
         Thread.sleep(3000);
-      //  clearCacheAndCookies();
-        //  driver.quit();
+        //clearCacheAndCookies();
+        driver.quit();
     }
 
 }

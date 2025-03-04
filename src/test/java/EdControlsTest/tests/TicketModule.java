@@ -3,6 +3,7 @@ package EdControlsTest.tests;
 import EdControlsMain.BaseClasses.BaseTest;
 import EdControlsMain.EdFragments.MapContainer;
 import EdControlsMain.EdFragments.ProjectContainer;
+import EdControlsMain.EdFragments.TicketContainer;
 import EdControlsMain.ReusableFunctions.DateFragment;
 import EdControlsMain.ReusableFunctions.ReusableMethods;
 import org.openqa.selenium.*;
@@ -33,7 +34,6 @@ public class TicketModule extends BaseTest {
             System.err.println("map is not clicked");
         }
         Thread.sleep(1000);
-
         WebElement newTicketContainerDialog = ReusableMethods.waitForElementToBeVisible(By.xpath("//div[@class='ticket-new']"));
         WebElement newTicketContainer = ReusableMethods.waitForWebElementAppear(newTicketContainerDialog);
         if (newTicketContainer.isDisplayed()) {
@@ -42,16 +42,16 @@ public class TicketModule extends BaseTest {
             System.err.println("New Ticket container is not displayed");
         }
         Thread.sleep(1000);
-        driver.findElement(By.id("tn-title")).sendKeys("Automation Ticket");
+        String title="Automation Ticket"+ReusableMethods.generateRandomString();
+        driver.findElement(By.id("tn-title")).sendKeys(title);
         WebElement desContainer = driver.findElement(By.xpath("//section[@id='log']"));
         desContainer.click();
-        driver.findElement(By.xpath("//div[@contenteditable='true'] //p")).sendKeys("The Description added by automation script");
+        driver.findElement(By.xpath("//div[@contenteditable='true'] //p")).sendKeys(ReusableMethods.generateRandomString());
         Thread.sleep(1000);
         WebElement tagContainer = driver.findElement(By.xpath("//div[@class='tag-container']"));
         tagContainer.click();
         WebElement tag = driver.findElement(By.id("tn-tags"));
-        tag.sendKeys("Tag Automation");
-        tag.sendKeys(Keys.ENTER);
+        tag.sendKeys("Tag Automation" + Keys.ENTER);
         Thread.sleep(1000);
 
         // due date selection
@@ -72,18 +72,7 @@ public class TicketModule extends BaseTest {
             System.out.println("isMandatoryProof Toggle not enabled");
             proofMandatoryElement.findElement(By.xpath("//input[@id='mandatoryTicketProofSwitch']")).click();
         }
-        Thread.sleep(2000);
-
-        // Adding RCI Users
-        WebElement addResponsible = driver.findElement(By.id("tn-responsible"));
-        addResponsible.sendKeys("responsibledev@mailinator.com");
-        Thread.sleep(1000);
-        WebElement addConsulted = driver.findElement(By.id("tn-consulted"));
-        addConsulted.sendKeys("consuldev@mailinator.com");
-        Thread.sleep(1000);
-        WebElement addInformed = driver.findElement(By.id("tn-informed"));
-        addInformed.sendKeys("infodev@mailinator.com");
-        addInformed.sendKeys(Keys.ENTER);
+        TicketContainer.addUsersInTicket();
         Thread.sleep(2000);
         driver.findElement(By.id("tn-save-ticket")).click();
 
@@ -100,8 +89,7 @@ public class TicketModule extends BaseTest {
         WebElement ticketElement = driver.findElement(By.xpath("//div[@class='subHeader__container'] //li[@id='ed-tickts']"));
         ReusableMethods.waitForWebElementAppear(ticketElement);
         Thread.sleep(3000);
-        String[] array = ReusableMethods.trimmingText(ticketElement);
-        String currentTicketCount = array[1];
+        Integer currentTicketCount= ReusableMethods.getCount(ticketElement);
         System.out.println(currentTicketCount);
         Thread.sleep(2000);
         List<WebElement> ticketsList = driver.findElements(By.xpath("//div[@id='ticket-list'] //div[@class='ticket-item'] //h4"));
@@ -123,10 +111,82 @@ public class TicketModule extends BaseTest {
         dueDateElement.click();
         WebElement dateContainer = driver.findElement(By.xpath("//div[@class='react-calendar']"));
         ReusableMethods.waitForWebElementAppear(dateContainer);
+        Thread.sleep(2000);
         DateFragment.datePicker(dateContainer);
         Thread.sleep(2000);
         driver.findElement(By.id("td-save")).click();
     }
+
+    @Test
+    public void archievingNewTicket() throws Exception {
+        ProjectContainer.navigateToProject();
+        MapContainer.navigateToMap();
+        WebElement mapContainer = driver.findElement(By.xpath("//div[@id='map-container']"));
+        WebElement map = ReusableMethods.waitForWebElementAppear(mapContainer);
+        if (map.isDisplayed()) {
+            WebElement clickTicket = driver.findElement(By.xpath("//div[contains(@class,'leaflet-container')]"));
+            clickTicket.click();
+        } else {
+
+            System.err.println("map is not clicked");
+        }
+        Thread.sleep(1000);
+        WebElement newTicketContainerDialog = ReusableMethods.waitForElementToBeVisible(By.xpath("//div[@class='ticket-new']"));
+        WebElement newTicketContainer = ReusableMethods.waitForWebElementAppear(newTicketContainerDialog);
+        if (newTicketContainer.isDisplayed()) {
+            System.out.println("New Ticket container is displayed");
+        } else {
+            System.err.println("New Ticket container is not displayed");
+        }
+        Thread.sleep(1000);
+        driver.findElement(By.id("tn-title")).sendKeys("Automation Ticket");
+        WebElement desContainer = driver.findElement(By.xpath("//section[@id='log']"));
+        desContainer.click();
+        driver.findElement(By.xpath("//div[@contenteditable='true'] //p")).sendKeys("The Description added by automation script");
+        Thread.sleep(1000);
+        WebElement tagContainer = driver.findElement(By.xpath("//div[@class='tag-container']"));
+        tagContainer.click();
+        WebElement tag = driver.findElement(By.id("tn-tags"));
+        tag.sendKeys("Tag Automation 2" + Keys.ENTER);
+        Thread.sleep(1000);
+
+        // due date selection
+        WebElement dueDateElement = driver.findElement(By.id("tn-due-date"));
+        dueDateElement.click();
+        WebElement dateContainer = driver.findElement(By.xpath("//div[@class='react-calendar']"));
+        ReusableMethods.waitForWebElementAppear(dateContainer);
+        DateFragment.datePicker(dateContainer);
+        Thread.sleep(2000);
+
+        // Enable/Disable the Mandatory proof toggle
+        WebElement proofMandatoryElement = driver.findElement(By.xpath("//label[contains(@class,'ticket_proof')]"));
+        WebElement proofMandatory = proofMandatoryElement.findElement(By.xpath("//span[contains(@class,'MuiSwitch-switchBase')]"));
+        String toggleText = proofMandatory.getDomAttribute("class");
+        if (toggleText.contains("jss14 Mui-checked")) {
+            System.out.println("isMandatoryProof Toggle enabled");
+        } else {
+            System.out.println("isMandatoryProof Toggle not enabled");
+            proofMandatoryElement.findElement(By.xpath("//input[@id='mandatoryTicketProofSwitch']")).click();
+        }
+        TicketContainer.addUsersInTicket();
+        Thread.sleep(2000);
+        driver.findElement(By.id("tn-archive-ticket")).click();
+        String toastMessage = ReusableMethods.checkingToastMessage();
+        System.err.println(toastMessage);
+        Thread.sleep(2000);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 

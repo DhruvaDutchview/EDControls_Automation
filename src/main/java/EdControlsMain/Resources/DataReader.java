@@ -22,7 +22,7 @@ public class DataReader {
     }
 
     //Method to read JSON File
-    public static String readJsonFile(String key) {
+    public static String getValueFromJsonFile(String key) {
         try {
             String filePath = System.getProperty("user.dir") + "/src/main/java/EdControlsMain/Resources/GlobalData.json";
             ObjectMapper objectMapper = new ObjectMapper();
