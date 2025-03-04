@@ -21,6 +21,7 @@ public class AuditContainer extends BaseTest {
         Integer auditCount  = ReusableMethods.getCount(element);
         System.out.println("Before audit created: "+auditCount);
         Thread.sleep(2000);
+
         if (auditType.contains("area"))
         {
             if (auditCount==0)
@@ -42,7 +43,6 @@ public class AuditContainer extends BaseTest {
             {
                 Thread.sleep(2000);
                 createAuditFromSkeleton(auditType);
-                Thread.sleep(2000);
              //   WebElement checkCreateAuditInitialized = driver.findElement(By.xpath("//div[@class='audit-one']"));
               //  ReusableMethods.waitForWebElementAppear(checkCreateAuditInitialized);
             }

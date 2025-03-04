@@ -42,16 +42,16 @@ public class TicketModule extends BaseTest {
             System.err.println("New Ticket container is not displayed");
         }
         Thread.sleep(1000);
-        driver.findElement(By.id("tn-title")).sendKeys("Automation Ticket");
+        String title="Automation Ticket"+ReusableMethods.generateRandomString();
+        driver.findElement(By.id("tn-title")).sendKeys(title);
         WebElement desContainer = driver.findElement(By.xpath("//section[@id='log']"));
         desContainer.click();
-        driver.findElement(By.xpath("//div[@contenteditable='true'] //p")).sendKeys("The Description added by automation script");
+        driver.findElement(By.xpath("//div[@contenteditable='true'] //p")).sendKeys(ReusableMethods.generateRandomString());
         Thread.sleep(1000);
         WebElement tagContainer = driver.findElement(By.xpath("//div[@class='tag-container']"));
         tagContainer.click();
         WebElement tag = driver.findElement(By.id("tn-tags"));
-        tag.sendKeys("Tag Automation");
-        tag.sendKeys(Keys.ENTER);
+        tag.sendKeys("Tag Automation" + Keys.ENTER);
         Thread.sleep(1000);
 
         // due date selection
@@ -147,8 +147,7 @@ public class TicketModule extends BaseTest {
         WebElement tagContainer = driver.findElement(By.xpath("//div[@class='tag-container']"));
         tagContainer.click();
         WebElement tag = driver.findElement(By.id("tn-tags"));
-        tag.sendKeys("Tag Automation");
-        tag.sendKeys(Keys.ENTER);
+        tag.sendKeys("Tag Automation 2" + Keys.ENTER);
         Thread.sleep(1000);
 
         // due date selection

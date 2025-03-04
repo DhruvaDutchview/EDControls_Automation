@@ -22,8 +22,6 @@ public class LoginPage extends ReusableMethods {
 	public void goTo()
 	{
 		//calling json file and getting values
-	    //JsonNode jsonNode = dataReader.readJsonFile();
-	    //String url = jsonNode.get(1).get("url").asText();
 		String url = DataReader.getValueFromJsonFile("devURL");
 
 		/*//calling Properties file and getting values

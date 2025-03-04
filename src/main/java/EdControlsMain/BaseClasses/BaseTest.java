@@ -82,8 +82,8 @@ public class BaseTest {
     public void tearDown() throws Exception {
         System.out.println("Test is done");
         Thread.sleep(3000);
-      //  clearCacheAndCookies();
-        //  driver.quit();
+        //clearCacheAndCookies();
+        driver.quit();
     }
 
 }

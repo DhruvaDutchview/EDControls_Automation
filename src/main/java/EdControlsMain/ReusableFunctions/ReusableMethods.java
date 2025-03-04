@@ -1,7 +1,9 @@
 package EdControlsMain.ReusableFunctions;
 
 import java.io.File;
+import java.security.SecureRandom;
 import java.time.Duration;
+import java.util.Random;
 
 import EdControlsMain.EdFragments.ProjectContainer;
 import EdControlsMain.Resources.DataReader;
@@ -12,6 +14,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import javax.xml.stream.events.Characters;
 
 public class ReusableMethods extends BaseTest {
 
@@ -118,5 +122,13 @@ public class ReusableMethods extends BaseTest {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
-
+    public static String generateRandomString() {
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder(5);
+        for (int i = 0; i < 5; i++) {
+            sb.append(chars.charAt(random.nextInt(chars.length())));
+        }
+        return sb.toString();
+    }
 }

@@ -20,8 +20,7 @@ public class ProjectContainer extends BaseTest {
         String projectName = DataReader.getValueFromJsonFile("projectName");
         WebElement projectSearch = driver.findElement(By.xpath("//input[@id='search']"));
         ReusableMethods.waitForWebElementAppear(projectSearch);
-        projectSearch.sendKeys(projectName);
-        projectSearch.sendKeys(Keys.ENTER);
+        projectSearch.sendKeys(projectName + Keys.ENTER);
         List<WebElement> projectsList = driver.findElements(By.xpath("//p[@class='name']"));
         for (WebElement  project : projectsList)
         {
