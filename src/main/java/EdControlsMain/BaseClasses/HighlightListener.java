@@ -42,7 +42,7 @@ public class HighlightListener extends BaseTest implements WebDriverListener  {
     }
 
     private boolean shouldExcludeHighlight(WebElement element) {
-        String classAttribute = element.getAttribute("id");
+        String classAttribute = element.getDomAttribute("id");
         if (classAttribute != null) {
             return classAttribute.contains("map-container") || classAttribute.contains("leaflet-container");
         }
