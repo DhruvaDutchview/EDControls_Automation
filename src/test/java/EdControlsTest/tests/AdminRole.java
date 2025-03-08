@@ -78,7 +78,6 @@ public class AdminRole extends BaseTest {
         projectSearch.sendKeys(projectText + Keys.ENTER);
         List<WebElement> projectsList = driver.findElements(By.xpath("//p[@class='name']"));
         for (WebElement project : projectsList) {
-
             String projectCreated = project.getText();
             if (projectCreated.equalsIgnoreCase(projectText)) {
                 System.out.println(projectText);
