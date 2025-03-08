@@ -7,29 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="034eff9e-3bf9-4c1d-9288-7d73239cba22" name="Changes" comment="Commit : Gradle started">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/AdminRole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/ProjectModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/EDControls_Automation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/EDControls_Automation.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestReports/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TestReports/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestSuits/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TestSuits/testng.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/BaseClasses/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/BaseClasses/BaseTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/BaseClasses/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/BaseClasses/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdFragments/AuditContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/AuditContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdFragments/BulkFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/BulkContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdFragments/MapContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/MapContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdFragments/ProjectContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/ProjectContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdFragments/TemplateContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/TemplateContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdFragments/TicketContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/TicketContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/Resources/GlobalData.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/Resources/GlobalData.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/ReusableFunctions/ReusableMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/ReusableFunctions/ReusableMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/AuditModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/AuditModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/TicketBulk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/TicketBulk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/TicketFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/TicketFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/TicketModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/TicketModule.java" afterDir="false" />
-    </list>
+    <list default="true" id="034eff9e-3bf9-4c1d-9288-7d73239cba22" name="Changes" comment="Commit : Admin role 1st test case completed" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -490,7 +468,21 @@
       <option name="project" value="LOCAL" />
       <updated>1741185865824</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Commit : Admin role 1st test case completed">
+      <created>1741459117430</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1741459117430</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Commit : Admin role 1st test case completed">
+      <created>1741459281427</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1741459281427</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -532,7 +524,8 @@
     <MESSAGE value="Commit : Some code improvement and started with bulk" />
     <MESSAGE value="Commit : maven" />
     <MESSAGE value="Commit : Gradle started" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit : Gradle started" />
+    <MESSAGE value="Commit : Admin role 1st test case completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit : Admin role 1st test case completed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
