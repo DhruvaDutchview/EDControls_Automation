@@ -1,9 +1,9 @@
 package EdControlsTest.tests;
 
 import EdControlsMain.BaseClasses.BaseTest;
-import EdControlsMain.EdFragments.MapContainer;
-import EdControlsMain.EdFragments.ProjectContainer;
-import EdControlsMain.EdFragments.TicketContainer;
+import EdControlsMain.EdContainers.MapContainer;
+import EdControlsMain.EdContainers.ProjectContainer;
+import EdControlsMain.EdContainers.TicketContainer;
 import EdControlsMain.ReusableFunctions.DateFragment;
 import EdControlsMain.ReusableFunctions.ReusableMethods;
 import org.openqa.selenium.*;
@@ -42,7 +42,7 @@ public class TicketModule extends BaseTest {
             System.err.println("New Ticket container is not displayed");
         }
         Thread.sleep(1000);
-        String title="Automation Ticket"+ReusableMethods.generateRandomString();
+        String title= ReusableMethods.generateRandomString();
         driver.findElement(By.id("tn-title")).sendKeys(title);
         WebElement desContainer = driver.findElement(By.xpath("//section[@id='log']"));
         desContainer.click();

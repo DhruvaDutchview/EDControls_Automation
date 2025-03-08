@@ -1,18 +1,11 @@
 package EdControlsTest.tests;
 
 import EdControlsMain.BaseClasses.BaseTest;
-import EdControlsMain.EdFragments.BulkFragment;
-import EdControlsMain.EdFragments.ProjectContainer;
+import EdControlsMain.EdContainers.BulkContainer;
 import EdControlsMain.ReusableFunctions.ReusableMethods;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-
-import javax.swing.*;
-import java.security.Key;
-import java.time.Duration;
 
 public class TicketBulk extends BaseTest {
 
@@ -27,7 +20,7 @@ public class TicketBulk extends BaseTest {
     static Actions action;
     @Test
     public void addingBulkTag() throws Exception {
-        Integer selectedTicketsCount = BulkFragment.ticketBulkSelection();
+        Integer selectedTicketsCount = BulkContainer.ticketBulkSelection();
         System.out.println(selectedTicketsCount + " Ticket's Selected");
         WebElement tagContainer = driver.findElement(By.id("filter-ticket-tags"));
         tagContainer.click();
@@ -41,7 +34,7 @@ public class TicketBulk extends BaseTest {
         doneButton.click();
         if (selectedTicketsCount >= 20) {
             Thread.sleep(2000);
-            BulkFragment.bulkConfirmation();
+            BulkContainer.bulkConfirmation();
         }
         String confirmationMessage = ReusableMethods.checkingToastMessage();
         System.out.println(confirmationMessage);

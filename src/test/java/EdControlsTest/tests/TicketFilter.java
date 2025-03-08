@@ -1,7 +1,7 @@
 package EdControlsTest.tests;
 
 import EdControlsMain.BaseClasses.BaseTest;
-import EdControlsMain.EdFragments.ProjectContainer;
+import EdControlsMain.EdContainers.ProjectContainer;
 import org.openqa.selenium.WebDriver;
 
 public class TicketFilter extends BaseTest {

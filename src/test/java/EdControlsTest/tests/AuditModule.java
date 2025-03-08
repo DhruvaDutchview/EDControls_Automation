@@ -1,11 +1,11 @@
 package EdControlsTest.tests;
 
 import EdControlsMain.BaseClasses.BaseTest;
-import EdControlsMain.EdFragments.AuditContainer;
-import EdControlsMain.EdFragments.ProjectContainer;
+import EdControlsMain.EdContainers.AuditContainer;
+import EdControlsMain.EdContainers.ProjectContainer;
 import EdControlsMain.ReusableFunctions.DateFragment;
 import EdControlsMain.ReusableFunctions.ReusableMethods;
-import EdControlsMain.EdFragments.TemplateContainer;
+import EdControlsMain.EdContainers.TemplateContainer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
