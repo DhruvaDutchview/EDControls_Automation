@@ -71,7 +71,6 @@ public class AdminRole extends BaseTest {
         String toastMessage = ReusableMethods.checkingToastMessage();
         System.err.println(toastMessage);
         Thread.sleep(2000);
-
         // Verifying that project is created or not
         WebElement projectSearch = driver.findElement(By.xpath("//input[@id='search']"));
         ReusableMethods.waitForWebElementByAppear(projectSearch);
