@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: com.google.j2objc:j2objc-annotations:3.0.0">
+  <library name="Gradle: com.google.j2objc:j2objc-annotations:3.0.0" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/3.0.0/7399e65dd7e9ff3404f4535b2f017093bdb134c7/j2objc-annotations-3.0.0.jar!/" />
     </CLASSES>

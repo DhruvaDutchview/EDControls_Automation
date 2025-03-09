@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: org.webjars:jquery:3.6.1">
+  <library name="Gradle: org.webjars:jquery:3.6.1" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.webjars/jquery/3.6.1/d08df6250157cd2db3d9b01b11b76e9b7225083a/jquery-3.6.1.jar!/" />
     </CLASSES>

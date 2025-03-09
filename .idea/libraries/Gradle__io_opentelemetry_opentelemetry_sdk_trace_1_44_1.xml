@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: io.opentelemetry:opentelemetry-sdk-trace:1.44.1">
+  <library name="Gradle: io.opentelemetry:opentelemetry-sdk-trace:1.44.1" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-trace/1.44.1/3fc4d8efce482f2cb0e0420c453d08ec431131a7/opentelemetry-sdk-trace-1.44.1.jar!/" />
     </CLASSES>

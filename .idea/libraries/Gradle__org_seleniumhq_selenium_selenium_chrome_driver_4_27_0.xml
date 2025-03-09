@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: org.seleniumhq.selenium:selenium-chrome-driver:4.27.0">
+  <library name="Gradle: org.seleniumhq.selenium:selenium-chrome-driver:4.27.0" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-chrome-driver/4.27.0/bbd1b1defdf733cfc6bcf7eb8f04ef6752dfaf12/selenium-chrome-driver-4.27.0.jar!/" />
     </CLASSES>

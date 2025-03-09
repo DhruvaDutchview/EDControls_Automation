@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: io.opentelemetry:opentelemetry-sdk-metrics:1.44.1">
+  <library name="Gradle: io.opentelemetry:opentelemetry-sdk-metrics:1.44.1" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-metrics/1.44.1/1ec2cc48eaffb08488fe76f851d664cd09849350/opentelemetry-sdk-metrics-1.44.1.jar!/" />
     </CLASSES>

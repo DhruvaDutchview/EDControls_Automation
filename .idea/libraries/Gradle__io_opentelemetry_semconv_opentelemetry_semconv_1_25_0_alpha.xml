@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: io.opentelemetry.semconv:opentelemetry-semconv:1.25.0-alpha">
+  <library name="Gradle: io.opentelemetry.semconv:opentelemetry-semconv:1.25.0-alpha" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.opentelemetry.semconv/opentelemetry-semconv/1.25.0-alpha/76b3d4ca0a8f20b27c1590ceece54f0c7fb5857e/opentelemetry-semconv-1.25.0-alpha.jar!/" />
     </CLASSES>

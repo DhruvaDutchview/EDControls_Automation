@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: com.github.docker-java:docker-java-transport:3.3.4">
+  <library name="Gradle: com.github.docker-java:docker-java-transport:3.3.4" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-transport/3.3.4/87f856e47c9f8d416518b18f88c15cad74cc2cae/docker-java-transport-3.3.4.jar!/" />
     </CLASSES>

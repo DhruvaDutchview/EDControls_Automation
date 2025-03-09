@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: dev.failsafe:failsafe:3.3.2">
+  <library name="Gradle: dev.failsafe:failsafe:3.3.2" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/dev.failsafe/failsafe/3.3.2/738a986f1f0e4b6c6a49d351dddc772d1378c5a8/failsafe-3.3.2.jar!/" />
     </CLASSES>

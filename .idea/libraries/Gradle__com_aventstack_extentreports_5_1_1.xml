@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: com.aventstack:extentreports:5.1.1">
+  <library name="Gradle: com.aventstack:extentreports:5.1.1" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.aventstack/extentreports/5.1.1/8ec9873ab05635e8e3b11d38bcb191b78ff9a263/extentreports-5.1.1.jar!/" />
     </CLASSES>

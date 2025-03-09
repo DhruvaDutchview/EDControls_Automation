@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: commons-io:commons-io:2.13.0">
+  <library name="Gradle: commons-io:commons-io:2.13.0" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.13.0/8bb2bc9b4df17e2411533a0708a69f983bf5e83b/commons-io-2.13.0.jar!/" />
     </CLASSES>

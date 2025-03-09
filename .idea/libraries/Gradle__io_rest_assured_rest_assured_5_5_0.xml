@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: io.rest-assured:rest-assured:5.5.0">
+  <library name="Gradle: io.rest-assured:rest-assured:5.5.0" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.rest-assured/rest-assured/5.5.0/1bc7b4c046c2e00a37bf78f2d9d7b41a43fdd5d1/rest-assured-5.5.0.jar!/" />
     </CLASSES>

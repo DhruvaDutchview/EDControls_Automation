@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:1.44.1">
+  <library name="Gradle: io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:1.44.1" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.44.1/93e72096cb53f1ed46c7082ce21353848ccbb6d2/opentelemetry-sdk-extension-autoconfigure-1.44.1.jar!/" />
     </CLASSES>
