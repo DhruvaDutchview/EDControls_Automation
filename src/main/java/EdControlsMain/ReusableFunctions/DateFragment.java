@@ -54,6 +54,49 @@ public class DateFragment extends BaseTest {
     }
 
 
+    public static void projectDatePicker(Integer number) throws InterruptedException {
+        WebElement startDateElement = driver.findElement(By.xpath("//div[@id='sd-date-picker']"));
+        WebElement dueDateElement = driver.findElement(By.xpath("//div[@id='ed-date-picker']"));
+
+        // Get today's date
+        LocalDate today = LocalDate.now();
+        LocalDate dueDate = today.plusDays(number); // Calculate due date based on passed number
+
+        // Select Start Date (Always Today)
+        startDateElement.click();
+        selectDate(today);
+
+        // Select Due Date
+        dueDateElement.click();
+        selectDate(dueDate);
+    }
+
+    private static void selectDate(LocalDate targetDate) throws InterruptedException {
+        String expectedMonthYear = targetDate.format(DateTimeFormatter.ofPattern("MMMM yyyy"));
+        String expectedDay = String.valueOf(targetDate.getDayOfMonth());
+
+        // Iterate through months to reach the target month
+        while (true) {
+            String displayedMonthYear = driver.findElement(By.xpath("//button[@class='react-calendar__navigation__label']")).getText();
+            if (displayedMonthYear.equals(expectedMonthYear)) {
+                break;
+            }
+            driver.findElement(By.xpath("//button[contains(@class,'react-calendar__navigation__next-button')]")).click(); // Dummy locator for next button
+        }
+
+        // Get all date elements and select the target date
+        List<WebElement> dates = driver.findElements(By.xpath("//button[contains(@class, 'react-calendar__month-view__days__day')]"));
+        for (WebElement date : dates) {
+            if (date.getText().equals(expectedDay) && !date.getAttribute("class").contains("disabled")) {
+                Thread.sleep(2000);
+                date.click();
+                System.out.println("Selected Date: " + targetDate);
+                break;
+            }
+        }
+    }
+
+
 
 
 }

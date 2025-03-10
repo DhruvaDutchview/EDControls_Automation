@@ -48,7 +48,7 @@ public class AuditModule extends BaseTest {
         Assert.assertEquals("Saved successfully",toastMessage);
         System.err.println(toastMessage);
         Boolean bolean = ReusableMethods.waitForElementDisAppear(By.xpath("//div[@class='MuiAlert-message']"));
-        if (bolean==true){
+        if (bolean){
             Integer auditCount = ReusableMethods.getCount(auditHeader);
             System.out.println("After audit created: "+auditCount);
         }

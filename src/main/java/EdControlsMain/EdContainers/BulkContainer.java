@@ -39,7 +39,7 @@ public class BulkContainer extends BaseTest {
        // Thread.sleep(2000);
         // Verify if checkbox is selected
         WebElement actualCheckbox = driver.findElement(By.xpath("//div[@class='bulk-action ']//input[@id='select-all']"));
-        if (actualCheckbox.isSelected() == true) {
+        if (actualCheckbox.isSelected()) {
             System.out.println("Checkbox is enabled");
         } else {
             System.out.println("Checkbox is NOT enabled");
