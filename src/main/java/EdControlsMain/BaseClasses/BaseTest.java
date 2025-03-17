@@ -15,6 +15,7 @@ import org.openqa.selenium.support.PageFactory;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -56,7 +57,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         // Wrap the driver with the highlighting listener
-        //  driver = new EventFiringDecorator<>(new HighlightListener(driver)).decorate(driver);
+         driver = new EventFiringDecorator<>(new HighlightListener(driver)).decorate(driver);
 
         return driver;
     }
@@ -84,8 +85,8 @@ public class BaseTest {
         System.out.println("Test is done");
         Thread.sleep(3000);
         //clearCacheAndCookies();
-       //  driver.quit();
-        driver.close();
+        // driver.quit();
+      //  driver.close();
     }
 
 }

@@ -1,28 +1,23 @@
 package EdControlsMain.ReusableFunctions;
 
-import java.io.File;
+import java.io.*;
 import java.time.Duration;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Random;
 import java.util.function.Function;
 
 import EdControlsMain.Resources.DataReader;
 import EdControlsMain.BaseClasses.BaseTest;
-import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-
-import static io.restassured.RestAssured.*;
 
 public class ReusableMethods extends BaseTest {
-
+    private static final String FILE_PATH = "used_numbers.txt";
+    private static final String BASE_NAME = "Automation project ";
     static WebDriver driver;
     static DataReader dataReader = new DataReader(driver);
 
@@ -32,90 +27,8 @@ public class ReusableMethods extends BaseTest {
         PageFactory.initElements(driver, this);
     }
 
-    // Waiting for web element to visible/appear using PageFactory method
-    public void waitForElementAppear(By findBy) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(findBy));
-
-    }
-
-    public static WebElement waitForElementToBeVisible(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Adjust timeout as needed
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
-
-
-    // Waiting for web element to visible/appear
-    public static WebElement waitForWebElementAppear(WebElement ele) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement element = wait.until(ExpectedConditions.visibilityOf(ele));
-        // wait.until(ExpectedConditions.elementToBeClickable(ele));
-	/*	FluentWait<WebDriver> wait = new FluentWait<>(driver)
-				.withTimeout(Duration.ofSeconds(20)) // Maximum wait time
-				.pollingEvery(Duration.ofSeconds(5)) // Polling interval
-				.ignoring(NoSuchElementException.class); // Ignore NoSuchElementException
-
-		WebElement element = wait.until(ExpectedConditions.visibilityOf(ele));
-     */
-        return element;
-    }
-
-    public static void waitForWebElementByAppear(WebElement ele) {
-
-		FluentWait<WebDriver> wait = new FluentWait<>(driver)
-				.withTimeout(Duration.ofSeconds(20)) // Maximum wait time
-				.pollingEvery(Duration.ofSeconds(5)) // Polling interval
-				.ignoring(NoSuchElementException.class); // Ignore NoSuchElementException
-		WebElement element = wait.until(ExpectedConditions.visibilityOf(ele));
-    }
-    public static WebElement waitForWebElementToAppear(WebDriver driver, WebElement leftMenu) {
-        FluentWait<WebDriver> wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(20))  // Maximum wait time
-                .pollingEvery(Duration.ofMillis(500)) // Check every 500ms
-                .ignoring(NoSuchElementException.class)  // Ignore NoSuchElementException
-                .ignoring(StaleElementReferenceException.class); // Ignore StaleElementReferenceException
-
-        return wait.until(new Function<WebDriver, WebElement>() {
-            public WebElement apply(WebDriver driver) {
-                try {
-                    WebElement projectDropdown = leftMenu.findElement(By.xpath("//div[@class='project-dropdown']"));
-                    if (projectDropdown.isDisplayed()) {
-                        return projectDropdown;
-                    } else {
-                        return null;
-                    }
-                } catch (StaleElementReferenceException e) {
-                    return null;  // Retry in the next polling cycle
-                }
-            }
-        });
-    }
-
-    public static WebElement waitForWebElementAppearFluentWait(WebElement ele) {
-        FluentWait<WebDriver> wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(20)) // Maximum wait time
-                .pollingEvery(Duration.ofSeconds(5)) // Polling interval
-                .ignoring(NoSuchElementException.class).ignoring(TimeoutException.class); // Ignore NoSuchElementException
-
-        WebElement element = wait.until(ExpectedConditions.visibilityOf(ele));
-        return element;
-    }
-
-    public static void waitForWebElementToClickable(WebElement ele) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(ele));
-    }
-
     public static String checkingToastMessage() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        // wait.until(ExpectedConditions.elementToBeClickable(ele));
-	/*	FluentWait<WebDriver> wait = new FluentWait<>(driver)
-				.withTimeout(Duration.ofSeconds(20)) // Maximum wait time
-				.pollingEvery(Duration.ofSeconds(5)) // Polling interval
-				.ignoring(NoSuchElementException.class); // Ignore NoSuchElementException
-
-		WebElement element = wait.until(ExpectedConditions.visibilityOf(ele));
-     */
         try {
             WebElement toastElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='MuiAlert-message']")));
             String toastMessage = toastElement.getText();
@@ -124,13 +37,6 @@ public class ReusableMethods extends BaseTest {
             System.out.println("Toast message did not appear.");
         }
         return null;
-    }
-
-    // Waiting for web element to disappear
-    public static Boolean waitForElementDisAppear(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        return wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
-
     }
 
     public static int getCount(WebElement element) {
@@ -149,40 +55,21 @@ public class ReusableMethods extends BaseTest {
         return destinationPath;
     }
 
-    public static WebElement presenceOfElementLocated(By locator) {
-        FluentWait<WebDriver> wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(20)) // Maximum wait time
-                .pollingEvery(Duration.ofSeconds(5)) // Polling interval
-                .ignoring(NoSuchElementException.class);
-        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    public static String generateRandomString() {
+        int counter = 1; // Start from 1
+        String prefix = "Automation ";
+        String number = String.format("%02d", counter); // Format number with leading zeros (01, 02, ... 100)
+
+        if (counter < 100) {
+            counter++; // Increment counter
+        } else {
+            counter = 1; // Reset after 100 (optional)
+        }
+        return prefix + number;
     }
 
-   /* public static String generateRandomString() {
-        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        Random random = new Random();
-        StringBuilder sb = new StringBuilder(5);
-        for (int i = 0; i < 5; i++) {
-            sb.append(chars.charAt(random.nextInt(chars.length())));
-        }
-        return sb.toString();
-    }*/
-
-
-        public static String generateRandomString() {
-            int counter = 1; // Start from 1
-            String prefix = "Automation ";
-            String number = String.format("%02d", counter); // Format number with leading zeros (01, 02, ... 100)
-
-            if (counter < 100) {
-                counter++; // Increment counter
-            } else {
-                counter = 1; // Reset after 100 (optional)
-            }
-            return prefix + number;
-        }
-
+    /*
     public static void testGooglePlacesAutocomplete() {
-
         RestAssured.baseURI = "https://maps.googleapis.com";
         Response response =
                 given()
@@ -225,6 +112,87 @@ public class ReusableMethods extends BaseTest {
 
         // Optional: Assert that a location was selected
         Assert.assertNotNull(selectedLocation, "No location found in predictions!");
+    }*/
+
+    public static void clearSingleElement(WebElement element) throws InterruptedException {
+        element.click(); // Ensure the field is focused
+        Thread.sleep(500);
+
+        // Select all existing text and delete
+        element.sendKeys(Keys.chord(Keys.COMMAND, "a")); // For Mac (optional)
+        Thread.sleep(500);
+        element.sendKeys(Keys.BACK_SPACE);
+        Thread.sleep(500);
+    }
+    // **Helper method to clear text, press Enter, and enter new text**
+    public static void updateField(WebElement element, String newValue) throws InterruptedException {
+        element.click(); // Ensure the field is focused
+        Thread.sleep(500);
+
+        // Select all existing text and delete
+        element.sendKeys(Keys.chord(Keys.COMMAND, "a")); // For Mac (optional)
+        Thread.sleep(500);
+        element.sendKeys(Keys.BACK_SPACE);
+        Thread.sleep(500);
+
+        // Enter new text
+        element.sendKeys(newValue);
+        Thread.sleep(500);
+
+        // Press Enter to confirm (ONLY for projectName)
+        if (element.getAttribute("id").equals("projectName")) {
+            element.sendKeys(Keys.ENTER);
+            Thread.sleep(500);
+        }
+
+        // Move focus away
+        element.sendKeys(Keys.TAB);
+    }
+
+    public static void scrollUntilElementVisible(WebElement element) throws Exception {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        Thread.sleep(500); // Allow time for scroll
+    }
+
+    // Generating project name dynamically
+    public static String generateProjectName() {
+        HashSet<Integer> usedNumbers = loadUsedNumbers();
+        int randomNumber;
+
+        do {
+            randomNumber = new Random().nextInt(1000) + 1; // Generates a number between 1 and 1000
+        } while (usedNumbers.contains(randomNumber));
+
+        usedNumbers.add(randomNumber);
+        saveUsedNumbers(usedNumbers);
+
+        return BASE_NAME + randomNumber;
+    }
+
+    private static HashSet<Integer> loadUsedNumbers() {
+        HashSet<Integer> numbers = new HashSet<>();
+        File file = new File(FILE_PATH);
+        if (file.exists()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    numbers.add(Integer.parseInt(line.trim()));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return numbers;
+    }
+
+    private static void saveUsedNumbers(HashSet<Integer> numbers) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            for (Integer num : numbers) {
+                writer.write(num + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

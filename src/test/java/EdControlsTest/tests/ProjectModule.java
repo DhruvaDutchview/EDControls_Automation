@@ -5,6 +5,7 @@ import EdControlsMain.EdContainers.AuditContainer;
 import EdControlsMain.EdContainers.ProjectContainer;
 import EdControlsMain.EdContainers.TicketContainer;
 import EdControlsMain.ReusableFunctions.ReusableMethods;
+import EdControlsMain.ReusableFunctions.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -40,7 +41,7 @@ public class ProjectModule extends BaseTest {
         String currentSelectedProject = projectContainer.getText();
         System.out.println("Current Project Selected :"+currentSelectedProject);
         WebElement projectDropdown = leftMenu.findElement(By.xpath("//div[@class='project-dropdown']"));
-        ReusableMethods.waitForWebElementByAppear(projectDropdown);
+        WaitUtils.waitForWebElementByAppear(projectDropdown);
         WebElement contractName = projectDropdown.findElement(By.xpath("//div[@class='contract-detail']"));
         System.out.println(contractName.getText());
         List<WebElement> projectsList = projectDropdown.findElements(By.xpath("//div[@class='project-list']//ul/li"));
@@ -90,7 +91,7 @@ public class ProjectModule extends BaseTest {
         String currentSelectedProject = projectContainer.getText();
         System.out.println("Current Project Selected :"+currentSelectedProject);
         WebElement projectDropdown = leftMenu.findElement(By.xpath("//div[@class='project-dropdown']"));
-        ReusableMethods.waitForWebElementByAppear(projectDropdown);
+        WaitUtils.waitForWebElementByAppear(projectDropdown);
         WebElement contractName = projectDropdown.findElement(By.xpath("//div[@class='contract-detail']"));
         System.out.println(contractName.getText());
         List<WebElement> projectsList = projectDropdown.findElements(By.xpath("//div[@class='project-list']//ul/li"));

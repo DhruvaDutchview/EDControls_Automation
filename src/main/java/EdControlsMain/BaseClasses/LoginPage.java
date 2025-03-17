@@ -41,8 +41,6 @@ public class LoginPage extends ReusableMethods {
 	public void loginApplication()
 	{
 		goTo();
-
-
 		//String userName = DataReader.getValueFromJsonFile("email");
 	    //String password = DataReader.getValueFromJsonFile("password");
 

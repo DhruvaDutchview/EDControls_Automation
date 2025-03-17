@@ -6,6 +6,7 @@ import EdControlsMain.EdContainers.ProjectContainer;
 import EdControlsMain.ReusableFunctions.DateFragment;
 import EdControlsMain.ReusableFunctions.ReusableMethods;
 import EdControlsMain.EdContainers.TemplateContainer;
+import EdControlsMain.ReusableFunctions.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +32,7 @@ public class AuditModule extends BaseTest {
         ProjectContainer.navigateToProject();
         Thread.sleep(2000);
         WebElement auditHeader = driver.findElement(By.id("ed-audits"));
-        ReusableMethods.waitForWebElementToClickable(auditHeader);
+        WaitUtils.waitForWebElementToClickable(auditHeader);
         auditHeader.click();
         Thread.sleep(1000);
         TemplateContainer.selectAreaAuditTemplate();
@@ -47,7 +48,7 @@ public class AuditModule extends BaseTest {
         String toastMessage = ReusableMethods.checkingToastMessage();
         Assert.assertEquals("Saved successfully",toastMessage);
         System.err.println(toastMessage);
-        Boolean bolean = ReusableMethods.waitForElementDisAppear(By.xpath("//div[@class='MuiAlert-message']"));
+        Boolean bolean = WaitUtils.waitForElementDisAppear(By.xpath("//div[@class='MuiAlert-message']"));
         if (bolean){
             Integer auditCount = ReusableMethods.getCount(auditHeader);
             System.out.println("After audit created: "+auditCount);
@@ -60,13 +61,13 @@ public class AuditModule extends BaseTest {
       ProjectContainer.navigateToProject();
       Thread.sleep(2000);
       WebElement auditHeader = driver.findElement(By.id("ed-audits"));
-      ReusableMethods.waitForWebElementToClickable(auditHeader);
+      WaitUtils.waitForWebElementToClickable(auditHeader);
       auditHeader.click();
       TemplateContainer.selectObjectAuditTemplate();
       Thread.sleep(1000);
       AuditContainer.createAuditInitialization("object");
       WebElement ticketSearch = driver.findElement(By.cssSelector("input[placeholder='Search']"));
-      ReusableMethods.waitForWebElementAppear(ticketSearch);
+      WaitUtils.waitForWebElementAppear(ticketSearch);
       ticketSearch.sendKeys("608c3e");
       ticketSearch.sendKeys(Keys.ENTER);
       Thread.sleep(2000);
@@ -90,7 +91,7 @@ public class AuditModule extends BaseTest {
       WebElement dueDateElement = driver.findElement(By.id("ad-due-date"));
       dueDateElement.click();
       WebElement dateContainer = driver.findElement(By.xpath("//div[@class='react-calendar']"));
-      ReusableMethods.waitForWebElementAppear(dateContainer);
+      WaitUtils.waitForWebElementAppear(dateContainer);
       DateFragment.datePicker(dateContainer);
       Thread.sleep(2000);
       driver.findElement(By.id("ad-save-edit")).click();

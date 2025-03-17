@@ -54,21 +54,28 @@ public class DateFragment extends BaseTest {
     }
 
 
-    public static void projectDatePicker(Integer number) throws InterruptedException {
+    public static void projectDatePicker(String selectStartDate, String dueDateSelect, Integer number) throws InterruptedException {
         WebElement startDateElement = driver.findElement(By.xpath("//div[@id='sd-date-picker']"));
         WebElement dueDateElement = driver.findElement(By.xpath("//div[@id='ed-date-picker']"));
 
-        // Get today's date
-        LocalDate today = LocalDate.now();
+        LocalDate today = LocalDate.now();;
         LocalDate dueDate = today.plusDays(number); // Calculate due date based on passed number
 
-        // Select Start Date (Always Today)
-        startDateElement.click();
-        selectDate(today);
 
-        // Select Due Date
-        dueDateElement.click();
-        selectDate(dueDate);
+        if (selectStartDate.contains("Yes")) {
+            // Select Start Date (Always Today)
+            startDateElement.click();
+            selectDate(today);
+        }
+
+        else if (dueDateSelect.contains("Yes")) {
+            // Select Due Date
+            dueDateElement.click();
+            selectDate(dueDate);
+        }
+        else {
+            System.out.println("Due date is not selected");
+        }
     }
 
     private static void selectDate(LocalDate targetDate) throws InterruptedException {

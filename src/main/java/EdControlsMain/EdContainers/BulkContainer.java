@@ -2,6 +2,7 @@ package EdControlsMain.EdContainers;
 
 import EdControlsMain.BaseClasses.BaseTest;
 import EdControlsMain.ReusableFunctions.ReusableMethods;
+import EdControlsMain.ReusableFunctions.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -20,7 +21,7 @@ public class BulkContainer extends BaseTest {
         ProjectContainer.navigateToProject();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement selectElement = ReusableMethods.presenceOfElementLocated(By.xpath("//div[@class='select-all-action ']"));
+        WebElement selectElement = WaitUtils.presenceOfElementLocated(By.xpath("//div[@class='select-all-action ']"));
         WebElement selectAllCheckbox = selectElement.findElement(By.xpath("//label[@class='checkbox-container']"));
 
         // Debugging - Check if element is displayed and enabled

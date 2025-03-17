@@ -3,6 +3,7 @@ package EdControlsMain.EdContainers;
 import EdControlsMain.BaseClasses.BaseTest;
 import EdControlsMain.Resources.DataReader;
 import EdControlsMain.ReusableFunctions.ReusableMethods;
+import EdControlsMain.ReusableFunctions.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +16,7 @@ public class UsersContainer extends BaseTest {
 
     public static void addUsersOnNewProject() throws Exception {
         WebElement addUsersElement = driver.findElement(By.xpath("//div[@class='new-form-width__screen2']"));
-        ReusableMethods.waitForWebElementAppear(addUsersElement);
+        WaitUtils.waitForWebElementAppear(addUsersElement);
         Thread.sleep(2000);
         WebElement projectAccountable = addUsersElement.findElement(By.id("pj-accountable"));
         projectAccountable.sendKeys(DataReader.getValueFromJsonFile("projectAccountable") + Keys.ENTER);
@@ -32,7 +33,7 @@ public class UsersContainer extends BaseTest {
 
     public static void addProjectAccountable() throws Exception {
         WebElement addUsersElement = driver.findElement(By.xpath("//div[@class='new-form-width__screen2']"));
-        ReusableMethods.waitForWebElementAppear(addUsersElement);
+        WaitUtils.waitForWebElementAppear(addUsersElement);
         Thread.sleep(2000);
 
         // Execute only until projectAccountable
