@@ -22,24 +22,28 @@ public class CategoryFragment extends BaseTest {
         super(driver);
     }
 
-    public static void addQuestionsToCategory(WebElement categoryElement, List<String> questionTypes, WebDriver driver) {
+    public static void addQuestionsToCategory(WebElement categoryElement, List<String> questionTypes, WebDriver driver) throws InterruptedException {
         boolean isFirstQuestion = true; // Track if this is the first question
 
         for (String questionType : questionTypes) {
             if (isFirstQuestion) {
                 if (questionType.contains("Yes/No")) {
                     addYesNoQuestion(categoryElement);
+                    Thread.sleep(2000);
                 } else {
                     addCustomQuestion(categoryElement, questionType);
+                    Thread.sleep(2000);
                 }
                 isFirstQuestion = false; // Next question should not be the first one
+                Thread.sleep(2000);
             } else {
                 // Click 'Add Question' for the next question
                 WebElement addQuestionButton = categoryElement.findElement(By.xpath(".//button[contains(text(), 'Add question')]"));
                 WaitUtils.waitForWebElementToClickable(addQuestionButton);
                 addQuestionButton.click();
-
+                Thread.sleep(2000);
                 addCustomQuestion(categoryElement, questionType);
+                Thread.sleep(2000);
             }
         }
     }
@@ -49,12 +53,12 @@ public class CategoryFragment extends BaseTest {
             WebElement dropdown = categoryElement.findElement(By.xpath(".//div[contains(@class, 'MuiSelect-root') and @role='button']"));
             WaitUtils.waitForWebElementToClickable(dropdown);
             dropdown.click();
-
+            Thread.sleep(2000);
             WebElement option = new WebDriverWait(driver, Duration.ofSeconds(5))
                     .until(ExpectedConditions.elementToBeClickable(By.xpath(".//li[contains(text(), '" + questionType + "')]")));
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", option);
 
-
+            Thread.sleep(2000);
             System.out.println("Selected question type: " + questionType);
         } catch (Exception e) {
             System.out.println("Error selecting question type: " + e.getMessage());
@@ -67,6 +71,7 @@ public class CategoryFragment extends BaseTest {
             WaitUtils.waitForWebElementToClickable(addQuestionButton);
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addQuestionButton);
             System.out.println("Added question to category.");
+            Thread.sleep(2000);
         } catch (Exception e) {
             System.out.println("Add Question button not found. Skipping...");
         }

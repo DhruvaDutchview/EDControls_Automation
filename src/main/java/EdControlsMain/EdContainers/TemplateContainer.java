@@ -142,25 +142,133 @@ public class TemplateContainer extends BaseTest {
         templateInformed.sendKeys(DataReader.getValueFromJsonFile("projectInformed") + Keys.ENTER);
         Thread.sleep(2000);
 
+        WebElement templateBody = driver.findElement(By.xpath("//div[@class='addEditTemplate__body']"));
+       // Locate the category container once
+        WebElement categoryContainer = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOf(templateBody.findElement(By.xpath("//div[@data-rbd-droppable-id='droppable']"))));
+
+        // Maximum categories to process
+        int maxCategories = 2;
+
+        // Loop through categories
+        for (int index = 0; index < maxCategories; index++) {
+            // Find the category elements dynamically based on index
+            List<WebElement> categoryElements = categoryContainer.findElements(By.xpath("//div[@data-rbd-draggable-id='cat-" + index + "']"));
+
+            if (!categoryElements.isEmpty()) {
+                WebElement categoryElement = categoryElements.get(0); // Pick the first matching element
+
+                System.err.println(categoryElement.getText());
+                if (categoryElement.getText().contains("Category name")){
+                    WebElement catEle = categoryContainer.findElement(By.xpath("//div[@data-rbd-draggable-id='cat-" + index + "']"));
+                    WebElement categoryLeftPanel = catEle.findElement(By.xpath("//div[contains(@class,'accordian__header--left')]"));
+
+                    WebElement categoryNameElement =categoryLeftPanel.findElement(By.xpath(".//span"));
+                    Thread.sleep(2000);
+                    categoryNameElement.click();
+
+                    // Locate the input field that appears after clicking
+                    Thread.sleep(2000);
+                    WebElement categoryInputField = WaitUtils.waitForWebElementToClick(categoryLeftPanel.findElement(By.id("cat-name-change")));
+
+                    // Enter new category name
+                    categoryInputField.sendKeys("Category " + (index + 1));
+                }
+                // Print the category attribute for verification
+                System.out.println("Processing Category: " + categoryElement.getAttribute("data-rbd-draggable-id"));
+
+                System.out.println("Renamed Category " + index + " to: Category " + (index + 1));
+                // Click on "Add Category" button
+                WebElement addCategoryButton = WaitUtils.waitForWebElementToClick(templateBody.findElement(By.xpath("//button[contains(text(), 'Add category')]")));
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addCategoryButton);
+                addCategoryButton.click();
+            } else {
+                System.out.println("Category with index " + index + " not found.");
+            }
+        }
+
+    }
+
+    public static void createTemplate(String templateGroupName, String templateName) throws Exception {
+        WebElement templateLeftPanel = driver.findElement(By.xpath("//div[@class='template-filters']//div[contains(@class,'MuiAccordionDetails-root')]"));
+        templateLeftPanel.findElement(By.xpath("//span[@class='show-more']")).click();
+        List<WebElement> templateGroups = templateLeftPanel.findElements(By.xpath("//div[@class='group-item ']"));
+        Thread.sleep(2000);
+        System.out.println("Template Groups : " + templateGroups.size());
+
+        for (WebElement templateGroup : templateGroups) {
+            System.out.println(templateGroup.getText());
+            if (templateGroup.getText().contains(templateGroupName)) {
+                System.err.println("Template group: " + templateGroup.getText() + " found");
+                templateGroup.click();
+                Thread.sleep(2000);
+                driver.findElement(By.id("ed-butn-new_template")).click();
+                break;
+            }
+        }
+
+        WebElement tempNameElement = WaitUtils.waitForElementToBeVisible(driver.findElement(By.id("input_audit_title")));
+        tempNameElement.click();
+        Thread.sleep(2000);
+        tempNameElement.sendKeys(templateName + Keys.ENTER);
+        Thread.sleep(2000);
+
+        WebElement tagElement = driver.findElement(By.xpath("//div[@class='temp-tag-container']//div[@role='combobox']//input[@type='text']"));
+        tagElement.click();
+        Thread.sleep(2000);
+        tagElement.sendKeys("Tag Automation template " + Keys.ENTER);
+        Thread.sleep(2000);
+
+        WebElement templateInformed = driver.findElement(By.id("template-informed"));
+        templateInformed.click();
+        templateInformed.sendKeys(DataReader.getValueFromJsonFile("projectInformed") + Keys.ENTER);
+        Thread.sleep(2000);
+
+        WebElement templateBody = driver.findElement(By.xpath("//div[@class='addEditTemplate__body']"));
+
+        // Locate the category container once
+        WebElement categoryContainer = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOf(templateBody.findElement(By.xpath("//div[@data-rbd-droppable-id='droppable']"))));
 
         // Adding categories
-        int maxCategories = 0;
+        int maxCategories = 2;
         for (int index = 0; index <= maxCategories; index++) {
-            String categoryXpath = "//div[@class='addEditTemplate__body']//div[@data-rbd-draggable-id='cat-" + index + "']";
-            WebElement categoryElement = WaitUtils.waitForElementToBeVisible(driver.findElement(By.xpath(categoryXpath)));
-            System.out.println("Focusing on category: cat-" + index);
-
-            // Enter category name
-            WebElement templateBody = driver.findElement(By.xpath("//div[@class='addEditTemplate__body']"));
-            WebElement categoryNameElement = templateBody.findElement(By.xpath("//div[@class='accordian__header']//div[@class='accordian__header--left']//span"));
-            categoryNameElement.click();
+            // Locate the category inside the container dynamically
+            WebElement categoryOrder = new WebDriverWait(driver, Duration.ofSeconds(10))
+                    .until(ExpectedConditions.visibilityOf(categoryContainer.findElement(By.xpath("//div[@data-rbd-draggable-id='cat-" + index + "']"))));
             Thread.sleep(2000);
-            WebElement categoryName = categoryElement.findElement(By.id("cat-name-change"));
-            //categoryName.click();
-            categoryName.sendKeys("Category " + (index + 1));
+
+            // Locate the left panel inside the category
+            WebElement categoryLeftPanel = categoryOrder.findElement(By.xpath("//div[contains(@class,'accordian__header--left')]"));
+            Thread.sleep(2000);
+
+            // Click the span/div to reveal the input field
+            WebElement categoryNameElement = new WebDriverWait(driver, Duration.ofSeconds(10))
+                    .until(ExpectedConditions.elementToBeClickable(categoryLeftPanel.findElement(By.xpath("//div[@class='accordian__header']//div[@class='accordian__header--left']//span"))));
+            categoryNameElement.click();
+
+            // Locate all category input fields
+         //   List<WebElement> categoryInputFields = new WebDriverWait(driver, Duration.ofSeconds(10))
+       //             .until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.id("cat-name-change")));
+            Thread.sleep(2000);
+            List<WebElement> categoryInputFields = categoryOrder.findElements(By.xpath("//input[@id='cat-name-change']"));
+
+            int categoryIndex = 1; // Start naming from "Category 1"
+            for (WebElement categoryInputField : categoryInputFields) {
+                // Check if the input field already has text
+                String existingText = categoryInputField.getAttribute("value").trim();
+
+                if (existingText.isEmpty()) {
+                    // Enter new category name only if it's empty
+                    categoryInputField.sendKeys("Category " + categoryIndex);
+                    System.out.println("Renamed Category " + categoryIndex);
+                    categoryIndex++;
+                    break; // Exit after renaming the first empty category
+                }
+            }
 
             // Add questions to category
-            CategoryFragment.addQuestionsToCategory(categoryElement, List.of("Yes/No", "Free text"),driver);
+            CategoryFragment.addQuestionsToCategory(categoryOrder, List.of("Yes/No", "Free text"), driver);
 
             // Click on "Add Category" button
             WebElement addCategoryButton = new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -175,12 +283,9 @@ public class TemplateContainer extends BaseTest {
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addCategoryButton);
             }
         }
+
         System.out.println("Loop finished. Total categories processed: " + maxCategories);
     }
-
-
-
-
 
 
 }

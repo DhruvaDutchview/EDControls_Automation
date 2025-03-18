@@ -84,7 +84,11 @@ public class WaitUtils extends BaseTest {
 
     public static void waitForWebElementToClickable(WebElement ele) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(ele));
+         wait.until(ExpectedConditions.elementToBeClickable(ele));
+    }
+    public static WebElement waitForWebElementToClick(WebElement ele) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        return wait.until(ExpectedConditions.elementToBeClickable(ele));
     }
 
     public static WebElement waitForWebElementToClickableBy(By locator, WebDriver driver) {

@@ -409,9 +409,30 @@ public class AdminRole extends BaseTest {
         Thread.sleep(2000);
         ProjectContainer.navigateToModule(driver.findElement(By.id("ed-templates")));
         Thread.sleep(2000);
-        TemplateContainer.createAreaTemplate("TG - Automation", "Automation Template");
+        TemplateContainer.createTemplate("TG - Automation", "Automation Template");
     }
 
+    //Test case 12
+    @Test
+    public void editUserOnUserManagement() throws Exception {
+      //  ProjectContainer.navigateToProject();
+        WebElement currentUser = driver.findElement(By.id("mh-current-user"));
+        currentUser.click();
+        Thread.sleep(2000);
+        WebElement dropdown = WaitUtils.waitForWebElementToClick(driver.findElement(By.id("menu-list-grow")));
+        WebElement contactInfo = WaitUtils.waitForWebElementToClick(dropdown.findElement(By.xpath("//li[contains(text(),'Contract information')]")));
+        contactInfo.click();
+        WebElement userContainer = driver.findElement(By.xpath("//div[@class='users-table']"));
+        WebElement userBody = userContainer.findElement(By.xpath("//section[@class='users-body']"));
+        List<WebElement> usersList = userBody.findElements(By.xpath("//div[contains(@class,'user-data ')]"));
+
+        WebElement searchElement = driver.findElement(By.xpath("//input[@id='search']"));
+        searchElement.click();
+        //As of now, randomly passing users from user list based on index
+        searchElement.sendKeys(usersList.get(6).findElement(By.xpath("//span[@class='email']")).getText() + Keys.ENTER);
+
+
+    }
 
 }
 
