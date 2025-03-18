@@ -21,7 +21,7 @@ public class BulkContainer extends BaseTest {
         ProjectContainer.navigateToProject();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement selectElement = WaitUtils.presenceOfElementLocated(By.xpath("//div[@class='select-all-action ']"));
+        WebElement selectElement = WaitUtils.waitForWebElementAppear(driver.findElement(By.xpath("//div[@class='select-all-action ']")));
         WebElement selectAllCheckbox = selectElement.findElement(By.xpath("//label[@class='checkbox-container']"));
 
         // Debugging - Check if element is displayed and enabled
@@ -59,5 +59,12 @@ public class BulkContainer extends BaseTest {
         confirmButton.click();
     }
 
+    public static void bulkConfirm(){
+        WebElement ele2 = driver.findElement(By.xpath("//div[@class='bulk-edit-confirmation']//div[@class='bulk-edit__body']"));
+        Integer confirmCode = ReusableMethods.getCount(ele2);
+        ele2.findElement(By.id("bulk-captcha")).sendKeys(Integer.toString(confirmCode));
+        WebElement confirmButton = driver.findElement(By.xpath("//button[text()='Confirm']"));
+        confirmButton.click();
+    }
 
 }

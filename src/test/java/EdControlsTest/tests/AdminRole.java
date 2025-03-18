@@ -1,10 +1,7 @@
 package EdControlsTest.tests;
 
 import EdControlsMain.BaseClasses.BaseTest;
-import EdControlsMain.EdContainers.MapContainer;
-import EdControlsMain.EdContainers.ProjectContainer;
-import EdControlsMain.EdContainers.TemplateContainer;
-import EdControlsMain.EdContainers.UsersContainer;
+import EdControlsMain.EdContainers.*;
 import EdControlsMain.ReusableFunctions.DateFragment;
 import EdControlsMain.ReusableFunctions.FileUploadHelper;
 import EdControlsMain.ReusableFunctions.ReusableMethods;
@@ -33,6 +30,7 @@ public class AdminRole extends BaseTest {
     private String projectText;  // Store project name for reuse
     private String libraryGroupName;
     private String templateGroupName;
+    private String userName;
 
 
 
@@ -415,24 +413,98 @@ public class AdminRole extends BaseTest {
     //Test case 12
     @Test
     public void editUserOnUserManagement() throws Exception {
-      //  ProjectContainer.navigateToProject();
         WebElement currentUser = driver.findElement(By.id("mh-current-user"));
         currentUser.click();
         Thread.sleep(2000);
+
         WebElement dropdown = WaitUtils.waitForWebElementToClick(driver.findElement(By.id("menu-list-grow")));
         WebElement contactInfo = WaitUtils.waitForWebElementToClick(dropdown.findElement(By.xpath("//li[contains(text(),'Contract information')]")));
         contactInfo.click();
-        WebElement userContainer = driver.findElement(By.xpath("//div[@class='users-table']"));
-        WebElement userBody = userContainer.findElement(By.xpath("//section[@class='users-body']"));
-        List<WebElement> usersList = userBody.findElements(By.xpath("//div[contains(@class,'user-data ')]"));
 
-        WebElement searchElement = driver.findElement(By.xpath("//input[@id='search']"));
-        searchElement.click();
-        //As of now, randomly passing users from user list based on index
-        searchElement.sendKeys(usersList.get(6).findElement(By.xpath("//span[@class='email']")).getText() + Keys.ENTER);
+        WebElement userContainer = WaitUtils.waitForElementToBeVisible(driver.findElement(By.xpath("//div[@class='users-table']")));
+        WebElement userBody = userContainer.findElement(By.xpath("//section[@class='users-body']"));
+        List<WebElement> usersList = userBody.findElements(By.xpath(".//div[contains(@class,'user-data ')]"));  // Updated to use .//
+
+        // Iterate through each user row
+        for (WebElement users : usersList) {
+            WebElement userEmailElement = users.findElement(By.xpath(".//span[@class='email']"));  // Updated to use .//
+            WebElement userNameElement = users.findElement(By.xpath(".//span"));  // Updated to use .//
+
+            userName = userNameElement.getText();
+            String userEmail = userEmailElement.getText();
+            System.out.println("User Name: " + userName + " | User Email: " + userEmail);
+        }
+
+        // randomly searching and select the user
+        WebElement modifyingUser = usersList.get(4).findElement(By.xpath(".//span[@class='email']"));
+        WebElement searchElement = driver.findElement(By.id("search"));
+        searchElement.sendKeys(modifyingUser.getText());
+
+        //Click on this user, So re-fetching users result list
+        List<WebElement> usersList2 = userBody.findElements(By.xpath(".//div[contains(@class,'user-data ')]"));  // Updated to use .//
+
+        // Iterate through each user row
+        for (WebElement users : usersList2) {
+            WebElement userEmailElement = users.findElement(By.xpath(".//span[@class='email']"));  // Updated to use .//
+            WebElement userNameElement = users.findElement(By.xpath(".//span"));  // Updated to use .//
+
+            userName = userNameElement.getText();
+            String userEmail = userEmailElement.getText();
+            System.err.println("User Name: " + userName + " | User Email: " + userEmail);
+            if (!usersList2.isEmpty()){
+                usersList2.get(0).click();
+                System.out.println("Selecting first user :" + userName);
+            }
+            else{
+                System.out.println("Searched users list is empty");
+            }
+        }
+
+        //Selecting projects
+        Thread.sleep(2000);
+        WebElement selectProjectElement = WaitUtils.waitForWebElementAppear(driver.findElement(By.xpath("//div[@class='projects-roles']//label[@class='checkbox-container']")));
+        WebElement selectAll = selectProjectElement.findElement(By.xpath(".//span[@class='checkmark']"));
+        if (selectAll.isDisplayed()) {
+            try {
+                selectAll.click();
+                System.out.println("Check box is selected : "+selectAll.isSelected());
+            }
+            catch (Exception e){
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("arguments[0].click();", selectAll);
+                System.out.println("Check box is selected : "+selectAll.isSelected());
+            }
+        }
+
+        Thread.sleep(2000);
+        // Click the Replace button
+        WebElement buttonContainer = driver.findElement(By.xpath("//section[@class='action-buttons']"));
+        List<WebElement> buttonElements = buttonContainer.findElements(By.xpath("//button[@type='button']"));
+        for (WebElement button : buttonElements){
+            String buttonText = button.getText();
+            if (buttonText.contains("Replace")){
+                button.click();
+                break;
+            }
+        }
+
+        // Replacing the user
+        WebElement replacePopup = WaitUtils.waitForElementToBeVisible(driver.findElement(By.xpath("//div[@class='replace-popup']")));
+        WebElement emailReplaceElement = driver.findElement(By.id("email-input-replace"));
+        Thread.sleep(1000);
+        String replaceUser = "replaceuser@mailinator.com";
+        emailReplaceElement.sendKeys(replaceUser + Keys.ENTER);
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//button[contains(@class,'MuiButton-contained')]")).click();
+        Thread.sleep(2000);
+        BulkContainer.bulkConfirm();
+        System.out.println(ReusableMethods.checkingToastMessage());
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//button[contains(text(), 'OK')]")).click();
 
 
     }
+
 
 }
 

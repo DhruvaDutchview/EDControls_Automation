@@ -34,7 +34,7 @@ public class TicketBulk extends BaseTest {
         doneButton.click();
         if (selectedTicketsCount >= 20) {
             Thread.sleep(2000);
-            BulkContainer.bulkConfirmation();
+            BulkContainer.bulkConfirm();
         }
         String confirmationMessage = ReusableMethods.checkingToastMessage();
         System.out.println(confirmationMessage);
