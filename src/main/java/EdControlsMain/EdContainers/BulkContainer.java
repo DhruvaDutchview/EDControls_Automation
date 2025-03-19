@@ -51,18 +51,19 @@ public class BulkContainer extends BaseTest {
     }
 
     public static void bulkConfirmation(){
-        WebElement ele = driver.findElement(By.xpath("//div[@class='bulk-edit']//div[@class='bulk-edit__container']"));
-        WebElement ele2 = ele.findElement(By.xpath("//div[@class='bulk-edit__body']"));
-        Integer confirmCode = ReusableMethods.getCount(ele2);
+       // WebElement ele = driver.findElement(By.xpath("//div[@class='bulk-edit']//div[@class='bulk-edit__container']"));
+        WebElement ele = driver.findElement(By.xpath("//div[@class='bulk-edit__body']"));
+        Integer confirmCode = ReusableMethods.getCount(ele);
         ele.findElement(By.id("bulk-captcha")).sendKeys(Integer.toString(confirmCode));
         WebElement confirmButton = driver.findElement(By.xpath("//button[text()='Confirm']"));
         confirmButton.click();
     }
 
-    public static void bulkConfirm(){
-        WebElement ele2 = driver.findElement(By.xpath("//div[@class='bulk-edit-confirmation']//div[@class='bulk-edit__body']"));
-        Integer confirmCode = ReusableMethods.getCount(ele2);
-        ele2.findElement(By.id("bulk-captcha")).sendKeys(Integer.toString(confirmCode));
+    public static void bulkConfirm() throws InterruptedException {
+        WebElement ele = driver.findElement(By.xpath("//div[@class='bulk-edit-confirmation']//div[@class='bulk-edit__body']"));
+        Integer confirmCode = ReusableMethods.getCount(ele);
+        ele.findElement(By.id("bulk-captcha")).sendKeys(Integer.toString(confirmCode));
+        Thread.sleep(2000);
         WebElement confirmButton = driver.findElement(By.xpath("//button[text()='Confirm']"));
         confirmButton.click();
     }

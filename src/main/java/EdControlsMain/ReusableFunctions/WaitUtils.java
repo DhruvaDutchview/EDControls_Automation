@@ -16,7 +16,7 @@ public class WaitUtils extends BaseTest {
         super(driver);
     }
 
-    public static WebElement waitForElementAppear(By locator) {
+    public static WebElement waitForElementAppear(By locator, WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement ele = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         return ele;

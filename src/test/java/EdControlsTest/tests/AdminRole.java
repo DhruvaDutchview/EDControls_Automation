@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
+import java.security.Key;
 import java.time.Duration;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -31,7 +32,7 @@ public class AdminRole extends BaseTest {
     private String libraryGroupName;
     private String templateGroupName;
     private String userName;
-
+    private String replaceUser;
 
 
     // Test case 1 (Admin should be able to create the project)
@@ -45,7 +46,7 @@ public class AdminRole extends BaseTest {
 
         // Enter project details
 
-        projectText = ReusableMethods.generateProjectName();
+        projectText = ProjectContainer.getUniqueName(ProjectContainer.NameType.AUTOMATION_PROJECT);
         newProjectLeftPanel.findElement(By.id("projectName")).sendKeys(projectText);
         newProjectLeftPanel.findElement(By.id("referenceName")).sendKeys("Automation Project reference");
         newProjectLeftPanel.findElement(By.id("internalPurchaseNumber")).sendKeys("Automation invoice");
@@ -98,7 +99,7 @@ public class AdminRole extends BaseTest {
 
 
     // Test Case 2 (Admin should be able to edit the project details)
-    @Test(dependsOnMethods = "createProject", priority = 2)
+    @Test(priority = 2)
     public void checkProjectEditable() throws Exception {
         Thread.sleep(2000);
         ProjectContainer.editProject(projectText); // Using stored project name
@@ -114,9 +115,9 @@ public class AdminRole extends BaseTest {
     @Test(priority = 3)
     public void addUsersOnNewProject() throws Exception {
         // Check if projectText is empty; if so, create a new project
-        if (projectText == null || projectText.isEmpty()) {
-            createProject();
-        }
+//        if (projectText == null || projectText.isEmpty()) {
+//            createProject();
+//        }
 
         ProjectContainer.initiateNewProjectCreation();
         Thread.sleep(2000);
@@ -181,11 +182,8 @@ public class AdminRole extends BaseTest {
     }
 
     // Test Case 4 (He should be able to edit the project name, reference name, invoice name and reference name)
-    @Test(dependsOnMethods = "createProject", priority = 4)
+    @Test(priority = 4)
     public void editProject() throws Exception {
-        if (projectText == null || projectText.isEmpty()) {
-            createProject();
-        }
         ProjectContainer.editProject(projectText); // Using stored project name
         WebElement editProjectLeftPanel = driver.findElement(By.xpath("//div[@class='project-form__container']"));
         WaitUtils.waitForWebElementByAppear(editProjectLeftPanel);
@@ -215,9 +213,9 @@ public class AdminRole extends BaseTest {
     // Test case 5 (He should be able to add/edit the end date of the project)
     @Test(priority = 5)
     public void addDueDate() throws Exception {
-        if (projectText == null || projectText.isEmpty()) {
+       /* if (projectText == null || projectText.isEmpty()) {
             createProject();
-        }
+        }*/
         Thread.sleep(2000);
         ProjectContainer.editProject(projectText); // Using stored project name
         WebElement editProjectLeftPanel = driver.findElement(By.xpath("//div[@class='project-form__container']"));
@@ -306,13 +304,13 @@ public class AdminRole extends BaseTest {
         Thread.sleep(3000);
 
         // clear the search
-        WebElement projectSearch = WaitUtils.waitForElementAppear(By.xpath("//input[@id='search']"));
+        WebElement projectSearch = WaitUtils.waitForElementAppear(By.xpath("//input[@id='search']"), driver);
         ReusableMethods.clearSingleElement(projectSearch);
         Thread.sleep(2000);
     }
 
     // Test case 7 (Admin should be able to de-archive the project)
-    @Test(dependsOnMethods = "archiveProject", priority = 7)
+    @Test(priority = 7)
     public void deArchiveProject() throws Exception {
         WebElement archiveElement = driver.findElement(By.xpath("//label[@for='archive']"));
         archiveElement.click();
@@ -340,17 +338,18 @@ public class AdminRole extends BaseTest {
         js.executeScript("arguments[0].click();", archiveElement);
 
         // clear the search
-        WebElement projectSearch = WaitUtils.waitForElementAppear(By.xpath("//input[@id='search']"));
+        WebElement projectSearch = WaitUtils.waitForElementAppear(By.xpath("//input[@id='search']"), driver);
         ReusableMethods.clearSingleElement(projectSearch);
         Thread.sleep(2000);
     }
 
+    /*
     // Test case 8 (Admin should be able to add/edit the project and company logo)
     @Test
     public void addEditLogo() throws Exception {
-      /*  if (projectText == null || projectText.isEmpty()) {
+        if (projectText == null || projectText.isEmpty()) {
             createProject();
-        }*/
+        }
         ProjectContainer.editProject("Test acc");
         WebElement imageUploadElement = driver.findElement(By.xpath("//div[@class='project-form__right']//div[@class='project-right-img-actions']"));
         List<WebElement> imageElements = imageUploadElement.findElements(By.xpath("//div[@class='ml-0']"));
@@ -366,21 +365,24 @@ public class AdminRole extends BaseTest {
             }
         }
 
-    }
+    }*/
+
 
     // Test Case 9 (Should be able to create a library group)
-    @Test
+    @Test (priority = 8)
     public void createLibraryGroup() throws Exception {
         ProjectContainer.navigateToProject();
         Thread.sleep(1000);
         ProjectContainer.navigateToModule(driver.findElement(By.id("ed-maps")));
         Thread.sleep(2000);
-        libraryGroupName = MapContainer.createLibraryGroup("Library Group 1");
+        libraryGroupName = ProjectContainer.getUniqueName(ProjectContainer.NameType.LIBRARY_GROUP);
+        MapContainer.createLibraryGroup(libraryGroupName);
         System.err.println(ReusableMethods.checkingToastMessage());
     }
 
+    // Test Case 10
     // Deleting a library group
-    @Test(dependsOnMethods = "createLibraryGroup")
+    @Test( priority = 9)
     public void deleteLibraryGroup() throws Exception {
         ProjectContainer.navigateToProject();
         Thread.sleep(1000);
@@ -390,17 +392,18 @@ public class AdminRole extends BaseTest {
         System.err.println(ReusableMethods.checkingToastMessage());
     }
 
-    // Test Case 10 (Admin should be able to create a template group)
-    @Test
+    // Test Case 11 (Admin should be able to create a template group)
+    @Test (priority = 10)
     public void createTemplateGroup() throws Exception {
         ProjectContainer.navigateToProject();
         Thread.sleep(2000);
         ProjectContainer.navigateToModule(driver.findElement(By.id("ed-templates")));
-        templateGroupName =  TemplateContainer.createTemplateGroup("TG - Automation");
+        templateGroupName = ProjectContainer.getUniqueName(ProjectContainer.NameType.TEMPLATE_GROUP);
+        TemplateContainer.createTemplateGroup(templateGroupName);
         System.err.println(ReusableMethods.checkingToastMessage());
     }
 
-    // Test Case 11 (Should be able to create a template)
+    /*// Test Case 11 (Should be able to create a template)
     @Test
     public void createTemplate() throws Exception {
         ProjectContainer.navigateToProject();
@@ -408,11 +411,11 @@ public class AdminRole extends BaseTest {
         ProjectContainer.navigateToModule(driver.findElement(By.id("ed-templates")));
         Thread.sleep(2000);
         TemplateContainer.createTemplate("TG - Automation", "Automation Template");
-    }
+    }*/
 
     //Test case 12
-    @Test
-    public void editUserOnUserManagement() throws Exception {
+    @Test (priority = 11)
+    public void replaceUserInUserManagement() throws Exception {
         WebElement currentUser = driver.findElement(By.id("mh-current-user"));
         currentUser.click();
         Thread.sleep(2000);
@@ -423,25 +426,18 @@ public class AdminRole extends BaseTest {
 
         WebElement userContainer = WaitUtils.waitForElementToBeVisible(driver.findElement(By.xpath("//div[@class='users-table']")));
         WebElement userBody = userContainer.findElement(By.xpath("//section[@class='users-body']"));
-        List<WebElement> usersList = userBody.findElements(By.xpath(".//div[contains(@class,'user-data ')]"));  // Updated to use .//
 
-        // Iterate through each user row
-        for (WebElement users : usersList) {
-            WebElement userEmailElement = users.findElement(By.xpath(".//span[@class='email']"));  // Updated to use .//
-            WebElement userNameElement = users.findElement(By.xpath(".//span"));  // Updated to use .//
-
-            userName = userNameElement.getText();
-            String userEmail = userEmailElement.getText();
-            System.out.println("User Name: " + userName + " | User Email: " + userEmail);
-        }
+        //Printing all the users from a user's list
+        List<WebElement> usersList = UsersContainer.getUsersFromUsersManagement(userBody);
 
         // randomly searching and select the user
         WebElement modifyingUser = usersList.get(4).findElement(By.xpath(".//span[@class='email']"));
         WebElement searchElement = driver.findElement(By.id("search"));
         searchElement.sendKeys(modifyingUser.getText());
 
-        //Click on this user, So re-fetching users result list
-        List<WebElement> usersList2 = userBody.findElements(By.xpath(".//div[contains(@class,'user-data ')]"));  // Updated to use .//
+        //Click on this user, So re-fetching users list
+        List<WebElement> usersList2 = UsersContainer.getUsersFromUsersManagement(userBody);
+        // List<WebElement> usersList2 = userBody.findElements(By.xpath(".//div[contains(@class,'user-data ')]"));  // Updated to use .//
 
         // Iterate through each user row
         for (WebElement users : usersList2) {
@@ -451,11 +447,10 @@ public class AdminRole extends BaseTest {
             userName = userNameElement.getText();
             String userEmail = userEmailElement.getText();
             System.err.println("User Name: " + userName + " | User Email: " + userEmail);
-            if (!usersList2.isEmpty()){
+            if (!usersList2.isEmpty()) {
                 usersList2.get(0).click();
                 System.out.println("Selecting first user :" + userName);
-            }
-            else{
+            } else {
                 System.out.println("Searched users list is empty");
             }
         }
@@ -467,12 +462,11 @@ public class AdminRole extends BaseTest {
         if (selectAll.isDisplayed()) {
             try {
                 selectAll.click();
-                System.out.println("Check box is selected : "+selectAll.isSelected());
-            }
-            catch (Exception e){
+                System.out.println("Check box is selected : " + selectAll.isSelected());
+            } catch (Exception e) {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 js.executeScript("arguments[0].click();", selectAll);
-                System.out.println("Check box is selected : "+selectAll.isSelected());
+                System.out.println("Check box is selected : " + selectAll.isSelected());
             }
         }
 
@@ -480,9 +474,9 @@ public class AdminRole extends BaseTest {
         // Click the Replace button
         WebElement buttonContainer = driver.findElement(By.xpath("//section[@class='action-buttons']"));
         List<WebElement> buttonElements = buttonContainer.findElements(By.xpath("//button[@type='button']"));
-        for (WebElement button : buttonElements){
+        for (WebElement button : buttonElements) {
             String buttonText = button.getText();
-            if (buttonText.contains("Replace")){
+            if (buttonText.contains("Replace")) {
                 button.click();
                 break;
             }
@@ -492,7 +486,7 @@ public class AdminRole extends BaseTest {
         WebElement replacePopup = WaitUtils.waitForElementToBeVisible(driver.findElement(By.xpath("//div[@class='replace-popup']")));
         WebElement emailReplaceElement = driver.findElement(By.id("email-input-replace"));
         Thread.sleep(1000);
-        String replaceUser = "replaceuser@mailinator.com";
+        replaceUser = "replaceuser@mailinator.com";
         emailReplaceElement.sendKeys(replaceUser + Keys.ENTER);
         Thread.sleep(2000);
         driver.findElement(By.xpath("//button[contains(@class,'MuiButton-contained')]")).click();
@@ -502,8 +496,158 @@ public class AdminRole extends BaseTest {
         Thread.sleep(2000);
         driver.findElement(By.xpath("//button[contains(text(), 'OK')]")).click();
 
+    }
+
+    //Test Case 13
+    @Test( priority = 12)
+    public void removeUserInUserManagement() throws Exception {
+        WebElement currentUser = driver.findElement(By.id("mh-current-user"));
+        currentUser.click();
+        Thread.sleep(2000);
+
+        WebElement dropdown = WaitUtils.waitForWebElementToClick(driver.findElement(By.id("menu-list-grow")));
+        WebElement contactInfo = WaitUtils.waitForWebElementToClick(dropdown.findElement(By.xpath("//li[contains(text(),'Contract information')]")));
+        contactInfo.click();
+
+        WebElement userContainer = WaitUtils.waitForElementToBeVisible(driver.findElement(By.xpath("//div[@class='users-table']")));
+        WebElement userBody = userContainer.findElement(By.xpath("//section[@class='users-body']"));
+
+        //Printing all the users from a user's list
+        List<WebElement> usersList = UsersContainer.getUsersFromUsersManagement(userBody);
+        for (WebElement users : usersList) {
+            WebElement userEmailElement = users.findElement(By.xpath(".//span[@class='email']"));  // Updated to use .//
+            WebElement userNameElement = users.findElement(By.xpath(".//span"));  // Updated to use .//
+
+            userName = userNameElement.getText();
+            String userEmail = userEmailElement.getText();
+            if (!usersList.isEmpty()) {
+                // fetching and removing replaced user
+                if (userEmail.contains(replaceUser)) {
+                    userEmailElement.click();
+                }
+            } else {
+                System.out.println("Searched users list is empty");
+            }
+        }
+
+        Thread.sleep(2000);
+        //click on select all checkboxes of projects
+        WebElement selectProjectElement = WaitUtils.waitForWebElementAppear(driver.findElement(By.xpath("//div[@class='projects-roles']//label[@class='checkbox-container']")));
+        WebElement selectAll = selectProjectElement.findElement(By.xpath(".//span[@class='checkmark']"));
+        if (selectAll.isDisplayed()) {
+            try {
+                selectAll.click();
+                System.out.println("Check box is selected : " + selectAll.isSelected());
+            } catch (Exception e) {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("arguments[0].click();", selectAll);
+                System.out.println("Check box is selected : " + selectAll.isSelected());
+            }
+        }
+        Thread.sleep(2000);
+
+        // Click on remove user
+        WebElement buttonContainer = driver.findElement(By.xpath("//section[@class='action-buttons']"));
+        List<WebElement> buttonElements = buttonContainer.findElements(By.xpath("//button[@type='button']"));
+        for (WebElement button : buttonElements) {
+            String buttonText = button.getText();
+            if (buttonText.contains("Remove")) {
+                button.click();
+                break;
+            }
+        }
+        Thread.sleep(2000);
+
+        //Removing the user
+        WebElement replacePopup = WaitUtils.waitForElementToBeVisible(driver.findElement(By.xpath("//div[@class='remove-popup']")));
+        Thread.sleep(1000);
+
+        // checking if removing user is accountable or responsible or both
+            WebElement responsibleUserElement = null;
+            try {
+                responsibleUserElement = WaitUtils.waitForWebElementToClick(driver.findElement(By.id("email-input-remove-res")));
+                if (responsibleUserElement.isDisplayed()) {
+                    responsibleUserElement.click();
+                    responsibleUserElement.sendKeys("replacedresponsible@gmail.com" + Keys.ENTER);
+                    Thread.sleep(2000);
+                }
+            } catch (Exception e) {
+                System.out.println("Responsible user input not found, skipping...");
+            }
+
+            // Check if accountable user removal field is visible
+            WebElement accountableElement = null;
+            try {
+                accountableElement = WaitUtils.waitForWebElementToClick(driver.findElement(By.id("email-input-remove-acc")));
+                if (accountableElement.isDisplayed()) {
+                    accountableElement.click();
+                    accountableElement.sendKeys("replacedacc@mailinator.com" + Keys.ENTER);
+                    Thread.sleep(2000);
+                }
+            } catch (Exception e) {
+                System.out.println("Accountable user input not found, skipping...");
+            }
+
+           // If neither responsible nor accountable user fields are visible
+            if (responsibleUserElement == null && accountableElement == null) {
+                System.out.println("Neither Responsible nor Accountable user input fields are found, skipping this section.");
+            }
+        // Remove the user completely
+           /* // Wait until the dropdown options become visible
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            List<WebElement> dropdownOptions = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+                    By.xpath("//div[contains(@aria-activedescendant, 'email-input-remove-res-option')]") // Adjust based on actual structure
+            ));
+
+            // Loop through the options and select "No Responsible"
+            for (WebElement option : dropdownOptions) {
+                if (option.getText().trim().equalsIgnoreCase("No Responsible")) {
+                    Actions actions = new Actions(driver);
+                    actions.moveToElement(option).click().perform();
+                    break;
+                }
+            }
+            // Wait for dropdown options to be visible
+            Thread.sleep(2000); // You can replace this with an explicit wait
+
+          // Locate and click the "No Responsible" option
+         //   WebElement noResponsibleOption = driver.findElement(By.xpath("//li[contains(text(),'No Responsible')]"));
+          //  noResponsibleOption.click();*/
+        driver.findElement(By.xpath("//button[contains(@class,'MuiButton-contained')]")).click();
+        Thread.sleep(2000);
+        BulkContainer.bulkConfirm();
+        System.out.println(ReusableMethods.checkingToastMessage());
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//button[contains(text(), 'OK')]")).click();
+    }
+
+    //Test Case 13 (Should be able to edit/add the information in the contract information screen)
+    @Test
+    public void modifyInContractInfo() throws InterruptedException {
+        WebElement currentUser = driver.findElement(By.id("mh-current-user"));
+        currentUser.click();
+        Thread.sleep(2000);
+
+        WebElement dropdown = WaitUtils.waitForWebElementToClick(driver.findElement(By.id("menu-list-grow")));
+        WebElement contactInfo = WaitUtils.waitForWebElementToClick(dropdown.findElement(By.xpath("//li[contains(text(),'Contract information')]")));
+        contactInfo.click();
+        Thread.sleep(2000);
+        WebElement contactInfoScreen = WaitUtils.waitForWebElementToClick(driver.findElement(By.linkText("Contract information")));
+        contactInfoScreen.click();
+        Thread.sleep(2000);
+
+
+
 
     }
+
+
+
+
+
+
+
+
 
 
 }

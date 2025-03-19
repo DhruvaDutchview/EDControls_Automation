@@ -76,6 +76,17 @@ public class MapContainer extends BaseTest {
 
     public static void deleteLibraryGroup(String libraryGroupName) throws InterruptedException {
         WebElement libraryLeftPanel = driver.findElement(By.xpath("//div[@id='panel2d-content']//div[@class='library-filter__container ']"));
+        Thread.sleep(2000);
+        try {
+            WebElement showMoreButton = libraryLeftPanel.findElement(By.xpath("//span[@class='show-more']"));
+            if (showMoreButton.isDisplayed()) {
+                showMoreButton.click();
+            } else {
+                System.out.println("Show More button is not visible, skipping click.");
+            }
+        } catch (Exception e) {
+            System.out.println("Show More button not found, skipping click.");
+        }
         List<WebElement> libraryGroups = libraryLeftPanel.findElements(By.xpath(".//div[@class='group-container']"));
         Actions actions = new Actions(driver);
         JavascriptExecutor js = (JavascriptExecutor) driver;
