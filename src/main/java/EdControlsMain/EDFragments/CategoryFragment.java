@@ -1,7 +1,6 @@
 package EdControlsMain.EDFragments;
 
 import EdControlsMain.BaseClasses.BaseTest;
-import EdControlsMain.ReusableFunctions.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -39,7 +38,7 @@ public class CategoryFragment extends BaseTest {
             } else {
                 // Click 'Add Question' for the next question
                 WebElement addQuestionButton = categoryElement.findElement(By.xpath(".//button[contains(text(), 'Add question')]"));
-                WaitUtils.waitForWebElementToClickable(addQuestionButton);
+                WaitUtilsFragment.waitForWebElementToClickable(addQuestionButton);
                 addQuestionButton.click();
                 Thread.sleep(2000);
                 addCustomQuestion(categoryElement, questionType);
@@ -51,7 +50,7 @@ public class CategoryFragment extends BaseTest {
     private static void addCustomQuestion(WebElement categoryElement, String questionType) {
         try {
             WebElement dropdown = categoryElement.findElement(By.xpath(".//div[contains(@class, 'MuiSelect-root') and @role='button']"));
-            WaitUtils.waitForWebElementToClickable(dropdown);
+            WaitUtilsFragment.waitForWebElementToClickable(dropdown);
             dropdown.click();
             Thread.sleep(2000);
             WebElement option = new WebDriverWait(driver, Duration.ofSeconds(5))
@@ -68,7 +67,7 @@ public class CategoryFragment extends BaseTest {
     public static void addYesNoQuestion(WebElement categoryElement) {
         try {
             WebElement addQuestionButton = categoryElement.findElement(By.xpath(".//button[contains(text(), 'Add question')]"));
-            WaitUtils.waitForWebElementToClickable(addQuestionButton);
+            WaitUtilsFragment.waitForWebElementToClickable(addQuestionButton);
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addQuestionButton);
             System.out.println("Added question to category.");
             Thread.sleep(2000);

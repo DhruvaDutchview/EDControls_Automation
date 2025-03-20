@@ -9,17 +9,134 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="034eff9e-3bf9-4c1d-9288-7d73239cba22" name="Changes" comment="Commit : WIP (admin role 12 test case)">
+    <list default="true" id="034eff9e-3bf9-4c1d-9288-7d73239cba22" name="Changes" comment="Commit : WIP (admin role 13 test case)">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_errorprone_error_prone_annotations_2_36_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_guava_33_4_0_jre.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_api_1_46_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_api_incubator_1_46_0_alpha.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_context_1_46_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_exporter_logging_1_46_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_sdk_1_46_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_sdk_common_1_46_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_sdk_extension_autoconfigure_1_46_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_sdk_extension_autoconfigure_spi_1_46_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_sdk_logs_1_46_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_sdk_metrics_1_46_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_sdk_trace_1_46_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_semconv_opentelemetry_semconv_1_28_0_alpha.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_bytebuddy_byte_buddy_1_15_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_api_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_chrome_driver_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_chromium_driver_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_devtools_v131_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_devtools_v132_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_devtools_v133_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_devtools_v85_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_edge_driver_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_firefox_driver_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_http_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_ie_driver_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_java_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_json_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_manager_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_os_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_remote_driver_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_safari_driver_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_support_4_29_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/AdminTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.3/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.3/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.3/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.3/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.3/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.3/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.3/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.3/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_errorprone_error_prone_annotations_2_28_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_guava_33_3_1_jre.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__dev_failsafe_failsafe_3_3_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_api_1_44_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_api_incubator_1_44_1_alpha.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_context_1_44_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_exporter_logging_1_44_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_sdk_1_44_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_sdk_common_1_44_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_sdk_extension_autoconfigure_1_44_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_sdk_extension_autoconfigure_spi_1_44_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_sdk_logs_1_44_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_sdk_metrics_1_44_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_opentelemetry_sdk_trace_1_44_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_opentelemetry_semconv_opentelemetry_semconv_1_25_0_alpha.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__net_bytebuddy_byte_buddy_1_15_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_api_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_chrome_driver_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_chromium_driver_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_devtools_v129_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_devtools_v130_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_devtools_v131_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_devtools_v85_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_edge_driver_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_firefox_driver_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_http_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_ie_driver_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_java_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_json_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_manager_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_os_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_remote_driver_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_safari_driver_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_support_4_27_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/EDControls_Automation.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/EDControls_Automation.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/EDControls_Automation.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/EDControls_Automation.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/EdContainers/BulkContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/EdControlsMain/EdContainers/BulkContainer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestReports/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TestReports/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestSuits/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TestSuits/testng.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/BaseClasses/BaseTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/EdControlsMain/BaseClasses/BaseTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/BaseClasses/LoginPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/EdControlsMain/BaseClasses/LoginPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/EDFragments/CategoryFragment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/EdControlsMain/EDFragments/CategoryFragment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/EdContainers/AuditContainer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/EdContainers/BulkContainer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/EdContainers/MapContainer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/EdContainers/ProjectContainer$NameType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/EdContainers/ProjectContainer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/EdContainers/TemplateContainer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/EdContainers/TicketContainer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/EdContainers/UsersContainer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/Resources/DataReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/EdControlsMain/Resources/DataReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/ReusableFunctions/DateFragment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/ReusableFunctions/WaitUtils$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/ReusableFunctions/WaitUtils.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/AdminRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/AdminRole.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/AuditModule.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/AuditModule.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/ProjectModule.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/ProjectModule.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/TicketBulk.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/TicketBulk.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/BulkContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/BulkContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/MapContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/MapContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/ProjectContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/ProjectContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/UsersContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/UsersContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/ReusableFunctions/WaitUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/ReusableFunctions/WaitUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/AdminRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/AdminRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/TicketFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/TicketFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/TicketModule.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/TicketModule.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/BaseClasses/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/BaseClasses/BaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/BaseClasses/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/BaseClasses/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EDFragments/CategoryFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EDFragments/CategoryFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/AuditContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdPageObjects/AuditContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/BulkContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdPageObjects/BulkContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/MapContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdPageObjects/MapContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/ProjectContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdPageObjects/ProjectContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/TemplateContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdPageObjects/TemplateContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/TicketContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdPageObjects/TicketContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdContainers/UsersContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdPageObjects/UsersContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/Resources/DataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/Resources/DataReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/Resources/GlobalData.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/Resources/GlobalData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/ReusableFunctions/DateFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EDFragments/DateFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/ReusableFunctions/WaitUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EDFragments/WaitUtilsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/AdminRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdPageObjects/AdminRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/AuditModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/AuditModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/ProjectModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/ProjectModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/TicketBulk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/TicketBulk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/TicketFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/TicketFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/TicketModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/TicketModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/used_numbers_automation_project.txt" beforeDir="false" afterPath="$PROJECT_DIR$/used_numbers_automation_project.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/used_numbers_library_group.txt" beforeDir="false" afterPath="$PROJECT_DIR$/used_numbers_library_group.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/used_numbers_template_group.txt" beforeDir="false" afterPath="$PROJECT_DIR$/used_numbers_template_group.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,11 +198,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/TestSuits/testng.xml" root0="SKIP_INSPECTION" />
   </component>
-  <component name="JavaAutoRunManager">
-    <enabled-run-configurations>
-      <run-configuration type="TestNG" name="AdminRole" />
-    </enabled-run-configurations>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -103,60 +215,68 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Gradle.Build EDControls_Automation.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.EDControls_Automation [dependencies].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;TestNG./Users/dutchview/Desktop/Dhruva/Automation/EDControls_Automation/TestSuits/testng.xml (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG./Users/dutchview/Desktop/Dhruva/Automation/EDControls_Automation/TestSuits/testng.xml.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.addDueDate.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.addEditLogo (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.addEditLogo (2).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.addEditLogo.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.addOrEditDueDate.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.addUsersOnNewProject.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.archiveProject (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.archiveProject.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.changeDuedate.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.checkProjectEditable (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.checkProjectEditable.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.createLibraryGroup.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.createProject (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.createProject.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.createTemplate (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.createTemplate.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.createTemplateGroup.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.deArchiveProject (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.deArchiveProject.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.deleteLibaryGroup.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.deleteLibraryGroup.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.editProject.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.editUserOnUserManagement (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.editUserOnUserManagement (2).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.editUserOnUserManagement.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.modifyInContractInfo.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.removeUserInUserManagement.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AuditModule.createAreaAudit.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.TemplateContainer.createTemplateGroup.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.TicketBulk.addingBulkTag (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.TicketBulk.addingBulkTag.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.TicketModule.createTicket.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/dutchview/Desktop/Dhruva/Automation/EDControls_Automation&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.appearance&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Gradle.Build EDControls_Automation.executor": "Run",
+    "Gradle.EDControls_Automation [dependencies].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "TestNG./Users/dutchview/Desktop/Dhruva/Automation/EDControls_Automation/TestSuits/testng.xml (1).executor": "Run",
+    "TestNG./Users/dutchview/Desktop/Dhruva/Automation/EDControls_Automation/TestSuits/testng.xml.executor": "Run",
+    "TestNG./Users/dutchview/Desktop/Dhruva/Automation/EDControls_Automation/testng.xml.executor": "Run",
+    "TestNG.AdminRole.addDueDate.executor": "Run",
+    "TestNG.AdminRole.addEditLogo (1).executor": "Run",
+    "TestNG.AdminRole.addEditLogo (2).executor": "Run",
+    "TestNG.AdminRole.addEditLogo.executor": "Run",
+    "TestNG.AdminRole.addOrEditDueDate.executor": "Run",
+    "TestNG.AdminRole.addUsersOnNewProject.executor": "Run",
+    "TestNG.AdminRole.archiveProject (1).executor": "Run",
+    "TestNG.AdminRole.archiveProject.executor": "Run",
+    "TestNG.AdminRole.changeDuedate.executor": "Run",
+    "TestNG.AdminRole.checkProjectEditable (1).executor": "Run",
+    "TestNG.AdminRole.checkProjectEditable.executor": "Run",
+    "TestNG.AdminRole.createLibraryGroup.executor": "Run",
+    "TestNG.AdminRole.createProject (1).executor": "Run",
+    "TestNG.AdminRole.createProject.executor": "Run",
+    "TestNG.AdminRole.createTemplate (1).executor": "Run",
+    "TestNG.AdminRole.createTemplate.executor": "Run",
+    "TestNG.AdminRole.createTemplateGroup.executor": "Run",
+    "TestNG.AdminRole.deArchiveProject (1).executor": "Run",
+    "TestNG.AdminRole.deArchiveProject.executor": "Run",
+    "TestNG.AdminRole.deleteLibaryGroup.executor": "Run",
+    "TestNG.AdminRole.deleteLibraryGroup.executor": "Run",
+    "TestNG.AdminRole.editProject.executor": "Run",
+    "TestNG.AdminRole.editUserOnUserManagement (1).executor": "Run",
+    "TestNG.AdminRole.editUserOnUserManagement (2).executor": "Run",
+    "TestNG.AdminRole.editUserOnUserManagement.executor": "Run",
+    "TestNG.AdminRole.executor": "Run",
+    "TestNG.AdminRole.modifyInContractInfo (1).executor": "Run",
+    "TestNG.AdminRole.modifyInContractInfo (2).executor": "Run",
+    "TestNG.AdminRole.modifyInContractInfo (3).executor": "Run",
+    "TestNG.AdminRole.modifyInContractInfo.executor": "Run",
+    "TestNG.AdminRole.removeUserInUserManagement.executor": "Run",
+    "TestNG.AdminTests.addDueDate.executor": "Run",
+    "TestNG.AdminTests.createProject.executor": "Run",
+    "TestNG.AdminTests.deleteLibraryGroup.executor": "Run",
+    "TestNG.AdminTests.executor": "Run",
+    "TestNG.AuditModule.createAreaAudit.executor": "Run",
+    "TestNG.TemplateContainer.createTemplateGroup.executor": "Run",
+    "TestNG.TicketBulk.addingBulkTag (1).executor": "Run",
+    "TestNG.TicketBulk.addingBulkTag.executor": "Run",
+    "TestNG.TicketModule.createTicket.executor": "Run",
+    "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/dutchview/Desktop/Dhruva/Automation/EDControls_Automation",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.web.browsers"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -167,7 +287,7 @@
       <recent name="dhruvakumar.Resources" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.AdminRole.modifyInContractInfo">
+  <component name="RunManager" selected="TestNG.AdminTests.deleteLibraryGroup">
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -188,7 +308,37 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="AdminRole" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="AdminRole.createProject (1)" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="EDControls_Automation.main" />
+      <shortenClasspath name="NONE" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="EdControlsMain.EdPageObjects.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/Library/Java/JavaVirtualMachines/temurin-17.0.14/Contents/Home" />
+      <option name="SUITE_NAME" value="" />
+      <option name="PACKAGE_NAME" value="EdControlsMain.EdPageObjects" />
+      <option name="MAIN_CLASS_NAME" value="EdControlsMain.EdPageObjects.AdminRole" />
+      <option name="METHOD_NAME" value="createProject" />
+      <option name="GROUP_NAME" value="" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="PARAMETERS" value="" />
+      <option name="OUTPUT_DIRECTORY" value="" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="PROPERTIES_FILE" value="" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminTests" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="EDControls_Automation.test" />
       <shortenClasspath name="NONE" />
       <useClassPathOnly />
@@ -202,7 +352,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/Library/Java/JavaVirtualMachines/temurin-17.0.14/Contents/Home" />
       <option name="SUITE_NAME" value="" />
       <option name="PACKAGE_NAME" value="EdControlsTest.tests" />
-      <option name="MAIN_CLASS_NAME" value="EdControlsTest.tests.AdminRole" />
+      <option name="MAIN_CLASS_NAME" value="EdControlsTest.tests.AdminTests" />
       <option name="GROUP_NAME" value="" />
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="PARAMETERS" value="" />
@@ -217,7 +367,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminRole.createTemplateGroup" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="AdminTests.addDueDate" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="EDControls_Automation.test" />
       <shortenClasspath name="NONE" />
       <useClassPathOnly />
@@ -231,8 +381,8 @@
       <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/Library/Java/JavaVirtualMachines/temurin-17.0.14/Contents/Home" />
       <option name="SUITE_NAME" value="" />
       <option name="PACKAGE_NAME" value="EdControlsTest.tests" />
-      <option name="MAIN_CLASS_NAME" value="EdControlsTest.tests.AdminRole" />
-      <option name="METHOD_NAME" value="createTemplateGroup" />
+      <option name="MAIN_CLASS_NAME" value="EdControlsTest.tests.AdminTests" />
+      <option name="METHOD_NAME" value="addDueDate" />
       <option name="GROUP_NAME" value="" />
       <option name="TEST_OBJECT" value="METHOD" />
       <option name="PARAMETERS" value="" />
@@ -247,7 +397,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminRole.deleteLibraryGroup" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="AdminTests.createProject" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="EDControls_Automation.test" />
       <shortenClasspath name="NONE" />
       <useClassPathOnly />
@@ -261,68 +411,38 @@
       <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/Library/Java/JavaVirtualMachines/temurin-17.0.14/Contents/Home" />
       <option name="SUITE_NAME" value="" />
       <option name="PACKAGE_NAME" value="EdControlsTest.tests" />
-      <option name="MAIN_CLASS_NAME" value="EdControlsTest.tests.AdminRole" />
+      <option name="MAIN_CLASS_NAME" value="EdControlsTest.tests.AdminTests" />
+      <option name="METHOD_NAME" value="createProject" />
+      <option name="GROUP_NAME" value="" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="PARAMETERS" value="" />
+      <option name="OUTPUT_DIRECTORY" value="" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="PROPERTIES_FILE" value="" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminTests.deleteLibraryGroup" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="EDControls_Automation.test" />
+      <shortenClasspath name="NONE" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="EdControlsTest.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/Library/Java/JavaVirtualMachines/temurin-17.0.14/Contents/Home" />
+      <option name="SUITE_NAME" value="" />
+      <option name="PACKAGE_NAME" value="EdControlsTest.tests" />
+      <option name="MAIN_CLASS_NAME" value="EdControlsTest.tests.AdminTests" />
       <option name="METHOD_NAME" value="deleteLibraryGroup" />
-      <option name="GROUP_NAME" value="" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <option name="PARAMETERS" value="" />
-      <option name="OUTPUT_DIRECTORY" value="" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <option name="PROPERTIES_FILE" value="" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdminRole.modifyInContractInfo" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="EDControls_Automation.test" />
-      <shortenClasspath name="NONE" />
-      <useClassPathOnly />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="EdControlsTest.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/Library/Java/JavaVirtualMachines/temurin-17.0.14/Contents/Home" />
-      <option name="SUITE_NAME" value="" />
-      <option name="PACKAGE_NAME" value="EdControlsTest.tests" />
-      <option name="MAIN_CLASS_NAME" value="EdControlsTest.tests.AdminRole" />
-      <option name="METHOD_NAME" value="modifyInContractInfo" />
-      <option name="GROUP_NAME" value="" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <option name="PARAMETERS" value="" />
-      <option name="OUTPUT_DIRECTORY" value="" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <option name="PROPERTIES_FILE" value="" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdminRole.removeUserInUserManagement" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="EDControls_Automation.test" />
-      <shortenClasspath name="NONE" />
-      <useClassPathOnly />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="EdControlsTest.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/Library/Java/JavaVirtualMachines/temurin-17.0.14/Contents/Home" />
-      <option name="SUITE_NAME" value="" />
-      <option name="PACKAGE_NAME" value="EdControlsTest.tests" />
-      <option name="MAIN_CLASS_NAME" value="EdControlsTest.tests.AdminRole" />
-      <option name="METHOD_NAME" value="removeUserInUserManagement" />
       <option name="GROUP_NAME" value="" />
       <option name="TEST_OBJECT" value="METHOD" />
       <option name="PARAMETERS" value="" />
@@ -384,19 +504,19 @@
     </configuration>
     <list>
       <item itemvalue="TestNG.Unnamed" />
-      <item itemvalue="TestNG.AdminRole.createTemplateGroup" />
-      <item itemvalue="TestNG.AdminRole.deleteLibraryGroup" />
-      <item itemvalue="TestNG.AdminRole.modifyInContractInfo" />
-      <item itemvalue="TestNG.AdminRole" />
-      <item itemvalue="TestNG.AdminRole.removeUserInUserManagement" />
+      <item itemvalue="TestNG.AdminRole.createProject (1)" />
+      <item itemvalue="TestNG.AdminTests" />
+      <item itemvalue="TestNG.AdminTests.addDueDate" />
+      <item itemvalue="TestNG.AdminTests.createProject" />
+      <item itemvalue="TestNG.AdminTests.deleteLibraryGroup" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.AdminRole.modifyInContractInfo" />
-        <item itemvalue="TestNG.AdminRole" />
-        <item itemvalue="TestNG.AdminRole.removeUserInUserManagement" />
-        <item itemvalue="TestNG.AdminRole.createTemplateGroup" />
-        <item itemvalue="TestNG.AdminRole.deleteLibraryGroup" />
+        <item itemvalue="TestNG.AdminTests.deleteLibraryGroup" />
+        <item itemvalue="TestNG.AdminTests" />
+        <item itemvalue="TestNG.AdminTests.addDueDate" />
+        <item itemvalue="TestNG.AdminTests.createProject" />
+        <item itemvalue="TestNG.AdminRole.createProject (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -633,7 +753,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742325765598</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Commit : WIP (admin role 13 test case)">
+      <option name="closed" value="true" />
+      <created>1742402969161</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1742402969161</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -680,7 +808,8 @@
     <MESSAGE value="Commit : Admin role 4th test case completed" />
     <MESSAGE value="Commit : WIP (Template Creation)" />
     <MESSAGE value="Commit : WIP (admin role 12 test case)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit : WIP (admin role 12 test case)" />
+    <MESSAGE value="Commit : WIP (admin role 13 test case)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit : WIP (admin role 13 test case)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

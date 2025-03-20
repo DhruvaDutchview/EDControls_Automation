@@ -22,25 +22,47 @@ public class DataReader {
     }
 
     //Method to read JSON File
-    public static String getValueFromJsonFile(String key) {
+    public static String getValueFromJsonFile(String keyPath) {
         try {
+            // Correct file path for macOS/Linux
             String filePath = System.getProperty("user.dir") + "/src/main/java/EdControlsMain/Resources/GlobalData.json";
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode jsonArray = objectMapper.readTree(new File(filePath));
 
-            if (jsonArray != null && jsonArray.isArray()) {
-                for (JsonNode node : jsonArray) {
-                    if (node.has(key)) {
-                        return node.get(key).asText(); // Return the value as a string
-                    }
-                }
-            }
+            // Read JSON file
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode rootNode = objectMapper.readTree(new File(filePath));
+
+            // Traverse the JSON structure based on keyPath
+            return getJsonValue(rootNode, keyPath);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null; // Return null if key not found
+        return null;
     }
 
+    private static String getJsonValue(JsonNode node, String keyPath) {
+        String[] keys = keyPath.split("\\."); // Split path by '.'
+
+        for (String key : keys) {
+            if (key.contains("[")) { // Handle arrays, e.g., "browsers[0].browserName"
+                String arrayKey = key.substring(0, key.indexOf("["));
+                int index = Integer.parseInt(key.substring(key.indexOf("[") + 1, key.indexOf("]")));
+
+                node = node.get(arrayKey); // Get the array node
+                if (node != null && node.isArray() && node.has(index)) {
+                    node = node.get(index); // Get the specific array element
+                } else {
+                    return null; // Array index out of bounds
+                }
+            } else {
+                node = node.get(key); // Get the next node in the hierarchy
+            }
+
+            if (node == null) return null; // Return null if key is missing
+        }
+
+        return node.asText(); // Convert JSON node to text
+    }
     // Method to read properties file and return values as a Map
     public static Map<String, String> readPropertiesFile() {
         Map<String, String> propertiesMap = new HashMap<>();

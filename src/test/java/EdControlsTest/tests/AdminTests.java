@@ -1,0 +1,95 @@
+package EdControlsTest.tests;
+
+import EdControlsMain.EdPageObjects.AdminRole;
+import com.beust.ah.A;
+import org.testng.annotations.Test;
+
+public class AdminTests extends AdminRole {
+
+    static AdminRole AdminRole = new AdminRole(driver);
+    // Test case 1 (Admin should be able to create the project)
+    @Test(priority = 1)
+    public void createProject() throws Exception {
+        AdminRole.createProject();
+    }
+
+    // Test Case 2 (Admin should be able to edit the project details)
+    @Test(priority = 2)
+    public void checkProjectEditable() throws Exception {
+        AdminRole.checkProjectEditable();
+    }
+
+    // Test case 3 (Admin should be able to add/edit accountable, support, consulted and informed user)
+    @Test(priority = 3)
+    public void addUsersOnNewProject() throws Exception {
+        AdminRole.addUsersOnNewProject();
+    }
+
+    // Test Case 4 (He should be able to edit the project name, reference name, invoice name and reference name)
+    @Test(priority = 4)
+    public void editProject() throws Exception {
+        AdminRole.editProject();
+    }
+
+    // Test case 5 (He should be able to add/edit the end date of the project)
+    @Test(priority = 5)
+    public void addDueDate() throws Exception {
+        AdminRole.addDueDate();
+    }
+
+    // Test case 6 (Admin should be able to archive the project)
+    @Test(priority = 6)
+    public void archiveProject() throws Exception {
+        AdminRole.archiveProject();
+    }
+
+    // Test case 7 (Admin should be able to de-archive the project)
+    @Test(priority = 7)
+    public void deArchiveProject() throws Exception {
+        AdminRole.deArchiveProject();
+    }
+
+    // Test Case 9 (Should be able to create a library group)
+    @Test (priority = 8)
+    public void createLibraryGroup() throws Exception {
+        AdminRole.createLibraryGroup();
+    }
+
+    // Test Case 10 (Deleting a library group)
+    @Test( priority = 9)
+    public void deleteLibraryGroup() throws Exception {
+        AdminRole.deleteLibraryGroup();
+    }
+
+    // Test Case 11 (Admin should be able to create a template group)
+    @Test (priority = 10)
+    public void createTemplateGroup() throws Exception {
+        AdminRole.createTemplateGroup();
+    }
+
+    //Test case 12
+    @Test (priority = 11)
+    public void replaceUserInUserManagement() throws Exception {
+        AdminRole.replaceUserInUserManagement();
+    }
+
+    //Test Case 13
+    @Test(priority = 12)
+    public void removeUserInUserManagement() throws Exception {
+        AdminRole.removeUserInUserManagement();
+    }
+
+    //Test Case 13 (Should be able to edit/add the information in the contract information screen)
+    @Test(priority = 13)
+    public void modifyInContractInfo() throws InterruptedException {
+        AdminRole.modifyInContractInfo();
+    }
+
+
+
+
+
+
+
+
+}

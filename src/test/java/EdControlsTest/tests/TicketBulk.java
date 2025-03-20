@@ -1,7 +1,7 @@
 package EdControlsTest.tests;
 
 import EdControlsMain.BaseClasses.BaseTest;
-import EdControlsMain.EdContainers.BulkContainer;
+import EdControlsMain.EdPageObjects.BulkContainer;
 import EdControlsMain.ReusableFunctions.ReusableMethods;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;

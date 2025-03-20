@@ -4,7 +4,7 @@
 	</listeners>
 	<test name="Admin Role Test" thread-count="5">
 		<classes>
-			<class name="EdControlsTest.tests.AdminRole"/>
+			<class name="EdControlsMain.EdPageObjects.AdminRole"/>
 		</classes>
 	</test>
 </suite>

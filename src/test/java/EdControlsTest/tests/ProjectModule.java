@@ -1,20 +1,16 @@
 package EdControlsTest.tests;
 
 import EdControlsMain.BaseClasses.BaseTest;
-import EdControlsMain.EdContainers.AuditContainer;
-import EdControlsMain.EdContainers.ProjectContainer;
-import EdControlsMain.EdContainers.TicketContainer;
-import EdControlsMain.ReusableFunctions.ReusableMethods;
-import EdControlsMain.ReusableFunctions.WaitUtils;
+import EdControlsMain.EdPageObjects.AuditContainer;
+import EdControlsMain.EdPageObjects.ProjectContainer;
+import EdControlsMain.EdPageObjects.TicketContainer;
+import EdControlsMain.EDFragments.WaitUtilsFragment;
+import EdControlsMain.Resources.DataReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-import java.awt.geom.RectangularShape;
-import java.time.Duration;
 import java.util.List;
 
 public class ProjectModule extends BaseTest {
@@ -28,7 +24,7 @@ public class ProjectModule extends BaseTest {
 
     @Test
     public void multiProjectSelectOnTicketScreen() throws Exception {
-        ProjectContainer.navigateToProject();
+        ProjectContainer.navigateToProject(DataReader.getValueFromJsonFile("dev.project.name"));
         Thread.sleep(2000);
         // Printing the total tickets after all projects selected
         Integer ticketsCount = TicketContainer.getTicketsCount();
@@ -41,7 +37,7 @@ public class ProjectModule extends BaseTest {
         String currentSelectedProject = projectContainer.getText();
         System.out.println("Current Project Selected :"+currentSelectedProject);
         WebElement projectDropdown = leftMenu.findElement(By.xpath("//div[@class='project-dropdown']"));
-        WaitUtils.waitForWebElementByAppear(projectDropdown);
+        WaitUtilsFragment.waitForWebElementByAppear(projectDropdown);
         WebElement contractName = projectDropdown.findElement(By.xpath("//div[@class='contract-detail']"));
         System.out.println(contractName.getText());
         List<WebElement> projectsList = projectDropdown.findElements(By.xpath("//div[@class='project-list']//ul/li"));
@@ -76,7 +72,7 @@ public class ProjectModule extends BaseTest {
 
     @Test
     public void multiProjectSelectOnAuditScreen() throws Exception {
-        ProjectContainer.navigateToProject();
+        ProjectContainer.navigateToProject(DataReader.getValueFromJsonFile("dev.project.name"));
         Thread.sleep(2000);
         WebElement auditElement = driver.findElement(By.xpath("//div[@class='subHeader__container'] //li[@id='ed-audits']"));
         auditElement.click();
@@ -91,7 +87,7 @@ public class ProjectModule extends BaseTest {
         String currentSelectedProject = projectContainer.getText();
         System.out.println("Current Project Selected :"+currentSelectedProject);
         WebElement projectDropdown = leftMenu.findElement(By.xpath("//div[@class='project-dropdown']"));
-        WaitUtils.waitForWebElementByAppear(projectDropdown);
+        WaitUtilsFragment.waitForWebElementByAppear(projectDropdown);
         WebElement contractName = projectDropdown.findElement(By.xpath("//div[@class='contract-detail']"));
         System.out.println(contractName.getText());
         List<WebElement> projectsList = projectDropdown.findElements(By.xpath("//div[@class='project-list']//ul/li"));

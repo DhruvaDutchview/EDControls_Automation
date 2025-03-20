@@ -22,7 +22,7 @@ public class LoginPage extends ReusableMethods {
 	public void goTo()
 	{
 		//calling json file and getting values
-		String url = DataReader.getValueFromJsonFile("devURL");
+		String url = DataReader.getValueFromJsonFile("dev.url");
 
 		/*//calling Properties file and getting values
 		Map<String, String> data= dataReader.readPropertiesFile();
@@ -44,8 +44,8 @@ public class LoginPage extends ReusableMethods {
 		//String userName = DataReader.getValueFromJsonFile("email");
 	    //String password = DataReader.getValueFromJsonFile("password");
 
-		String userName = DataReader.getValueFromJsonFile("adminEmail");
-		String password = DataReader.getValueFromJsonFile("adminPassword");
+		String userName = DataReader.getValueFromJsonFile("dev.admin.email");
+		String password = DataReader.getValueFromJsonFile("dev.admin.password");
 
 		/*Map<String, String> data= dataReader.readPropertiesFile();
 		String userName = data.get("email");
