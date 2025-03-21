@@ -18,33 +18,39 @@ import java.util.Comparator;
 
 public class FileUploadHelper {
 
-    public static void uploadLatestImageUsingAppleScript() {
-        // Step 1: Get the latest image from Downloads folder
+    public static void uploadImageUsingAppleScript(String imageType, String fileExtension) {
+        // Step 1: Construct the filename based on arguments
+        String targetFileName = imageType + fileExtension;
+
+        // Step 2: Get the file path from Downloads folder
         String downloadsPath = System.getProperty("user.home") + "/Downloads";
-        File latestImage = getLatestImage(downloadsPath);
-        if (latestImage == null) {
-            System.out.println("No image found!");
+        File targetFile = findFileByName(downloadsPath, targetFileName);
+
+        if (targetFile == null) {
+            System.out.println("No matching file found: " + targetFileName);
             return;
         }
-        String filePath = latestImage.getAbsolutePath();
+
+        String filePath = targetFile.getAbsolutePath();
         System.out.println("Uploading file: " + filePath);
 
-        // Step 2: Use AppleScript to select and confirm the file
+        // Step 3: Use AppleScript to select and confirm the file
         executeAppleScriptForFileSelection(filePath);
     }
 
-    private static File getLatestImage(String directoryPath) {
+    private static File findFileByName(String directoryPath, String targetFileName) {
         File dir = new File(directoryPath);
         if (!dir.exists() || !dir.isDirectory()) {
             return null;
         }
-        File[] files = dir.listFiles((d, name) -> {
-            String lower = name.toLowerCase();
-            return lower.endsWith(".jpg") || lower.endsWith(".jpeg") || lower.endsWith(".png");
-        });
+
+        File[] files = dir.listFiles((d, name) -> name.equalsIgnoreCase(targetFileName));
+
         if (files == null || files.length == 0) {
             return null;
         }
+
+        // If multiple matches exist, return the most recent one
         return Arrays.stream(files)
                 .max(Comparator.comparingLong(File::lastModified))
                 .orElse(null);
@@ -52,28 +58,25 @@ public class FileUploadHelper {
 
     private static void executeAppleScriptForFileSelection(String filePath) {
         try {
-            filePath = filePath.replace("\"", "\\\"");
+            filePath = filePath.replace("\"", "\\\"");  // Escape double quotes
 
-            // AppleScript to navigate, select, and click "Open"
-            String script = "tell application \"System Events\"\n" +
-                    "    tell process \"Google Chrome\"\n" +  // Adjust for your browser
-                    "        delay 1\n" +
-                    "        keystroke \"G\" using {command down, shift down}\n" +  // Open 'Go to Folder'
-                    "        delay 1\n" +
-                    "        keystroke \"" + filePath + "\"\n" +  // Type file path
-                    "        delay 1\n" +
-                    "        keystroke return\n" +  // Confirm file path
-                    "        delay 1\n" +
-                    "        tell application \"System Events\"\n" +
-                    "            tell process \"Finder\"\n" +
-                    "                delay 1\n" +
-                    "                click button \"Open\" of window 1\n" +  // Click the "Open" button
-                    "            end tell\n" +
-                    "        end tell\n" +
-                    "    end tell\n" +
-                    "end tell";
+            String script =
+                    "tell application \"System Events\"\n" +
+                            "    tell process \"Google Chrome\"\n" +
+                            "        delay 1\n" +
+                            "        keystroke \"G\" using {command down, shift down}\n" +  // Open 'Go to Folder'
+                            "        delay 1\n" +
+                            "        keystroke \"" + filePath + "\"\n" +  // Type the full file path
+                            "        delay 1\n" +
+                            "        keystroke return\n" +  // Press Enter to navigate
+                            "        delay 1\n" +
+                            "        keystroke return\n" +  // Select the file
+                            "        delay 1\n" +
+                            "        keystroke return\n" +  // Confirm selection
+                            "    end tell\n" +
+                            "end tell";
 
-            String[] args = { "osascript", "-e", script };
+            String[] args = {"osascript", "-e", script};
             Process process = Runtime.getRuntime().exec(args);
             process.waitFor();
             System.out.println("AppleScript executed successfully!");
@@ -81,7 +84,10 @@ public class FileUploadHelper {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
+
+
     }
-    }
+
+}
 
 

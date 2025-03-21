@@ -1,8 +1,9 @@
 package EdControlsMain.EdPageObjects;
 
 import EdControlsMain.BaseClasses.BaseTest;
-import EdControlsMain.Resources.DataReader;
+import EdControlsMain.EDFragments.DateFragment;
 import EdControlsMain.EDFragments.WaitUtilsFragment;
+import EdControlsMain.ReusableFunctions.ReusableMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -25,7 +26,7 @@ public class ProjectContainer extends BaseTest {
     private static final String FILE_EXTENSION = ".txt";
 
     public static void navigateToProject (String projectName) throws Exception {
-        WebElement projectSearch = driver.findElement(By.xpath("//input[@id='search']"));
+        WebElement projectSearch = WaitUtilsFragment.waitForWebElementAppear(driver.findElement(By.xpath("//input[@id='search']")));
         WaitUtilsFragment.waitForWebElementAppear(projectSearch);
         projectSearch.sendKeys(projectName + Keys.ENTER);
         List<WebElement> projectsList = driver.findElements(By.xpath("//p[@class='name']"));
@@ -40,6 +41,51 @@ public class ProjectContainer extends BaseTest {
             }
         }
 
+    }
+
+    public static String createProject() throws Exception {
+        ProjectContainer.initiateNewProjectCreation();
+        Thread.sleep(2000);
+        // Capture Contract Name
+        System.out.println("Contract Name : " + driver.findElement(By.xpath("//div[@class='MuiListItemText-root']")).getText());
+
+        // Enter project details
+
+        String projectText = ProjectContainer.getUniqueName(ProjectContainer.NameType.AUTOMATION_PROJECT);
+        driver.findElement(By.id("projectName")).sendKeys(projectText);
+        driver.findElement(By.id("referenceName")).sendKeys("Automation Project reference");
+        driver.findElement(By.id("internalPurchaseNumber")).sendKeys("Automation invoice");
+
+        // Select Location
+        driver.findElement(By.id("google-maps-select")).sendKeys("Bengaluru" + Keys.ENTER);
+        Thread.sleep(2000);
+
+        // Handle GeoMap Toggle
+        WebElement geoMapToggleElement = driver.findElement(By.id("geoMapSwitch"));
+        WebElement geoMapToggle = geoMapToggleElement.findElement(By.xpath("//span[contains(@class,'MuiSwitch-switchBase')]"));
+
+        if (!geoMapToggle.getDomAttribute("class").contains("Mui-checked")) {
+            geoMapToggleElement.click();
+        }
+
+        // Click mandatory proof switch & update button
+        driver.findElement(By.id("mandatoryTicketProofSwitch")).click();
+        DateFragment.projectDatePicker("Yes", "No", 20);
+        Thread.sleep(2000);
+        driver.findElement(By.id("pj-update-btn")).click();
+        Thread.sleep(2000);
+
+        // Adding only accountable
+        UsersContainer.addProjectAccountable();
+        Thread.sleep(2000);
+
+        // Click create project button
+        driver.findElement(By.id("pj-update-btn")).click();
+        Thread.sleep(2000);
+
+        // Validate project creation
+        System.err.println(ReusableMethods.checkingToastMessage());
+        return projectText;
     }
 
     public static void editProject(String projectName) throws Exception {
@@ -58,6 +104,7 @@ public class ProjectContainer extends BaseTest {
                 System.out.println(projectText);
                 WebElement editProjectElement = driver.findElement(By.id("project-edit-btn"));
                 editProjectElement.click();
+                WaitUtilsFragment.waitForWebElementAppear(driver.findElement(By.id("projectName-label")));
                 break;
                 //System.err.println("we are inside "+ projectName+" successfully");
             }

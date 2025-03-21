@@ -3,6 +3,7 @@ package EdControlsMain.EdPageObjects;
 import EdControlsMain.BaseClasses.BaseTest;
 import EdControlsMain.EDFragments.DateFragment;
 import EdControlsMain.Resources.DataReader;
+import EdControlsMain.ReusableFunctions.FileUploadHelper;
 import EdControlsMain.ReusableFunctions.ReusableMethods;
 import EdControlsMain.EDFragments.WaitUtilsFragment;
 import org.openqa.selenium.*;
@@ -29,48 +30,7 @@ public class AdminRole extends BaseTest {
     private String replaceUser;
 
     public void createProject() throws Exception {
-        ProjectContainer.initiateNewProjectCreation();
-        Thread.sleep(2000);
-        // Capture Contract Name
-        System.out.println("Contract Name : " + driver.findElement(By.xpath("//div[@class='MuiListItemText-root']")).getText());
-
-        // Enter project details
-
-        projectText = ProjectContainer.getUniqueName(ProjectContainer.NameType.AUTOMATION_PROJECT);
-        driver.findElement(By.id("projectName")).sendKeys(projectText);
-        driver.findElement(By.id("referenceName")).sendKeys("Automation Project reference");
-        driver.findElement(By.id("internalPurchaseNumber")).sendKeys("Automation invoice");
-
-        // Select Location
-        driver.findElement(By.id("google-maps-select")).sendKeys("Bengaluru" + Keys.ENTER);
-        Thread.sleep(2000);
-
-        // Handle GeoMap Toggle
-        WebElement geoMapToggleElement = driver.findElement(By.id("geoMapSwitch"));
-        WebElement geoMapToggle = geoMapToggleElement.findElement(By.xpath("//span[contains(@class,'MuiSwitch-switchBase')]"));
-
-        if (!geoMapToggle.getDomAttribute("class").contains("Mui-checked")) {
-            geoMapToggleElement.click();
-        }
-
-        // Click mandatory proof switch & update button
-        driver.findElement(By.id("mandatoryTicketProofSwitch")).click();
-        DateFragment.projectDatePicker("Yes", "No", 20);
-        Thread.sleep(2000);
-        driver.findElement(By.id("pj-update-btn")).click();
-        Thread.sleep(2000);
-
-        // Adding only accountable
-        UsersContainer.addProjectAccountable();
-        Thread.sleep(2000);
-
-        // Click create project button
-        driver.findElement(By.id("pj-update-btn")).click();
-        Thread.sleep(2000);
-
-        // Validate project creation
-        System.err.println(ReusableMethods.checkingToastMessage());
-
+        projectText = ProjectContainer.createProject();
         WebElement projectSearch = driver.findElement(By.xpath("//input[@id='search']"));
         WaitUtilsFragment.waitForWebElementAppear(projectSearch);
         projectSearch.sendKeys(projectText + Keys.ENTER);
@@ -100,11 +60,6 @@ public class AdminRole extends BaseTest {
     }
 
     public void addUsersOnNewProject() throws Exception {
-        // Check if projectText is empty; if so, create a new project
-//        if (projectText == null || projectText.isEmpty()) {
-//            createProject();
-//        }
-
         ProjectContainer.initiateNewProjectCreation();
         Thread.sleep(2000);
         // Capture Contract Name
@@ -303,29 +258,47 @@ public class AdminRole extends BaseTest {
         Thread.sleep(2000);
     }
 
-    /*
-    // Test case 8 (Admin should be able to add/edit the project and company logo)
-    @Test
     public void addEditLogo() throws Exception {
-        if (projectText == null || projectText.isEmpty()) {
-            createProject();
-        }
         ProjectContainer.editProject("Test acc");
-        WebElement imageUploadElement = driver.findElement(By.xpath("//div[@class='project-form__right']//div[@class='project-right-img-actions']"));
-        List<WebElement> imageElements = imageUploadElement.findElements(By.xpath("//div[@class='ml-0']"));
+        Thread.sleep(2000);
+
+        List<WebElement> imageElements = driver.findElements(By.xpath("//div[@class='image-upload']//span"));
+
         for (WebElement imageElement : imageElements) {
-            String imageElementText = imageElement.getText();
-            System.out.println(imageElementText);
-            if (imageElementText.contains("PROJECT IMAGE")) {
-                imageElement.click();
-                Thread.sleep(2000);
-                FileUploadHelper.uploadLatestImageUsingAppleScript();
-                Thread.sleep(2000);
-                break;
+            String imageElementText = imageElement.getText().trim();
+            System.out.println("Text found: [" + imageElementText + "]");
+            System.out.println("Found Image Field: " + imageElementText);
+
+            switch (imageElementText) {
+                case "PROJECT IMAGE":
+                    System.out.println("Uploading Project Image...");
+                    imageElement.click();
+                    Thread.sleep(1000);
+                    FileUploadHelper.uploadImageUsingAppleScript("projectlogo", ".jpeg");
+                    Thread.sleep(1000);
+                    WebElement element = WaitUtilsFragment.waitForWebElementToClick(driver.findElement(By.xpath("//section[@class='editor-options']//*[name()='svg'][1]")));
+                    element.click();
+                    //  JavascriptExecutor executor = (JavascriptExecutor) driver;
+                  //  executor.executeScript("arguments[1].click();", element);
+                    Thread.sleep(1000);
+
+                case "LOGO IMAGE":
+                    System.out.println("Uploading Logo Image...");
+                    imageElement.click();
+                    Thread.sleep(1000);
+                    FileUploadHelper.uploadImageUsingAppleScript("companylogo", ".jpeg");
+                    Thread.sleep(1000);
+                    WebElement element2 = WaitUtilsFragment.waitForWebElementToClick(driver.findElement(By.xpath("//section[@class='editor-options']//*[name()='svg'][1]")));
+                    element2.click();
+                    break;
+
+                default:
+                    System.out.println("No matching image field found.");
+                    break;
             }
         }
+    }
 
-    }*/
 
     public void createLibraryGroup() throws Exception {
         ProjectContainer.navigateToProject(projectText);
@@ -355,15 +328,13 @@ public class AdminRole extends BaseTest {
         System.err.println(ReusableMethods.checkingToastMessage());
     }
 
-    /*// Test Case 11 (Should be able to create a template)
-    @Test
     public void createTemplate() throws Exception {
-        ProjectContainer.navigateToProject();
+        ProjectContainer.navigateToProject(projectText);
         Thread.sleep(2000);
         ProjectContainer.navigateToModule(driver.findElement(By.id("ed-templates")));
         Thread.sleep(2000);
         TemplateContainer.createTemplate("TG - Automation", "Automation Template");
-    }*/
+    }
 
     public void replaceUserInUserManagement() throws Exception {
         WebElement currentUser = driver.findElement(By.id("mh-current-user"));

@@ -49,6 +49,12 @@ public class AdminTests extends AdminRole {
         AdminRole.deArchiveProject();
     }
 
+    // Test case 8 (Admin should be able to add/edit the project and company logo)
+    @Test
+    public void addEditLogo() throws Exception {
+        AdminRole.addEditLogo();
+    }
+
     // Test Case 9 (Should be able to create a library group)
     @Test (priority = 8)
     public void createLibraryGroup() throws Exception {
@@ -67,6 +73,12 @@ public class AdminTests extends AdminRole {
         AdminRole.createTemplateGroup();
     }
 
+    // Test Case 11 (Should be able to create a template)
+   /* @Test
+    public void createTemplate() throws Exception {
+
+    }*/
+
     //Test case 12
     @Test (priority = 11)
     public void replaceUserInUserManagement() throws Exception {
@@ -84,6 +96,8 @@ public class AdminTests extends AdminRole {
     public void modifyInContractInfo() throws InterruptedException {
         AdminRole.modifyInContractInfo();
     }
+
+
 
 
 

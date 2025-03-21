@@ -91,7 +91,7 @@ public class BaseTest {
         System.out.println("Test is done");
         Thread.sleep(3000);
         //clearCacheAndCookies();
-         driver.quit();
+         //driver.quit();
       //  driver.close();
     }
 
