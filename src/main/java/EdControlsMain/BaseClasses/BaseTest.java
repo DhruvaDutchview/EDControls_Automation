@@ -63,7 +63,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         // Wrap the driver with the highlighting listener
-        // driver = new EventFiringDecorator<>(new HighlightListener(driver)).decorate(driver);
+         driver = new EventFiringDecorator<>(new HighlightListener(driver)).decorate(driver);
 
         return driver;
     }
@@ -91,7 +91,7 @@ public class BaseTest {
         System.out.println("Test is done");
         Thread.sleep(3000);
         //clearCacheAndCookies();
-         //driver.quit();
+        // driver.quit();
       //  driver.close();
     }
 

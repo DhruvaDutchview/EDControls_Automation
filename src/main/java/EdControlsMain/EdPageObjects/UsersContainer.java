@@ -33,6 +33,17 @@ public class UsersContainer extends BaseTest {
 
     }
 
+    public static void addUsersOnExistingProject(){
+        WebElement projectSupport = WaitUtilsFragment.waitForWebElementToClick(driver.findElement(By.id("pj-support")));
+        projectSupport.sendKeys(DataReader.getValueFromJsonFile("dev.project.support")+ Keys.ENTER);
+
+        WebElement projectInformed = WaitUtilsFragment.waitForWebElementToClick(driver.findElement(By.id("pj-informed")));
+        projectInformed.sendKeys(DataReader.getValueFromJsonFile("dev.project.consulted")+ Keys.ENTER);
+
+        WebElement projectConsulted = WaitUtilsFragment.waitForWebElementToClick(driver.findElement(By.id("pj-consulted")));
+        projectConsulted.sendKeys(DataReader.getValueFromJsonFile("dev.project.informed")+ Keys.ENTER);
+    }
+
     public static void addProjectAccountable() throws Exception {
 
         // Execute only until projectAccountable

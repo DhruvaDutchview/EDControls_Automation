@@ -2,12 +2,10 @@ package EdControlsMain.EdPageObjects;
 
 import EdControlsMain.BaseClasses.BaseTest;
 import EdControlsMain.EDFragments.DateFragment;
-import EdControlsMain.Resources.DataReader;
-import EdControlsMain.ReusableFunctions.FileUploadHelper;
+import EdControlsMain.EDFragments.ImagesFragment;
 import EdControlsMain.ReusableFunctions.ReusableMethods;
 import EdControlsMain.EDFragments.WaitUtilsFragment;
 import org.openqa.selenium.*;
-import org.testng.annotations.Test;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -137,6 +135,20 @@ public class AdminRole extends BaseTest {
         projectText = replaceProjectName;
     }
 
+    public void addEditLogo() throws Exception {
+        ProjectContainer.editProject(projectText);
+        Thread.sleep(2000);
+        ImagesFragment.uploadImagesOnProject();
+        Thread.sleep(1000);
+        UsersContainer.addUsersOnExistingProject();
+        Thread.sleep(1000);
+        WebElement saveProject = driver.findElement(By.id("pj-save-btn"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", saveProject);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", saveProject);
+        // WebElement confirmEdit = driver.findElement(By.id("dialog-ok"));
+        //  ((JavascriptExecutor) driver).executeScript("arguments[0].click();", confirmEdit);
+    }
+
     public void addDueDate() throws Exception {
         ProjectContainer.editProject(projectText); // Using stored project name
         WebElement endDateElement = WaitUtilsFragment.waitForElementToBeVisible(driver.findElement(By.id("pj-end-date")));
@@ -200,7 +212,7 @@ public class AdminRole extends BaseTest {
             }
         }
 
-        // If project not found, try de-archiving first
+        // If a project not found, try de-archiving first
         if (!projectFound) {
             System.out.println("Project not found in active list, attempting to de-archive...");
             deArchiveProject();
@@ -221,8 +233,13 @@ public class AdminRole extends BaseTest {
         Thread.sleep(3000);
 
         // clear the search
-        WebElement projectSearch = WaitUtilsFragment.waitForElementAppear(By.xpath("//input[@id='search']"), driver);
-        ReusableMethods.clearSingleElement(projectSearch);
+       // WebElement projectSearch = WaitUtilsFragment.waitForElementAppear(By.xpath("//input[@id='search']"), driver);
+        WebElement closeSearch = WaitUtilsFragment.waitForWebElementToClick(driver.findElement(By.xpath("//div[@class='search_container']/*[name()='svg']")));
+        // Trigger a real click event for SVG using JavaScript
+        String jsScript = "var event = new MouseEvent('click', {bubbles: true, cancelable: true, view: window});"
+                + "arguments[0].dispatchEvent(event);";
+        ((JavascriptExecutor) driver).executeScript(jsScript, closeSearch);
+       // ReusableMethods.clearSingleElement(projectSearch);
         Thread.sleep(2000);
     }
 
@@ -250,55 +267,19 @@ public class AdminRole extends BaseTest {
         archiveElement = driver.findElement(By.xpath("//input[@id='archive']/following-sibling::label"));
         // Use JavaScriptExecutor to click
         JavascriptExecutor js = (JavascriptExecutor) driver;
+        Thread.sleep(2000);
         js.executeScript("arguments[0].click();", archiveElement);
 
         // clear the search
-        WebElement projectSearch = WaitUtilsFragment.waitForElementAppear(By.xpath("//input[@id='search']"), driver);
-        ReusableMethods.clearSingleElement(projectSearch);
+       // WebElement projectSearch = WaitUtilsFragment.waitForElementAppear(By.xpath("//input[@id='search']"), driver);
+        WebElement closeSearch = WaitUtilsFragment.waitForWebElementToClick(driver.findElement(By.xpath("//div[@class='search_container']/*[name()='svg']")));
+        // Trigger a real click event for SVG using JavaScript
+        String jsScript = "var event = new MouseEvent('click', {bubbles: true, cancelable: true, view: window});"
+                + "arguments[0].dispatchEvent(event);";
+        ((JavascriptExecutor) driver).executeScript(jsScript, closeSearch);
+        //ReusableMethods.clearSingleElement(projectSearch);
         Thread.sleep(2000);
     }
-
-    public void addEditLogo() throws Exception {
-        ProjectContainer.editProject("Test acc");
-        Thread.sleep(2000);
-
-        List<WebElement> imageElements = driver.findElements(By.xpath("//div[@class='image-upload']//span"));
-
-        for (WebElement imageElement : imageElements) {
-            String imageElementText = imageElement.getText().trim();
-            System.out.println("Text found: [" + imageElementText + "]");
-            System.out.println("Found Image Field: " + imageElementText);
-
-            switch (imageElementText) {
-                case "PROJECT IMAGE":
-                    System.out.println("Uploading Project Image...");
-                    imageElement.click();
-                    Thread.sleep(1000);
-                    FileUploadHelper.uploadImageUsingAppleScript("projectlogo", ".jpeg");
-                    Thread.sleep(1000);
-                    WebElement element = WaitUtilsFragment.waitForWebElementToClick(driver.findElement(By.xpath("//section[@class='editor-options']//*[name()='svg'][1]")));
-                    element.click();
-                    //  JavascriptExecutor executor = (JavascriptExecutor) driver;
-                  //  executor.executeScript("arguments[1].click();", element);
-                    Thread.sleep(1000);
-
-                case "LOGO IMAGE":
-                    System.out.println("Uploading Logo Image...");
-                    imageElement.click();
-                    Thread.sleep(1000);
-                    FileUploadHelper.uploadImageUsingAppleScript("companylogo", ".jpeg");
-                    Thread.sleep(1000);
-                    WebElement element2 = WaitUtilsFragment.waitForWebElementToClick(driver.findElement(By.xpath("//section[@class='editor-options']//*[name()='svg'][1]")));
-                    element2.click();
-                    break;
-
-                default:
-                    System.out.println("No matching image field found.");
-                    break;
-            }
-        }
-    }
-
 
     public void createLibraryGroup() throws Exception {
         ProjectContainer.navigateToProject(projectText);
@@ -328,12 +309,22 @@ public class AdminRole extends BaseTest {
         System.err.println(ReusableMethods.checkingToastMessage());
     }
 
-    public void createTemplate() throws Exception {
-        ProjectContainer.navigateToProject(projectText);
+    public void createAreaTemplate() throws Exception {
+        ProjectContainer.navigateToProject("Automation Project - Dhruv");
         Thread.sleep(2000);
         ProjectContainer.navigateToModule(driver.findElement(By.id("ed-templates")));
         Thread.sleep(2000);
-        TemplateContainer.createTemplate("TG - Automation", "Automation Template");
+        TemplateContainer.createAreaTemplate(templateGroupName,"Automation Template (Area)", "area" );
+     //   Thread.sleep(2000);
+        TemplateContainer.createObjectTemplate(templateGroupName, "Automation Template (Object)");
+    }
+
+    public void createObjectTemplate() throws Exception {
+        ProjectContainer.navigateToProject("Automation Project - Dhruv");
+        Thread.sleep(2000);
+        ProjectContainer.navigateToModule(driver.findElement(By.id("ed-templates")));
+        Thread.sleep(2000);
+        TemplateContainer.createObjectTemplate(templateGroupName, "Automation Template (Object)");
     }
 
     public void replaceUserInUserManagement() throws Exception {
@@ -482,35 +473,35 @@ public class AdminRole extends BaseTest {
         Thread.sleep(1000);
 
         // checking if removing user is accountable or responsible or both
-            WebElement responsibleUserElement = null;
-            try {
-                responsibleUserElement = WaitUtilsFragment.waitForWebElementToClick(driver.findElement(By.id("email-input-remove-res")));
-                if (responsibleUserElement.isDisplayed()) {
-                    responsibleUserElement.click();
-                    responsibleUserElement.sendKeys("replacedresponsible@gmail.com" + Keys.ENTER);
-                    Thread.sleep(2000);
-                }
-            } catch (Exception e) {
-                System.out.println("Responsible user input not found, skipping...");
+        WebElement responsibleUserElement = null;
+        try {
+            responsibleUserElement = WaitUtilsFragment.waitForWebElementToClick(driver.findElement(By.id("email-input-remove-res")));
+            if (responsibleUserElement.isDisplayed()) {
+                responsibleUserElement.click();
+                responsibleUserElement.sendKeys("replacedresponsible@gmail.com" + Keys.ENTER);
+                Thread.sleep(2000);
             }
+        } catch (Exception e) {
+            System.out.println("Responsible user input not found, skipping...");
+        }
 
-            // Check if accountable user removal field is visible
-            WebElement accountableElement = null;
-            try {
-                accountableElement = WaitUtilsFragment.waitForWebElementToClick(driver.findElement(By.id("email-input-remove-acc")));
-                if (accountableElement.isDisplayed()) {
-                    accountableElement.click();
-                    accountableElement.sendKeys("replacedacc@mailinator.com" + Keys.ENTER);
-                    Thread.sleep(2000);
-                }
-            } catch (Exception e) {
-                System.out.println("Accountable user input not found, skipping...");
+        // Check if accountable user removal field is visible
+        WebElement accountableElement = null;
+        try {
+            accountableElement = WaitUtilsFragment.waitForWebElementToClick(driver.findElement(By.id("email-input-remove-acc")));
+            if (accountableElement.isDisplayed()) {
+                accountableElement.click();
+                accountableElement.sendKeys("replacedacc@mailinator.com" + Keys.ENTER);
+                Thread.sleep(2000);
             }
+        } catch (Exception e) {
+            System.out.println("Accountable user input not found, skipping...");
+        }
 
-           // If neither responsible nor accountable user fields are visible
-            if (responsibleUserElement == null && accountableElement == null) {
-                System.out.println("Neither Responsible nor Accountable user input fields are found, skipping this section.");
-            }
+        // If neither responsible nor accountable user fields are visible
+        if (responsibleUserElement == null && accountableElement == null) {
+            System.out.println("Neither Responsible nor Accountable user input fields are found, skipping this section.");
+        }
         // Remove the user completely
            /* // Wait until the dropdown options become visible
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -540,7 +531,7 @@ public class AdminRole extends BaseTest {
         driver.findElement(By.xpath("//button[contains(text(), 'OK')]")).click();
     }
 
-    public void modifyInContractInfo() throws InterruptedException {
+    public void editContractInfo() throws InterruptedException {
         WebElement currentUser = driver.findElement(By.id("mh-current-user"));
         currentUser.click();
         Thread.sleep(2000);
@@ -554,7 +545,7 @@ public class AdminRole extends BaseTest {
         Thread.sleep(2000);
 
         WebElement contractContainer = WaitUtilsFragment.waitForWebElementAppear(driver.findElement(By.xpath("//div[@class='contract-info__form']")));
-        System.out.println("Contract Name : " +contractContainer.findElement(By.xpath("//input[@id='contractName']")).getDomAttribute("value"));
+        System.out.println("Contract Name : " + contractContainer.findElement(By.xpath("//input[@id='contractName']")).getDomAttribute("value"));
 
         WebElement referName = contractContainer.findElement(By.id("refName"));
         referName.click();
@@ -565,17 +556,7 @@ public class AdminRole extends BaseTest {
         contractPerson.sendKeys("Dhruva Kumar KR");
 
 
-
-
     }
-
-
-
-
-
-
-
-
 
 
 }

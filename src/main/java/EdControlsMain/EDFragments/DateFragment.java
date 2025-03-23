@@ -57,7 +57,7 @@ public class DateFragment extends BaseTest {
         WebElement startDateElement = driver.findElement(By.id("sd-date-picker"));
         WebElement dueDateElement = driver.findElement(By.id("ed-date-picker"));
 
-        LocalDate today = LocalDate.now();;
+        LocalDate today = LocalDate.now();
         LocalDate dueDate = today.plusDays(number); // Calculate due date based on passed number
 
 

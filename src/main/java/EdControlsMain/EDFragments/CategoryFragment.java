@@ -21,48 +21,46 @@ public class CategoryFragment extends BaseTest {
         super(driver);
     }
 
-    public static void addQuestionsToCategory(WebElement categoryElement, List<String> questionTypes, WebDriver driver) throws InterruptedException {
-        boolean isFirstQuestion = true; // Track if this is the first question
+    public static void addQuestionsToCategory(WebElement categoryElement, int index, List<String> questionTypes) throws InterruptedException {
+        // **Step 1: Add first "Yes/No" question (default)**
+        addYesNoQuestion(categoryElement);
+        Thread.sleep(2000);
 
+        int questionNumber = 1;
+
+        // **Step 2: Add custom questions based on the provided list**
         for (String questionType : questionTypes) {
-            if (isFirstQuestion) {
-                if (questionType.contains("Yes/No")) {
-                    addYesNoQuestion(categoryElement);
-                    Thread.sleep(2000);
-                } else {
-                    addCustomQuestion(categoryElement, questionType);
-                    Thread.sleep(2000);
-                }
-                isFirstQuestion = false; // Next question should not be the first one
-                Thread.sleep(2000);
-            } else {
-                // Click 'Add Question' for the next question
-                WebElement addQuestionButton = categoryElement.findElement(By.xpath(".//button[contains(text(), 'Add question')]"));
-                WaitUtilsFragment.waitForWebElementToClickable(addQuestionButton);
-                addQuestionButton.click();
-                Thread.sleep(2000);
-                addCustomQuestion(categoryElement, questionType);
-                Thread.sleep(2000);
-            }
+            WebElement addQuestionButton = categoryElement.findElement(By.xpath(".//button[contains(text(), 'Add question')]"));
+            WaitUtilsFragment.waitForWebElementToClickable(addQuestionButton);
+            addQuestionButton.click();
+            Thread.sleep(2000);
+
+            WebElement questionElement = categoryElement.findElement(By.xpath(".//div[@data-rbd-draggable-id='qstn-" + index + "-" + questionNumber + "']"));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", questionElement);
+            addCustomQuestion(questionElement, questionType);
+            Thread.sleep(2000);
+
+            questionNumber++;
+        }
+
+        // **Step 3: Add text box only to the last category**
+        List<WebElement> categories = driver.findElements(By.xpath(".//div[@class='category']"));
+        if (!categories.isEmpty() && categoryElement.equals(categories.get(categories.size() - 1))) {
+            WebElement addTextBoxQuestion = categoryElement.findElement(By.xpath(".//button[contains(text(), 'Add text box')]"));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addTextBoxQuestion);
         }
     }
 
-    private static void addCustomQuestion(WebElement categoryElement, String questionType) {
+    // **Method to check if a "Yes/No" question is already present**
+  /*  private static boolean isYesNoQuestionPresent(WebElement categoryElement) {
         try {
-            WebElement dropdown = categoryElement.findElement(By.xpath(".//div[contains(@class, 'MuiSelect-root') and @role='button']"));
-            WaitUtilsFragment.waitForWebElementToClickable(dropdown);
-            dropdown.click();
-            Thread.sleep(2000);
-            WebElement option = new WebDriverWait(driver, Duration.ofSeconds(5))
-                    .until(ExpectedConditions.elementToBeClickable(By.xpath(".//li[contains(text(), '" + questionType + "')]")));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", option);
-
-            Thread.sleep(2000);
-            System.out.println("Selected question type: " + questionType);
+            List<WebElement> yesNoQuestions = categoryElement.findElements(By.xpath(".//div[contains(@class, 'MuiSelect-root') and text()='Yes/No/NA']"));
+            return !yesNoQuestions.isEmpty();
         } catch (Exception e) {
-            System.out.println("Error selecting question type: " + e.getMessage());
+            System.out.println("Error checking for Yes/No question: " + e.getMessage());
+            return false;
         }
-    }
+    }*/
 
     public static void addYesNoQuestion(WebElement categoryElement) {
         try {
@@ -73,6 +71,30 @@ public class CategoryFragment extends BaseTest {
             Thread.sleep(2000);
         } catch (Exception e) {
             System.out.println("Add Question button not found. Skipping...");
+        }
+    }
+
+    private static void addCustomQuestion(WebElement questionElement, String questionType) {
+        try {
+            WebElement dropdown = questionElement.findElement(By.xpath(".//div[contains(@class, 'MuiSelect-root') and @role='button']"));
+            WaitUtilsFragment.waitForWebElementToClickable(dropdown);
+            dropdown.click();
+            Thread.sleep(1000); // Wait for dropdown to open
+
+            // **Ensure the dropdown has fully loaded before selecting the option**
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebElement option = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//li[contains(text(), '" + questionType + "')]")));
+
+            // **Scroll to the option to ensure visibility before clicking**
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", option);
+            Thread.sleep(500); // Small delay before clicking
+
+            option.click();
+            System.out.println("Selected question type: " + questionType);
+            Thread.sleep(1000); // Allow time for selection to register
+        } catch (Exception e) {
+            System.out.println("Error selecting question type: " + e.getMessage());
         }
     }
 

@@ -2,30 +2,25 @@
 <project version="4">
   <component name="AnalysisUIOptions">
     <option name="ANALYZE_INJECTED_CODE" value="false" />
-    <option name="SCOPE_TYPE" value="8" />
     <option name="CUSTOM_SCOPE_NAME" value="Module 'EDControls_Automation.test'" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="034eff9e-3bf9-4c1d-9288-7d73239cba22" name="Changes" comment="Commit : WIP (Code improvements)">
+    <list default="true" id="034eff9e-3bf9-4c1d-9288-7d73239cba22" name="Changes" comment="Commit : WIP (add/edit logo)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EDFragments/ImagesFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/BaseClasses/BaseTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/EdControlsMain/BaseClasses/BaseTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/EdControlsMain/ReusableFunctions/FileUploadHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/EdControlsMain/ReusableFunctions/FileUploadHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/AuditModule.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/AuditModule.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/ProjectModule.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/ProjectModule.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/TicketFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/TicketFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/TicketModule.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/EdControlsTest/tests/TicketModule.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/BaseClasses/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/BaseClasses/BaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EDFragments/CategoryFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EDFragments/CategoryFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EDFragments/DateFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EDFragments/DateFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdPageObjects/AdminRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdPageObjects/AdminRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdPageObjects/ProjectContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdPageObjects/ProjectContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/ReusableFunctions/FileUploadHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/ReusableFunctions/FileUploadHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdPageObjects/TemplateContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdPageObjects/TemplateContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdPageObjects/UsersContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EdControlsMain/EdPageObjects/UsersContainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/AdminTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/EdControlsTest/tests/AdminTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/used_numbers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/used_numbers.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/used_numbers_automation_project.txt" beforeDir="false" afterPath="$PROJECT_DIR$/used_numbers_automation_project.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/used_numbers_library_group.txt" beforeDir="false" afterPath="$PROJECT_DIR$/used_numbers_library_group.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/used_numbers_template_group.txt" beforeDir="false" afterPath="$PROJECT_DIR$/used_numbers_template_group.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,69 +99,72 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Gradle.Build EDControls_Automation.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.EDControls_Automation [dependencies].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;TestNG./Users/dutchview/Desktop/Dhruva/Automation/EDControls_Automation/TestSuits/testng.xml (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG./Users/dutchview/Desktop/Dhruva/Automation/EDControls_Automation/TestSuits/testng.xml.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG./Users/dutchview/Desktop/Dhruva/Automation/EDControls_Automation/testng.xml.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.addDueDate.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.addEditLogo (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.addEditLogo (2).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.addEditLogo.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.addOrEditDueDate.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.addUsersOnNewProject.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.archiveProject (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.archiveProject.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.changeDuedate.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.checkProjectEditable (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.checkProjectEditable.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.createLibraryGroup.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.createProject (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.createProject.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.createTemplate (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.createTemplate.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.createTemplateGroup.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.deArchiveProject (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.deArchiveProject.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.deleteLibaryGroup.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.deleteLibraryGroup.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.editProject.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.editUserOnUserManagement (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.editUserOnUserManagement (2).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.editUserOnUserManagement.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.modifyInContractInfo (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.modifyInContractInfo (2).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.modifyInContractInfo (3).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.modifyInContractInfo.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminRole.removeUserInUserManagement.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminTests.addDueDate.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminTests.addEditLogo.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminTests.createProject.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminTests.deleteLibraryGroup.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AdminTests.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.AuditModule.createAreaAudit.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.TemplateContainer.createTemplateGroup.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.TicketBulk.addingBulkTag (1).executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.TicketBulk.addingBulkTag.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.TicketModule.createTicket.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/dutchview/Desktop/Dhruva/Automation/EDControls_Automation&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Gradle.Build EDControls_Automation.executor": "Run",
+    "Gradle.EDControls_Automation [dependencies].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "TestNG./Users/dutchview/Desktop/Dhruva/Automation/EDControls_Automation/TestSuits/testng.xml (1).executor": "Run",
+    "TestNG./Users/dutchview/Desktop/Dhruva/Automation/EDControls_Automation/TestSuits/testng.xml.executor": "Run",
+    "TestNG./Users/dutchview/Desktop/Dhruva/Automation/EDControls_Automation/testng.xml.executor": "Run",
+    "TestNG.AdminRole.addDueDate.executor": "Run",
+    "TestNG.AdminRole.addEditLogo (1).executor": "Run",
+    "TestNG.AdminRole.addEditLogo (2).executor": "Run",
+    "TestNG.AdminRole.addEditLogo.executor": "Run",
+    "TestNG.AdminRole.addOrEditDueDate.executor": "Run",
+    "TestNG.AdminRole.addUsersOnNewProject.executor": "Run",
+    "TestNG.AdminRole.archiveProject (1).executor": "Run",
+    "TestNG.AdminRole.archiveProject.executor": "Run",
+    "TestNG.AdminRole.changeDuedate.executor": "Run",
+    "TestNG.AdminRole.checkProjectEditable (1).executor": "Run",
+    "TestNG.AdminRole.checkProjectEditable.executor": "Run",
+    "TestNG.AdminRole.createLibraryGroup.executor": "Run",
+    "TestNG.AdminRole.createProject (1).executor": "Run",
+    "TestNG.AdminRole.createProject.executor": "Run",
+    "TestNG.AdminRole.createTemplate (1).executor": "Run",
+    "TestNG.AdminRole.createTemplate.executor": "Run",
+    "TestNG.AdminRole.createTemplateGroup.executor": "Run",
+    "TestNG.AdminRole.deArchiveProject (1).executor": "Run",
+    "TestNG.AdminRole.deArchiveProject.executor": "Run",
+    "TestNG.AdminRole.deleteLibaryGroup.executor": "Run",
+    "TestNG.AdminRole.deleteLibraryGroup.executor": "Run",
+    "TestNG.AdminRole.editProject.executor": "Run",
+    "TestNG.AdminRole.editUserOnUserManagement (1).executor": "Run",
+    "TestNG.AdminRole.editUserOnUserManagement (2).executor": "Run",
+    "TestNG.AdminRole.editUserOnUserManagement.executor": "Run",
+    "TestNG.AdminRole.executor": "Run",
+    "TestNG.AdminRole.modifyInContractInfo (1).executor": "Run",
+    "TestNG.AdminRole.modifyInContractInfo (2).executor": "Run",
+    "TestNG.AdminRole.modifyInContractInfo (3).executor": "Run",
+    "TestNG.AdminRole.modifyInContractInfo.executor": "Run",
+    "TestNG.AdminRole.removeUserInUserManagement.executor": "Run",
+    "TestNG.AdminTests.addDueDate.executor": "Run",
+    "TestNG.AdminTests.addEditLogo.executor": "Run",
+    "TestNG.AdminTests.createObjectTemplate.executor": "Run",
+    "TestNG.AdminTests.createProject.executor": "Run",
+    "TestNG.AdminTests.createTemplate.executor": "Run",
+    "TestNG.AdminTests.createTemplateGroup.executor": "Run",
+    "TestNG.AdminTests.deleteLibraryGroup.executor": "Run",
+    "TestNG.AdminTests.executor": "Run",
+    "TestNG.AuditModule.createAreaAudit.executor": "Run",
+    "TestNG.TemplateContainer.createTemplateGroup.executor": "Run",
+    "TestNG.TicketBulk.addingBulkTag (1).executor": "Run",
+    "TestNG.TicketBulk.addingBulkTag.executor": "Run",
+    "TestNG.TicketModule.createTicket.executor": "Run",
+    "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/dutchview/Desktop/Dhruva/Automation/EDControls_Automation",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -177,7 +175,7 @@
       <recent name="dhruvakumar.Resources" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.AdminTests.addEditLogo">
+  <component name="RunManager" selected="TestNG.AdminTests.createObjectTemplate">
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -227,36 +225,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminTests.addDueDate" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="EDControls_Automation.test" />
-      <shortenClasspath name="NONE" />
-      <useClassPathOnly />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="EdControlsTest.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/Library/Java/JavaVirtualMachines/temurin-17.0.14/Contents/Home" />
-      <option name="SUITE_NAME" value="" />
-      <option name="PACKAGE_NAME" value="EdControlsTest.tests" />
-      <option name="MAIN_CLASS_NAME" value="EdControlsTest.tests.AdminTests" />
-      <option name="METHOD_NAME" value="addDueDate" />
-      <option name="GROUP_NAME" value="" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <option name="PARAMETERS" value="" />
-      <option name="OUTPUT_DIRECTORY" value="" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <option name="PROPERTIES_FILE" value="" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="AdminTests.addEditLogo" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="EDControls_Automation.test" />
       <shortenClasspath name="NONE" />
@@ -287,7 +255,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminTests.createProject" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="AdminTests.createObjectTemplate" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="EDControls_Automation.test" />
       <shortenClasspath name="NONE" />
       <useClassPathOnly />
@@ -302,7 +270,7 @@
       <option name="SUITE_NAME" value="" />
       <option name="PACKAGE_NAME" value="EdControlsTest.tests" />
       <option name="MAIN_CLASS_NAME" value="EdControlsTest.tests.AdminTests" />
-      <option name="METHOD_NAME" value="createProject" />
+      <option name="METHOD_NAME" value="createObjectTemplate" />
       <option name="GROUP_NAME" value="" />
       <option name="TEST_OBJECT" value="METHOD" />
       <option name="PARAMETERS" value="" />
@@ -317,7 +285,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminTests.deleteLibraryGroup" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="AdminTests.createTemplate" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="EDControls_Automation.test" />
       <shortenClasspath name="NONE" />
       <useClassPathOnly />
@@ -332,7 +300,37 @@
       <option name="SUITE_NAME" value="" />
       <option name="PACKAGE_NAME" value="EdControlsTest.tests" />
       <option name="MAIN_CLASS_NAME" value="EdControlsTest.tests.AdminTests" />
-      <option name="METHOD_NAME" value="deleteLibraryGroup" />
+      <option name="METHOD_NAME" value="createTemplate" />
+      <option name="GROUP_NAME" value="" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="PARAMETERS" value="" />
+      <option name="OUTPUT_DIRECTORY" value="" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="PROPERTIES_FILE" value="" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminTests.createTemplateGroup" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="EDControls_Automation.test" />
+      <shortenClasspath name="NONE" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="EdControlsTest.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/Library/Java/JavaVirtualMachines/temurin-17.0.14/Contents/Home" />
+      <option name="SUITE_NAME" value="" />
+      <option name="PACKAGE_NAME" value="EdControlsTest.tests" />
+      <option name="MAIN_CLASS_NAME" value="EdControlsTest.tests.AdminTests" />
+      <option name="METHOD_NAME" value="createTemplateGroup" />
       <option name="GROUP_NAME" value="" />
       <option name="TEST_OBJECT" value="METHOD" />
       <option name="PARAMETERS" value="" />
@@ -394,19 +392,19 @@
     </configuration>
     <list>
       <item itemvalue="TestNG.Unnamed" />
+      <item itemvalue="TestNG.AdminTests.createObjectTemplate" />
+      <item itemvalue="TestNG.AdminTests.createTemplate" />
+      <item itemvalue="TestNG.AdminTests.createTemplateGroup" />
       <item itemvalue="TestNG.AdminTests.addEditLogo" />
       <item itemvalue="TestNG.AdminTests" />
-      <item itemvalue="TestNG.AdminTests.addDueDate" />
-      <item itemvalue="TestNG.AdminTests.createProject" />
-      <item itemvalue="TestNG.AdminTests.deleteLibraryGroup" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.AdminTests.addEditLogo" />
-        <item itemvalue="TestNG.AdminTests.createProject" />
+        <item itemvalue="TestNG.AdminTests.createObjectTemplate" />
+        <item itemvalue="TestNG.AdminTests.createTemplate" />
+        <item itemvalue="TestNG.AdminTests.createTemplateGroup" />
         <item itemvalue="TestNG.AdminTests" />
-        <item itemvalue="TestNG.AdminTests.deleteLibraryGroup" />
-        <item itemvalue="TestNG.AdminTests.addDueDate" />
+        <item itemvalue="TestNG.AdminTests.addEditLogo" />
       </list>
     </recent_temporary>
   </component>
@@ -659,7 +657,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742493970114</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Commit : WIP (add/edit logo)">
+      <option name="closed" value="true" />
+      <created>1742578439033</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1742578439033</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -723,7 +729,8 @@
     <MESSAGE value="Commit : WIP (admin role 12 test case)" />
     <MESSAGE value="Commit : WIP (admin role 13 test case)" />
     <MESSAGE value="Commit : WIP (Code improvements)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit : WIP (Code improvements)" />
+    <MESSAGE value="Commit : WIP (add/edit logo)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit : WIP (add/edit logo)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

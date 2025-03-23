@@ -1,7 +1,6 @@
 package EdControlsTest.tests;
 
 import EdControlsMain.EdPageObjects.AdminRole;
-import com.beust.ah.A;
 import org.testng.annotations.Test;
 
 public class AdminTests extends AdminRole {
@@ -19,82 +18,81 @@ public class AdminTests extends AdminRole {
         AdminRole.checkProjectEditable();
     }
 
-    // Test case 3 (Admin should be able to add/edit accountable, support, consulted and informed user)
+    // Test Case 3 (He should be able to edit the project name, reference name, invoice name and reference name)
     @Test(priority = 3)
-    public void addUsersOnNewProject() throws Exception {
-        AdminRole.addUsersOnNewProject();
-    }
-
-    // Test Case 4 (He should be able to edit the project name, reference name, invoice name and reference name)
-    @Test(priority = 4)
     public void editProject() throws Exception {
         AdminRole.editProject();
     }
-
-    // Test case 5 (He should be able to add/edit the end date of the project)
-    @Test(priority = 5)
-    public void addDueDate() throws Exception {
-        AdminRole.addDueDate();
-    }
-
-    // Test case 6 (Admin should be able to archive the project)
-    @Test(priority = 6)
-    public void archiveProject() throws Exception {
-        AdminRole.archiveProject();
-    }
-
-    // Test case 7 (Admin should be able to de-archive the project)
-    @Test(priority = 7)
-    public void deArchiveProject() throws Exception {
-        AdminRole.deArchiveProject();
-    }
-
-    // Test case 8 (Admin should be able to add/edit the project and company logo)
-    @Test
+    // Test case 4 (Admin should be able to add/edit the project and company logo)
+    @Test (priority = 4)
     public void addEditLogo() throws Exception {
         AdminRole.addEditLogo();
     }
 
+    // Test case 5 (Admin should be able to add/edit accountable, support, consulted and informed user)
+    @Test(priority = 5)
+    public void addUsersOnNewProject() throws Exception {
+        AdminRole.addUsersOnNewProject();
+    }
+
+    // Test case 6 (He should be able to add/edit the end date of the project)
+    @Test(priority = 6)
+    public void addDueDate() throws Exception {
+        AdminRole.addDueDate();
+    }
+
+    // Test case 7 (Admin should be able to archive the project)
+    @Test(priority = 7)
+    public void archiveProject() throws Exception {
+        AdminRole.archiveProject();
+    }
+
+    // Test case 8 (Admin should be able to de-archive the project)
+    @Test(priority = 8)
+    public void deArchiveProject() throws Exception {
+        AdminRole.deArchiveProject();
+    }
+
     // Test Case 9 (Should be able to create a library group)
-    @Test (priority = 8)
+    @Test (priority = 9)
     public void createLibraryGroup() throws Exception {
         AdminRole.createLibraryGroup();
     }
 
-    // Test Case 10 (Deleting a library group)
-    @Test( priority = 9)
-    public void deleteLibraryGroup() throws Exception {
-        AdminRole.deleteLibraryGroup();
-    }
 
-    // Test Case 11 (Admin should be able to create a template group)
+    // Test Case 10 (Admin should be able to create a template group)
     @Test (priority = 10)
     public void createTemplateGroup() throws Exception {
         AdminRole.createTemplateGroup();
     }
 
     // Test Case 11 (Should be able to create a template)
-   /* @Test
+    @Test(priority = 11)
     public void createTemplate() throws Exception {
+        AdminRole.createAreaTemplate();
+    }
 
-    }*/
+    @Test(priority = 12)
+    public void createObjectTemplate() throws Exception {
+        AdminRole.createObjectTemplate();
+    }
 
-    //Test case 12
-    @Test (priority = 11)
+    //Test case 13
+    @Test (priority = 13)
     public void replaceUserInUserManagement() throws Exception {
         AdminRole.replaceUserInUserManagement();
     }
 
-    //Test Case 13
-    @Test(priority = 12)
+    //Test Case 14
+    @Test(priority = 14)
     public void removeUserInUserManagement() throws Exception {
         AdminRole.removeUserInUserManagement();
     }
 
-    //Test Case 13 (Should be able to edit/add the information in the contract information screen)
-    @Test(priority = 13)
-    public void modifyInContractInfo() throws InterruptedException {
-        AdminRole.modifyInContractInfo();
+    //Test Case 15 (Should be able to edit/add the information in the contract information screen)
+    @Test(priority = 15)
+    public void editContractInfo() throws InterruptedException {
+        AdminRole.editContractInfo();
     }
 
 
