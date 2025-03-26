@@ -1,11 +1,13 @@
 package EdControlsTest.tests;
 
 import EdControlsMain.BaseClasses.BaseTest;
-import EdControlsMain.EdFragments.AuditContainer;
-import EdControlsMain.EdFragments.ProjectContainer;
-import EdControlsMain.ReusableFunctions.DateFragment;
+import EdControlsMain.EdPageObjects.AuditContainer;
+import EdControlsMain.EdPageObjects.ProjectContainer;
+import EdControlsMain.EDFragments.DateFragment;
+import EdControlsMain.Resources.DataReader;
 import EdControlsMain.ReusableFunctions.ReusableMethods;
-import EdControlsMain.EdFragments.TemplateContainer;
+import EdControlsMain.EdPageObjects.TemplateContainer;
+import EdControlsMain.EDFragments.WaitUtilsFragment;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -28,10 +30,10 @@ public class AuditModule extends BaseTest {
 
     @Test
     public void createAreaAudit() throws Exception {
-        ProjectContainer.navigateToProject();
+        ProjectContainer.navigateToProject(DataReader.getValueFromJsonFile("dev.project.name"));
         Thread.sleep(2000);
         WebElement auditHeader = driver.findElement(By.id("ed-audits"));
-        ReusableMethods.waitForWebElementToClickable(auditHeader);
+        WaitUtilsFragment.waitForWebElementToClickable(auditHeader);
         auditHeader.click();
         Thread.sleep(1000);
         TemplateContainer.selectAreaAuditTemplate();
@@ -47,8 +49,8 @@ public class AuditModule extends BaseTest {
         String toastMessage = ReusableMethods.checkingToastMessage();
         Assert.assertEquals("Saved successfully",toastMessage);
         System.err.println(toastMessage);
-        Boolean bolean = ReusableMethods.waitForElementDisAppear(By.xpath("//div[@class='MuiAlert-message']"));
-        if (bolean==true){
+        Boolean bolean = WaitUtilsFragment.waitForElementDisAppear(By.xpath("//div[@class='MuiAlert-message']"));
+        if (bolean){
             Integer auditCount = ReusableMethods.getCount(auditHeader);
             System.out.println("After audit created: "+auditCount);
         }
@@ -57,16 +59,16 @@ public class AuditModule extends BaseTest {
 
   @Test
     public void CreateObjectAudit() throws Exception {
-      ProjectContainer.navigateToProject();
+      ProjectContainer.navigateToProject(DataReader.getValueFromJsonFile("dev.project.name"));
       Thread.sleep(2000);
       WebElement auditHeader = driver.findElement(By.id("ed-audits"));
-      ReusableMethods.waitForWebElementToClickable(auditHeader);
+      WaitUtilsFragment.waitForWebElementToClickable(auditHeader);
       auditHeader.click();
       TemplateContainer.selectObjectAuditTemplate();
       Thread.sleep(1000);
       AuditContainer.createAuditInitialization("object");
       WebElement ticketSearch = driver.findElement(By.cssSelector("input[placeholder='Search']"));
-      ReusableMethods.waitForWebElementAppear(ticketSearch);
+      WaitUtilsFragment.waitForWebElementAppear(ticketSearch);
       ticketSearch.sendKeys("608c3e");
       ticketSearch.sendKeys(Keys.ENTER);
       Thread.sleep(2000);
@@ -90,7 +92,7 @@ public class AuditModule extends BaseTest {
       WebElement dueDateElement = driver.findElement(By.id("ad-due-date"));
       dueDateElement.click();
       WebElement dateContainer = driver.findElement(By.xpath("//div[@class='react-calendar']"));
-      ReusableMethods.waitForWebElementAppear(dateContainer);
+      WaitUtilsFragment.waitForWebElementAppear(dateContainer);
       DateFragment.datePicker(dateContainer);
       Thread.sleep(2000);
       driver.findElement(By.id("ad-save-edit")).click();

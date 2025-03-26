@@ -1,0 +1,10 @@
+<suite name="Tickets Module" thread-count="7">
+	<listeners>
+		<listener class-name="EdControlsTest.testComponents.Listeners"/>
+	</listeners>
+	<test name="Admin Role Test" thread-count="5">
+		<classes>
+			<class name="EdControlsMain.EdPageObjects.AdminRole"/>
+		</classes>
+	</test>
+</suite>

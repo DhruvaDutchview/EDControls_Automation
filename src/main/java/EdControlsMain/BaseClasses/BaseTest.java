@@ -12,10 +12,12 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.support.events.EventFiringDecorator;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
     public static WebDriver driver;
@@ -30,11 +32,17 @@ public class BaseTest {
     //initialization the driver
     public WebDriver initializeDriver() throws IOException {
         //Map<String, String> data = dataReader.readPropertiesFile();
-        String browserName = DataReader.getValueFromJsonFile("browserName");
+        String browserName = DataReader.getValueFromJsonFile("browsers[0].browserName");
         if (browserName.contains("chrome")) {
             ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-gpu");
+            options.addArguments("user-data-dir=/tmp/chrome-user-data");
+
             WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver(options);
+            driver = new ChromeDriver();
             driver.manage().window().setSize(new Dimension(1440, 900));
 
         } else if (browserName.equalsIgnoreCase("edge")) {
@@ -55,7 +63,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         // Wrap the driver with the highlighting listener
-        //  driver = new EventFiringDecorator<>(new HighlightListener(driver)).decorate(driver);
+         driver = new EventFiringDecorator<>(new HighlightListener(driver)).decorate(driver);
 
         return driver;
     }
@@ -83,7 +91,8 @@ public class BaseTest {
         System.out.println("Test is done");
         Thread.sleep(3000);
         //clearCacheAndCookies();
-        driver.quit();
+        // driver.quit();
+      //  driver.close();
     }
 
 }

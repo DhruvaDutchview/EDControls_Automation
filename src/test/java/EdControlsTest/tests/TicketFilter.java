@@ -1,7 +1,8 @@
 package EdControlsTest.tests;
 
 import EdControlsMain.BaseClasses.BaseTest;
-import EdControlsMain.EdFragments.ProjectContainer;
+import EdControlsMain.EdPageObjects.ProjectContainer;
+import EdControlsMain.Resources.DataReader;
 import org.openqa.selenium.WebDriver;
 
 public class TicketFilter extends BaseTest {
@@ -14,7 +15,7 @@ public class TicketFilter extends BaseTest {
     }
 
     public void ticketPersonFilter() throws Exception {
-        ProjectContainer.navigateToProject();
+        ProjectContainer.navigateToProject(DataReader.getValueFromJsonFile("dev.project.name"));
 
 
 

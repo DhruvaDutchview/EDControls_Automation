@@ -1,13 +1,15 @@
 package EdControlsTest.tests;
 
 import EdControlsMain.BaseClasses.BaseTest;
-import EdControlsMain.EdFragments.MapContainer;
-import EdControlsMain.EdFragments.ProjectContainer;
-import EdControlsMain.EdFragments.TicketContainer;
-import EdControlsMain.ReusableFunctions.DateFragment;
+import EdControlsMain.EdPageObjects.MapContainer;
+import EdControlsMain.EdPageObjects.ProjectContainer;
+import EdControlsMain.EdPageObjects.TicketContainer;
+import EdControlsMain.EDFragments.DateFragment;
+import EdControlsMain.Resources.DataReader;
 import EdControlsMain.ReusableFunctions.ReusableMethods;
+import EdControlsMain.EDFragments.WaitUtilsFragment;
 import org.openqa.selenium.*;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.List;
 
@@ -22,10 +24,10 @@ public class TicketModule extends BaseTest {
 
     @Test
     public void createTicket() throws Exception {
-        ProjectContainer.navigateToProject();
+        ProjectContainer.navigateToProject(DataReader.getValueFromJsonFile("dev.project.name"));
         MapContainer.navigateToMap();
         WebElement mapContainer = driver.findElement(By.xpath("//div[@id='map-container']"));
-        WebElement map = ReusableMethods.waitForWebElementAppear(mapContainer);
+        WebElement map = WaitUtilsFragment.waitForWebElementAppear(mapContainer);
         if (map.isDisplayed()) {
             WebElement clickTicket = driver.findElement(By.xpath("//div[contains(@class,'leaflet-container')]"));
             clickTicket.click();
@@ -34,15 +36,15 @@ public class TicketModule extends BaseTest {
             System.err.println("map is not clicked");
         }
         Thread.sleep(1000);
-        WebElement newTicketContainerDialog = ReusableMethods.waitForElementToBeVisible(By.xpath("//div[@class='ticket-new']"));
-        WebElement newTicketContainer = ReusableMethods.waitForWebElementAppear(newTicketContainerDialog);
+        WebElement newTicketContainerDialog = WaitUtilsFragment.waitElementToBeVisible(By.xpath("//div[@class='ticket-new']"),driver);
+        WebElement newTicketContainer = WaitUtilsFragment.waitForWebElementAppear(newTicketContainerDialog);
         if (newTicketContainer.isDisplayed()) {
             System.out.println("New Ticket container is displayed");
         } else {
             System.err.println("New Ticket container is not displayed");
         }
         Thread.sleep(1000);
-        String title="Automation Ticket"+ReusableMethods.generateRandomString();
+        String title= ReusableMethods.generateRandomString();
         driver.findElement(By.id("tn-title")).sendKeys(title);
         WebElement desContainer = driver.findElement(By.xpath("//section[@id='log']"));
         desContainer.click();
@@ -58,7 +60,7 @@ public class TicketModule extends BaseTest {
         WebElement dueDateElement = driver.findElement(By.id("tn-due-date"));
         dueDateElement.click();
         WebElement dateContainer = driver.findElement(By.xpath("//div[@class='react-calendar']"));
-        ReusableMethods.waitForWebElementAppear(dateContainer);
+        WaitUtilsFragment.waitForWebElementAppear(dateContainer);
         DateFragment.datePicker(dateContainer);
         Thread.sleep(2000);
 
@@ -85,9 +87,9 @@ public class TicketModule extends BaseTest {
 
     @Test
     public void editingTicket() throws Exception {
-        ProjectContainer.navigateToProject();
+        ProjectContainer.navigateToProject(DataReader.getValueFromJsonFile("dev.project.name"));
         WebElement ticketElement = driver.findElement(By.xpath("//div[@class='subHeader__container'] //li[@id='ed-tickts']"));
-        ReusableMethods.waitForWebElementAppear(ticketElement);
+        WaitUtilsFragment.waitForWebElementAppear(ticketElement);
         Thread.sleep(3000);
         Integer currentTicketCount= ReusableMethods.getCount(ticketElement);
         System.out.println(currentTicketCount);
@@ -102,7 +104,7 @@ public class TicketModule extends BaseTest {
             }
         }
         WebElement ticketDescription = driver.findElement(By.xpath("//div[@id='td-description']"));
-        ReusableMethods.waitForWebElementAppear(ticketDescription);
+        WaitUtilsFragment.waitForWebElementAppear(ticketDescription);
         ticketDescription.click();
         ticketDescription.findElement(By.xpath("//div[@dir='ltr']//p")).sendKeys("Automation description");
 
@@ -110,7 +112,7 @@ public class TicketModule extends BaseTest {
         WebElement dueDateElement = driver.findElement(By.id("td-date-picker"));
         dueDateElement.click();
         WebElement dateContainer = driver.findElement(By.xpath("//div[@class='react-calendar']"));
-        ReusableMethods.waitForWebElementAppear(dateContainer);
+        WaitUtilsFragment.waitForWebElementAppear(dateContainer);
         Thread.sleep(2000);
         DateFragment.datePicker(dateContainer);
         Thread.sleep(2000);
@@ -119,10 +121,10 @@ public class TicketModule extends BaseTest {
 
     @Test
     public void archievingNewTicket() throws Exception {
-        ProjectContainer.navigateToProject();
+        ProjectContainer.navigateToProject(DataReader.getValueFromJsonFile("dev.project.name"));
         MapContainer.navigateToMap();
         WebElement mapContainer = driver.findElement(By.xpath("//div[@id='map-container']"));
-        WebElement map = ReusableMethods.waitForWebElementAppear(mapContainer);
+        WebElement map = WaitUtilsFragment.waitForWebElementAppear(mapContainer);
         if (map.isDisplayed()) {
             WebElement clickTicket = driver.findElement(By.xpath("//div[contains(@class,'leaflet-container')]"));
             clickTicket.click();
@@ -131,8 +133,8 @@ public class TicketModule extends BaseTest {
             System.err.println("map is not clicked");
         }
         Thread.sleep(1000);
-        WebElement newTicketContainerDialog = ReusableMethods.waitForElementToBeVisible(By.xpath("//div[@class='ticket-new']"));
-        WebElement newTicketContainer = ReusableMethods.waitForWebElementAppear(newTicketContainerDialog);
+        WebElement newTicketContainerDialog = WaitUtilsFragment.waitElementToBeVisible(By.xpath("//div[@class='ticket-new']"),driver);
+        WebElement newTicketContainer = WaitUtilsFragment.waitForWebElementAppear(newTicketContainerDialog);
         if (newTicketContainer.isDisplayed()) {
             System.out.println("New Ticket container is displayed");
         } else {
@@ -154,7 +156,7 @@ public class TicketModule extends BaseTest {
         WebElement dueDateElement = driver.findElement(By.id("tn-due-date"));
         dueDateElement.click();
         WebElement dateContainer = driver.findElement(By.xpath("//div[@class='react-calendar']"));
-        ReusableMethods.waitForWebElementAppear(dateContainer);
+        WaitUtilsFragment.waitForWebElementAppear(dateContainer);
         DateFragment.datePicker(dateContainer);
         Thread.sleep(2000);
 

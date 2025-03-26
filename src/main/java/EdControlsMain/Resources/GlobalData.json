@@ -1,16 +1,44 @@
-[
- {
-  "browserName" : "chrome",
-  "email" : "sujith@mailinator.com",
-  "password" : "123456789012"
+{
+ "browsers": [
+  {
+   "browserName": "chrome"
+  }
+ ],
+ "dev": {
+  "url": "https://dev.edcontrols.com/#/auth?view=login",
+  "accountable": {
+   "email": "sujith@mailinator.com",
+   "password": "123456789012"
+  },
+  "admin": {
+   "email": "mahesh@mailinator.com",
+   "password": "123456789012"
+  },
+  "project": {
+   "name": "Automation Project - Dhruv",
+   "accountable": "sujesh@mailinator.com",
+   "support": "suppo@mailinator.com",
+   "consulted": "consuldev@mailinator.com",
+   "informed": "infodev@mailinator.com",
+   "responsible": "responsibledev@mailinator.com"
+  }
  },
- {
-  "devURL" : "https://dev.edcontrols.com/#/auth?view=login",
-  "projectName" : "Automation Project - Dhruv"
- },
- {
-  "TicketResponsible" : "responsibledev@mailinator.com",
-  "TicketConsulted" : "consuldev@mailinator.com",
-  "TicketInformed" : "infodev@mailinator.com"
+ "prod": {
+  "url": "https://web.edcontrols.com/#/auth?view=login",
+  "accountable": {
+   "email": "acp@mailinator.com",
+   "password": "123456789012"
+  },
+  "admin": {
+   "email": "mahesh@mailinator.com",
+   "password": "123456789012"
+  },
+  "project": {
+   "name": "Automation Project - Dhruv",
+   "accountable": "sujesh@mailinator.com",
+   "support": "suppo@mailinator.com",
+   "consulted": "consuldev@mailinator.com",
+   "informed": "infodev@mailinator.com"
+  }
  }
-]
+}
