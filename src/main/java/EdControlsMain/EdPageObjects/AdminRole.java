@@ -315,8 +315,6 @@ public class AdminRole extends BaseTest {
         ProjectContainer.navigateToModule(driver.findElement(By.id("ed-templates")));
         Thread.sleep(2000);
         TemplateContainer.createAreaTemplate(templateGroupName,"Automation Template (Area)", "area" );
-     //   Thread.sleep(2000);
-        TemplateContainer.createObjectTemplate(templateGroupName, "Automation Template (Object)");
     }
 
     public void createObjectTemplate() throws Exception {

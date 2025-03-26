@@ -4,6 +4,7 @@ import EdControlsMain.BaseClasses.BaseTest;
 import EdControlsMain.EDFragments.CategoryFragment;
 import EdControlsMain.Resources.DataReader;
 import EdControlsMain.EDFragments.WaitUtilsFragment;
+import EdControlsMain.ReusableFunctions.ReusableMethods;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -116,11 +117,11 @@ public class TemplateContainer extends BaseTest {
         // Marking this as Object Template
         WebElement checkboxLabel = driver.findElement(By.xpath("//div[@class='auditType-checkbox']//label"));
         WebElement checkboxInput = driver.findElement(By.xpath("//div[@class='auditType-checkbox']//input[@type='checkbox']"));
-       // Ensure checkbox is clickable
+        // Ensure checkbox is clickable
         WaitUtilsFragment.waitForWebElementToClickable(checkboxLabel);
-       // Click using JavaScript to avoid hidden element issues
+        // Click using JavaScript to avoid hidden element issues
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", checkboxLabel);
-      // Verify if it's checked
+        // Verify if it's checked
         boolean isChecked = checkboxInput.isSelected();
         System.out.println("Checkbox selected: " + isChecked);
         Thread.sleep(2000);
@@ -129,86 +130,63 @@ public class TemplateContainer extends BaseTest {
     }
 
     public static void createAreaTemplate(String templateGroupName, String templateName, String auditType) throws Exception {
-        if(auditType.contains("area")){
-            navigateToTemplate(templateGroupName);
-        }
-        Thread.sleep(2000);
-        WebElement tempNameElement = WaitUtilsFragment.waitForElementToBeVisible(driver.findElement(By.id("input_audit_title")));
+        navigateToTemplate(templateGroupName);
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+        WebElement tempNameElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("input_audit_title")));
         tempNameElement.click();
-        Thread.sleep(2000);
         tempNameElement.sendKeys(templateName + Keys.ENTER);
-        Thread.sleep(2000);
 
-        WebElement tagElement = driver.findElement(By.xpath("//div[@class='temp-tag-container']//div[@role='combobox']//input[@type='text']"));
+        WebElement tagElement = driver.findElement(By.cssSelector(".temp-tag-container [role='combobox'] input[type='text']"));
         tagElement.click();
-        Thread.sleep(2000);
         tagElement.sendKeys("Tag Automation template " + Keys.ENTER);
-        Thread.sleep(2000);
 
-        //  WebElement templateInformed = driver.findElement(By.id("template-informed"));
-        // templateInformed.click();
-        //   templateInformed.sendKeys(DataReader.getValueFromJsonFile("projectInformed") + Keys.ENTER);
-        //  Thread.sleep(2000);
+        WebElement templateInformed = driver.findElement(By.id("template-informed"));
+        templateInformed.click();
+        templateInformed.sendKeys(DataReader.getValueFromJsonFile("dev.project.informed") + Keys.ENTER);
 
         WebElement templateBody = driver.findElement(By.xpath("//div[@class='addEditTemplate__body']"));
-        // Define the max number of categories
-        int maxCategories = 2;
-        for (int index = 0; index <= maxCategories; index++) {
-            // Locate the category container dynamically
-            WebElement categoryParent = WaitUtilsFragment.waitForWebElementAppear(
-                    driver.findElement(By.xpath("//div[@data-rbd-droppable-id='droppable']"))
-            );
 
-            // Wait for the category element to appear
-            WebElement categoryOrder = WaitUtilsFragment.waitForWebElementAppear(
-                    categoryParent.findElement(By.xpath("//div[@data-rbd-draggable-id='cat-" + index + "']"))
-            );
+        // Define questions for each category
+        List<List<String>> questionsPerCategory = List.of(
+                List.of("Yes/No", "Multiple choice - multiple answers", "Multiple choice - single answer"),
+                List.of("Yes/No", "Date", "Signature"),
+                List.of("Yes/No", "Free text", "Numeric")
+        );
 
-            // Locate the left panel inside the category
-            WebElement categoryLeftPanel = categoryOrder.findElement(By.xpath(".//div[contains(@class,'accordian__header--left')]"));
+        for (int index = 0; index < questionsPerCategory.size(); index++) {
+            WebElement categoryOrder = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//div[@data-rbd-draggable-id='cat-" + index + "']")));
 
-            // Click on the category name element
-            WebElement categoryNameElement = categoryLeftPanel.findElement(By.xpath(".//span"));
+            WebElement categoryNameElement = categoryOrder.findElement(By.xpath(".//div[contains(@class,'accordian__header--left')]//span"));
             categoryNameElement.click();
 
-            // Wait for the input field to be ready
-            WebElement categoryInputField = WaitUtilsFragment.waitForWebElementToClick(
-                    categoryLeftPanel.findElement(By.id("cat-name-change"))
-            );
-
-            // Clear and enter new category name
+            WebElement categoryInputField = wait.until(ExpectedConditions.elementToBeClickable(
+                    categoryOrder.findElement(By.id("cat-name-change"))));
             categoryInputField.sendKeys("Category " + (index + 1));
-            System.out.println("Renamed Category " + (index + 1));
 
-            // Add questions to category
-            if (index == 0) {
-                CategoryFragment.addQuestionsToCategory(categoryOrder, index, List.of("Yes/No", "Free text", "Numeric") );
-            } else if (index == 1) {
-                CategoryFragment.addQuestionsToCategory(categoryOrder, index, List.of("Yes/No", "Date", "Signature") );
-            } else if (index == 2) {
-                CategoryFragment.addQuestionsToCategory(categoryOrder, index, List.of("Yes/No", "Multiple choice - multiple answers", "Multiple choice - single answer") );
+            // Add questions
+            CategoryFragment.addQuestionsToCategory(categoryOrder, index, questionsPerCategory.get(index));
+
+            // Click "Add Category" only if it's not the last category
+            if (index < questionsPerCategory.size() - 1) {
+                WebElement addCategoryButton = wait.until(ExpectedConditions.elementToBeClickable(
+                        categoryOrder.findElement(By.xpath("//button[contains(text(), 'Add category')]"))));
+
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", addCategoryButton);
+                addCategoryButton.click();
             }
-
-            // **Only click "Add Category" if it's NOT the last iteration**
-            if (index < maxCategories) {
-                // Locate and click "Add Category" button
-                WebElement addCategoryButton = WaitUtilsFragment.waitForWebElementToClick(
-                        categoryOrder.findElement(By.xpath("//button[contains(text(), 'Add category')]"))
-                );
-
-                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addCategoryButton);
-
-                if (addCategoryButton.isEnabled()) {
-                    addCategoryButton.click();
-                } else {
-                    System.out.println("Normal click failed, trying JavaScript click...");
-                    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addCategoryButton);
-                }
-            }
-            System.out.println("Loop finished. Total categories processed: " + maxCategories);
         }
 
+        // Scroll & Click Publish
+        WebElement publishButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("publish")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", publishButton);
+        publishButton.click();
+
+        System.out.println(ReusableMethods.checkingToastMessage());
     }
+
 
     public static void navigateToTemplate(String templateGroupName) throws InterruptedException {
         WebElement templateLeftPanel = driver.findElement(By.xpath("//div[@class='template-filters']//div[contains(@class,'MuiAccordionDetails-root')]"));

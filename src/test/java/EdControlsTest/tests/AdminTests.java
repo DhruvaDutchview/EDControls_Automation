@@ -68,22 +68,29 @@ public class AdminTests extends AdminRole {
 
     // Test Case 11 (Should be able to create a template)
     @Test(priority = 11)
-    public void createTemplate() throws Exception {
+    public void createAreaTemplate() throws Exception {
         AdminRole.createAreaTemplate();
     }
 
+    // Create Object Template
     @Test(priority = 12)
     public void createObjectTemplate() throws Exception {
         AdminRole.createObjectTemplate();
     }
 
-    //Test case 13
+    // Test Case 13 (Should be able to edit a template)
+    @Test
+    public void editTemplate(){
+
+    }
+
+    //Test case 13 (Admin should be able to replace user from User Management)
     @Test (priority = 13)
     public void replaceUserInUserManagement() throws Exception {
         AdminRole.replaceUserInUserManagement();
     }
 
-    //Test Case 14
+    //Test Case 14 (Admin should be able to delete user from User Management)
     @Test(priority = 14)
     public void removeUserInUserManagement() throws Exception {
         AdminRole.removeUserInUserManagement();
@@ -94,6 +101,8 @@ public class AdminTests extends AdminRole {
     public void editContractInfo() throws InterruptedException {
         AdminRole.editContractInfo();
     }
+
+
 
 
 

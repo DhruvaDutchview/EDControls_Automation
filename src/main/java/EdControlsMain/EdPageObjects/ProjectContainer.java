@@ -144,7 +144,7 @@ public class ProjectContainer extends BaseTest {
         AUTOMATION_PROJECT("Automation project"),
         LIBRARY_GROUP("Library group"),
         TEMPLATE_GROUP("Template group");
-
+      //  TEMPLATE_NAME ("Template Name");
         private final String displayName;
 
         NameType(String displayName) {
