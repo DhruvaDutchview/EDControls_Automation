@@ -26,11 +26,13 @@ public class AdminRole extends BaseTest {
     private String templateGroupName;
     private String userName;
     private String replaceUser;
+    private String templateName;
 
     public void createProject() throws Exception {
         projectText = ProjectContainer.createProject();
         WebElement projectSearch = driver.findElement(By.xpath("//input[@id='search']"));
-        WaitUtilsFragment.waitForWebElementAppear(projectSearch);
+        Thread.sleep(2000);
+        WaitUtilsFragment.waitForWebElementToClick(projectSearch);
         projectSearch.sendKeys(projectText + Keys.ENTER);
 
         WaitUtilsFragment.waitForElementToBeVisible(driver.findElement(By.id("add-user-btn")));
@@ -291,6 +293,14 @@ public class AdminRole extends BaseTest {
         System.err.println(ReusableMethods.checkingToastMessage());
     }
 
+    public void uploadDrawingsInLibrary() throws Exception {
+        ProjectContainer.navigateToProject(projectText);
+        Thread.sleep(1000);
+        ProjectContainer.navigateToModule(driver.findElement(By.id("ed-maps")));
+        Thread.sleep(2000);
+        MapContainer.uploadDrawingsInLibrary(libraryGroupName);
+    }
+
     public void deleteLibraryGroup() throws Exception {
         ProjectContainer.navigateToProject(projectText);
         Thread.sleep(1000);
@@ -310,21 +320,30 @@ public class AdminRole extends BaseTest {
     }
 
     public void createAreaTemplate() throws Exception {
-        ProjectContainer.navigateToProject("Automation Project - Dhruv");
+        ProjectContainer.navigateToProject(projectText);
         Thread.sleep(2000);
         ProjectContainer.navigateToModule(driver.findElement(By.id("ed-templates")));
         Thread.sleep(2000);
-        TemplateContainer.createAreaTemplate(templateGroupName,"Automation Template (Area)", "area" );
+        templateName = ProjectContainer.getUniqueName(ProjectContainer.NameType.TEMPLATE_NAME);
+        TemplateContainer.createAreaTemplate(templateGroupName,templateName, "area" );
     }
 
     public void createObjectTemplate() throws Exception {
-        ProjectContainer.navigateToProject("Automation Project - Dhruv");
+        ProjectContainer.navigateToProject(projectText);
         Thread.sleep(2000);
         ProjectContainer.navigateToModule(driver.findElement(By.id("ed-templates")));
         Thread.sleep(2000);
+        // As of now, object template name is hardcoded
         TemplateContainer.createObjectTemplate(templateGroupName, "Automation Template (Object)");
     }
 
+    public void editTemplate() throws Exception {
+        ProjectContainer.navigateToProject(projectText);
+        Thread.sleep(2000);
+        ProjectContainer.navigateToModule(driver.findElement(By.id("ed-templates")));
+        Thread.sleep(2000);
+        TemplateContainer.editTemplate(templateGroupName, templateName);
+    }
     public void replaceUserInUserManagement() throws Exception {
         WebElement currentUser = driver.findElement(By.id("mh-current-user"));
         currentUser.click();

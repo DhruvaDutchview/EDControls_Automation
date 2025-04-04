@@ -18,7 +18,7 @@ public class AdminTests extends AdminRole {
         AdminRole.checkProjectEditable();
     }
 
-    // Test Case 3 (He should be able to edit the project name, reference name, invoice name and reference name)
+    // Test Case 3 (He should be able to edit the project name, reference name, invoice name)
     @Test(priority = 3)
     public void editProject() throws Exception {
         AdminRole.editProject();
@@ -59,45 +59,51 @@ public class AdminTests extends AdminRole {
         AdminRole.createLibraryGroup();
     }
 
-
-    // Test Case 10 (Admin should be able to create a template group)
+    // Test Case 10 (Admin should be able to upload a drawing/file in the library module)
     @Test (priority = 10)
+    public void uploadDrawingsInLibrary() throws Exception {
+        AdminRole.uploadDrawingsInLibrary();
+    }
+
+    // Test Case 11 (Admin should be able to create a template group)
+    @Test (priority = 11)
     public void createTemplateGroup() throws Exception {
         AdminRole.createTemplateGroup();
     }
 
-    // Test Case 11 (Should be able to create a template)
-    @Test(priority = 11)
+    // Test Case 12 (Should be able to create a template)
+    @Test(priority = 12)
     public void createAreaTemplate() throws Exception {
         AdminRole.createAreaTemplate();
     }
 
-    // Create Object Template
-    @Test(priority = 12)
+    // Test Case 13 (Create Object Template)
+    @Test(priority = 13)
     public void createObjectTemplate() throws Exception {
         AdminRole.createObjectTemplate();
     }
 
-    // Test Case 13 (Should be able to edit a template)
-    @Test
-    public void editTemplate(){
-
+    //Test Case 14 (Should be able to edit a template)
+    @Test (priority = 14)
+    public void editTemplate() throws Exception {
+         AdminRole.editTemplate();
     }
 
-    //Test case 13 (Admin should be able to replace user from User Management)
-    @Test (priority = 13)
+
+    //Test case 15 (Admin should be able to replace user from User Management)
+    @Test (priority = 15)
     public void replaceUserInUserManagement() throws Exception {
         AdminRole.replaceUserInUserManagement();
     }
 
-    //Test Case 14 (Admin should be able to delete user from User Management)
-    @Test(priority = 14)
+    //Test Case 16 (Admin should be able to delete user from User Management)
+    @Test(priority = 16)
     public void removeUserInUserManagement() throws Exception {
         AdminRole.removeUserInUserManagement();
     }
 
-    //Test Case 15 (Should be able to edit/add the information in the contract information screen)
-    @Test(priority = 15)
+    //Test Case 17 (Should be able to edit/add the information in the contract information screen)
+    @Test(priority = 17)
     public void editContractInfo() throws InterruptedException {
         AdminRole.editContractInfo();
     }

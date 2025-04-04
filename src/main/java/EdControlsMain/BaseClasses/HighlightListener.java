@@ -41,12 +41,12 @@ public class HighlightListener extends BaseTest implements WebDriverListener  {
         highlightElement(element, ((WrapsDriver) element).getWrappedDriver());
     }
 
-    private boolean shouldExcludeHighlight(WebElement element) {
+   /* private boolean shouldExcludeHighlight(WebElement element) {
         String classAttribute = element.getDomAttribute("id");
         if (classAttribute != null) {
             return classAttribute.contains("map-container") || classAttribute.contains("leaflet-container");
         }
         return false;
-    }
+    }*/
 
 }

@@ -15,6 +15,9 @@ public class MapContainer extends BaseTest {
     public MapContainer(WebDriver driver) {
         super(driver);
     }
+    static WebElement libraryGroup;
+    static Actions actions = new Actions(driver);
+
 
     public static void navigateToMap() throws Exception
     {
@@ -55,7 +58,7 @@ public class MapContainer extends BaseTest {
 
     }
 
-    public static String createLibraryGroup(String libraryGroupName) throws InterruptedException {
+    public static void createLibraryGroup(String libraryGroupName) throws InterruptedException {
         WebElement libraryLeftPanel = driver.findElement(By.xpath("//div[@id='panel2d-content']//div[@class='library-filter__container ']"));
         WebElement createNewGroup = driver.findElement(By.id("add-new-group-library"));
         createNewGroup.click();
@@ -71,10 +74,9 @@ public class MapContainer extends BaseTest {
                 System.err.println(libraryGroupName + ": Created Successfully");
             }
         }
-        return libraryGroupName;
     }
 
-    public static void deleteLibraryGroup(String libraryGroupName) throws InterruptedException {
+    public static void navigateToLibraryGroup(String libraryGroupName) throws InterruptedException {
         WebElement libraryLeftPanel = driver.findElement(By.xpath("//div[@id='panel2d-content']//div[@class='library-filter__container ']"));
         Thread.sleep(2000);
         try {
@@ -88,7 +90,7 @@ public class MapContainer extends BaseTest {
             System.out.println("Show More button not found, skipping click.");
         }
         List<WebElement> libraryGroups = libraryLeftPanel.findElements(By.xpath(".//div[@class='group-container']"));
-        Actions actions = new Actions(driver);
+      //  Actions actions = new Actions(driver);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
@@ -97,10 +99,16 @@ public class MapContainer extends BaseTest {
             Thread.sleep(1000);
             if (libraryGroup.getText().contains(libraryGroupName)) {
                 System.out.println("Found the expected library group: " + libraryGroupName);
+                libraryGroup.click();
 
-                // Debug: Print full HTML of the library group
-                //System.out.println("Library Group HTML: " + libraryGroup.getAttribute("outerHTML"));
+            }
+        }
 
+    }
+
+    public static void deleteLibraryGroup(String libraryGroupName) throws InterruptedException {
+               navigateToLibraryGroup(libraryGroupName);
+                Thread.sleep(1000);
                 try {
                     // Use a more general hover target
                     WebElement hoverTarget = libraryGroup.findElement(By.xpath(".//*[self::span or self::div]"));
@@ -108,20 +116,26 @@ public class MapContainer extends BaseTest {
                     Thread.sleep(1000);
 
                     // Try finding and clicking the delete button
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
                     WebElement deleteElement = wait.until(ExpectedConditions.visibilityOf(
                             libraryGroup.findElement(By.xpath(".//img[contains(@class,'delete-container')]"))));
                     deleteElement.click();
                     System.out.println("Delete button clicked successfully.");
-                    break;
                 } catch (Exception e) {
                     System.out.println("Delete button not found: " + e.getMessage());
                 }
-            }
-        }
+
+
         Thread.sleep(1000);
         //WebElement dialogElement = wait.until(ExpectedConditions.visibilityOf(
         //        driver.findElement(By.xpath("//div[@role='dialog']"))));
         driver.findElement(By.id("dialog-ok")).click();
+    }
+
+
+    public static void uploadDrawingsInLibrary(String libraryGroupName) throws InterruptedException {
+        navigateToLibraryGroup(libraryGroupName);
+
     }
 
 }

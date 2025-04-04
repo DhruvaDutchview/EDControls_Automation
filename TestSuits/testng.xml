@@ -2,11 +2,13 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Tickets Module" thread-count="7">
 	<listeners>
-		<listener class-name="EdControlsTest.testComponents.Listeners"/>
+		<listener>
+			<class name = "EdControlsTest.testComponents.Listeners"/>
+		</listener>
 	</listeners>
 	<test name="Admin Role Test" thread-count="5">
 		<classes>
-			<class name="EdControlsMain.EdPageObjects.AdminRole"/>
+			<class name="EdControlsTest.tests.AdminTests"/>
 		</classes>
 	</test>
 </suite>
