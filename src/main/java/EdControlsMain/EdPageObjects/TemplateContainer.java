@@ -6,6 +6,7 @@ import EdControlsMain.Resources.DataReader;
 import EdControlsMain.EDFragments.WaitUtilsFragment;
 import EdControlsMain.ReusableFunctions.ReusableMethods;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -113,24 +114,14 @@ public class TemplateContainer extends BaseTest {
     }
 
     public static void createObjectTemplate(String templateGroupName, String templateName) throws Exception {
-        navigateToTemplate(templateGroupName);
-        // Marking this as Object Template
-        WebElement checkboxLabel = driver.findElement(By.xpath("//div[@class='auditType-checkbox']//label"));
-        WebElement checkboxInput = driver.findElement(By.xpath("//div[@class='auditType-checkbox']//input[@type='checkbox']"));
-        // Ensure checkbox is clickable
-        WaitUtilsFragment.waitForWebElementToClickable(checkboxLabel);
-        // Click using JavaScript to avoid hidden element issues
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", checkboxLabel);
-        // Verify if it's checked
-        boolean isChecked = checkboxInput.isSelected();
-        System.out.println("Checkbox selected: " + isChecked);
+        navigateToTemplateGroup(templateGroupName);
         Thread.sleep(2000);
         createAreaTemplate(templateGroupName, templateName, "object");
         Thread.sleep(2000);
     }
 
     public static void createAreaTemplate(String templateGroupName, String templateName, String auditType) throws Exception {
-        navigateToTemplate(templateGroupName);
+        navigateToTemplateGroup(templateGroupName);
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
@@ -141,11 +132,20 @@ public class TemplateContainer extends BaseTest {
         WebElement tagElement = driver.findElement(By.cssSelector(".temp-tag-container [role='combobox'] input[type='text']"));
         tagElement.click();
         tagElement.sendKeys("Tag Automation template " + Keys.ENTER);
+        Thread.sleep(2000);
 
         WebElement templateInformed = driver.findElement(By.id("template-informed"));
         templateInformed.click();
         templateInformed.sendKeys(DataReader.getValueFromJsonFile("dev.project.informed") + Keys.ENTER);
 
+        if (auditType.contains("object")){
+            System.out.println("Creating Object Audit Template");
+            selectObjectTemplateCheckBox();
+            Thread.sleep(2000);
+        }
+        else {
+            System.out.println("Creating Area Audit Template");
+        }
         WebElement templateBody = driver.findElement(By.xpath("//div[@class='addEditTemplate__body']"));
 
         // Define questions for each category
@@ -179,6 +179,7 @@ public class TemplateContainer extends BaseTest {
             }
         }
 
+
         // Scroll & Click Publish
         WebElement publishButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("publish")));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", publishButton);
@@ -187,17 +188,91 @@ public class TemplateContainer extends BaseTest {
         System.out.println(ReusableMethods.checkingToastMessage());
     }
 
-
-    public static void navigateToTemplate(String templateGroupName) throws InterruptedException {
+    public static void editTemplate(String templateGroupName, String templateName) throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement templateLeftPanel = driver.findElement(By.xpath("//div[@class='template-filters']//div[contains(@class,'MuiAccordionDetails-root')]"));
-        templateLeftPanel.findElement(By.xpath("//span[@class='show-more']")).click();
+        try {
+            WebElement showMoreButton = templateLeftPanel.findElement(By.xpath("//span[@class='show-more']"));
+            if (showMoreButton.isDisplayed()) {
+                showMoreButton.click();
+            } else {
+                System.out.println("Show More button is not visible, skipping click.");
+            }
+        } catch (Exception e) {
+            System.out.println("Show More button not found, skipping click.");
+        }
         List<WebElement> templateGroups = templateLeftPanel.findElements(By.xpath("//div[@class='group-item ']"));
         Thread.sleep(2000);
         System.out.println("Template Groups : " + templateGroups.size());
 
         for (WebElement templateGroup : templateGroups) {
             System.out.println(templateGroup.getText());
-            if (templateGroup.getText().contains("TG - Auto")) {
+            if (templateGroup.getText().contains(templateGroupName)) {
+                System.err.println("Template group: " + templateGroup.getText() + " found");
+                templateGroup.click();
+                Thread.sleep(2000);
+                break;
+            }
+        }
+        Thread.sleep(2000);
+        List<WebElement> templatesList = driver.findElements(By.xpath("//div[contains(@class,'temp-list ')] //div[contains(@class,'template-hover')]"));
+        for (WebElement template : templatesList){
+            WebElement templateNameElement = template.findElement(By.xpath(".//div[@class='detail-container--first-row']"));
+            String templateText = templateNameElement.getText();
+            if (templateText.equalsIgnoreCase(templateName)){
+                System.out.println("Expected template found : " + templateText);
+                Actions actions = new Actions(driver);
+                actions.moveToElement(template).perform();
+                Thread.sleep(1000); // Wait for the hover effect to show the edit icon
+                template.findElement(By.xpath(".//div[@class='select-filters__action--edit']")).click();
+                break;
+            }
+        }
+
+        // Editing the template
+        // Adding one more tag
+        WebElement tagElement = driver.findElement(By.cssSelector(".temp-tag-container [role='combobox'] input[type='text']"));
+        tagElement.click();
+        Thread.sleep(2000);
+        tagElement.sendKeys("One more tag " + Keys.ENTER);
+        Thread.sleep(2000);
+
+        /*// Adding informed user
+        WebElement templateInformed = driver.findElement(By.id("template-informed"));
+        templateInformed.click();
+        templateInformed.sendKeys("infodev@mailinator.com" + Keys.ENTER);
+        Thread.sleep(2000);*/
+
+        //saving the changes
+        WebElement saveButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("edit-template")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", saveButton);
+        saveButton.click();
+        Thread.sleep(2000);
+
+        System.out.println(ReusableMethods.checkingToastMessage());
+
+    }
+
+
+    public static void navigateToTemplateGroup(String templateGroupName) throws InterruptedException {
+        WebElement templateLeftPanel = driver.findElement(By.xpath("//div[@class='template-filters']//div[contains(@class,'MuiAccordionDetails-root')]"));
+        try {
+            WebElement showMoreButton = templateLeftPanel.findElement(By.xpath("//span[@class='show-more']"));
+            if (showMoreButton.isDisplayed()) {
+                showMoreButton.click();
+            } else {
+                System.out.println("Show More button is not visible, skipping click.");
+            }
+        } catch (Exception e) {
+            System.out.println("Show More button not found, skipping click.");
+        }
+        List<WebElement> templateGroups = templateLeftPanel.findElements(By.xpath("//div[@class='group-item ']"));
+        Thread.sleep(2000);
+        System.out.println("Template Groups : " + templateGroups.size());
+
+        for (WebElement templateGroup : templateGroups) {
+            System.out.println(templateGroup.getText());
+            if (templateGroup.getText().contains(templateGroupName)) {
                 System.err.println("Template group: " + templateGroup.getText() + " found");
                 templateGroup.click();
                 Thread.sleep(2000);
@@ -206,5 +281,20 @@ public class TemplateContainer extends BaseTest {
             }
         }
     }
+
+    public static void selectObjectTemplateCheckBox(){
+        WebElement checkboxLabel = driver.findElement(By.xpath("//div[@class='auditType-checkbox']//label"));
+        WebElement checkboxInput = driver.findElement(By.xpath("//div[@class='auditType-checkbox']//input[@type='checkbox']"));
+        // Ensure checkbox is clickable
+        WaitUtilsFragment.waitForWebElementToClickable(checkboxLabel);
+        // Click using JavaScript to avoid hidden element issues
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", checkboxLabel);
+        // Verify if it's checked
+        boolean isChecked = checkboxInput.isSelected();
+        System.out.println("Checkbox selected: " + isChecked);
+    }
+
+
+
 
 }

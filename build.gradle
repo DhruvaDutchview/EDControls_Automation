@@ -21,5 +21,7 @@ sourceSets {
     }
 }
 test {
-    useTestNG()
+    useTestNG() {
+        suites 'TestSuits/testng.xml'
+    }
 }

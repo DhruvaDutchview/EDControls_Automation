@@ -18,6 +18,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.IParameterizable;
 
 public class BaseTest {
     public static WebDriver driver;
@@ -83,7 +84,7 @@ public class BaseTest {
     public void launchApplication() throws IOException {
         driver = initializeDriver();
         loginPage = new LoginPage(driver);
-        loginPage.loginApplication();
+        loginPage.loginApplication("dev");
     }
 
     @AfterMethod(alwaysRun = true)
@@ -91,7 +92,7 @@ public class BaseTest {
         System.out.println("Test is done");
         Thread.sleep(3000);
         //clearCacheAndCookies();
-        // driver.quit();
+         driver.quit();
       //  driver.close();
     }
 

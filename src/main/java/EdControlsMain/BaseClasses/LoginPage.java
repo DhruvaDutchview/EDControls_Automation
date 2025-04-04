@@ -12,6 +12,9 @@ public class LoginPage extends ReusableMethods {
 
 	static WebDriver driver;
 	static DataReader dataReader = new DataReader(driver);
+	String userName;
+	String password;
+	String url;
 
 	public LoginPage(WebDriver driver) {
 		super(driver);
@@ -19,15 +22,13 @@ public class LoginPage extends ReusableMethods {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void goTo()
+	public void goTo(String URL)
 	{
-		//calling json file and getting values
-		String url = DataReader.getValueFromJsonFile("dev.url");
-
+		//url = DataReader.getValueFromJsonFile("dev.url");
 		/*//calling Properties file and getting values
 		Map<String, String> data= dataReader.readPropertiesFile();
 		String url = data.get("url");*/
-		driver.get(url);
+		driver.get(URL);
 	}
 
 	//pageFactory
@@ -38,19 +39,25 @@ public class LoginPage extends ReusableMethods {
 	@FindBy(id="butn-login")
 	WebElement login;
 
-	public void loginApplication()
+	public void loginApplication(String env)
 	{
-		goTo();
-		//String userName = DataReader.getValueFromJsonFile("email");
-	    //String password = DataReader.getValueFromJsonFile("password");
-
-		String userName = DataReader.getValueFromJsonFile("dev.admin.email");
-		String password = DataReader.getValueFromJsonFile("dev.admin.password");
+		if (env.equalsIgnoreCase("dev")){
+			goTo(DataReader.getValueFromJsonFile("dev.url"));
+			userName = DataReader.getValueFromJsonFile("dev.admin.email");
+			password = DataReader.getValueFromJsonFile("dev.admin.password");
+		}
+		else if (env.equalsIgnoreCase("prod")) {
+			goTo(DataReader.getValueFromJsonFile("prod.url"));
+			userName = DataReader.getValueFromJsonFile("prod.admin.email");
+			password = DataReader.getValueFromJsonFile("prod.admin.password");
+		}
+		else {
+			System.err.println("Environment not specified");
+		}
 
 		/*Map<String, String> data= dataReader.readPropertiesFile();
 		String userName = data.get("email");
 		String password = data.get("password");*/
-
 		userEmail.sendKeys(userName);
 		userPassword.sendKeys(password);
 		login.click();
